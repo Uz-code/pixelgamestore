@@ -1,46 +1,54 @@
-
 <?php 
 
-$usuario=($_GET['usuario']);
-
-echo '<h1>'.$usuario.'</h1>';
+session_start();
 
 ?>
 <!doctype html>
-<html lang="en"><head>
-  	<meta charset="UTF-8">
-  	<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="es">
+<head>
+  <title>Noticias</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Roboto:300,400&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="assets/css/materialize.css">
 	<link rel="stylesheet" href="assets/css/style.css">
-<title>Noticias</title>
-<style>
-.margin-top--sm a{
-font-size: var(--text-xs);
-}
-.DynamicLogo-small {
-width: 55%;
-opacity: 0.95;
-animation:none;
-}
-.StoreCard-logo {
-top: 20px;
-}  
-.DynamicLogo-small:hover {
-    width: 55%;
-    opacity: 1;
-}
-</style>
-</head><body>
+  <style>
+  .margin-top--sm a{
+  font-size: var(--text-xs);
+  }
+  .DynamicLogo-small {
+  width: 55%;
+  opacity: 0.95;
+  animation:none;
+  }
+  .StoreCard-logo {
+  top: 20px;
+  }  
+  .DynamicLogo-small:hover {
+      width: 55%;
+      opacity: 1;
+  }
+  </style>
+</head>
+<body>
   <header class="main-header js-main-header margin-bottom--lg">
     <div class="container container--lg">
       <div class="main-header__layout">
         <div class="main-header__logo">
-          <a href="#0">
-            <svg width="130" height="32" viewBox="0 0 130 32"><title>Inicio</title><circle  fill="var(--color-contrast-lower)" cx="16" cy="16" r="16"/></svg>
-          </a>
+          <?php
+          
+          if(isset($_SESSION["usuario"])){  
+
+            echo 'Hola '.$_SESSION["usuario"];
+
+          }else{
+
+            echo'Invitado';
+
+          }  
+          ?>
         </div>
         <button class="btn--subtle main-header__nav-trigger js-main-header__nav-trigger" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-header-nav">
           <i class="main-header__nav-trigger-icon" aria-hidden="true"></i>
@@ -57,16 +65,31 @@ top: 20px;
 			  	 </a>
  				</div>
 			</li>
-            <li class="main-header__nav-item"><a href="index.html" class="main-header__nav-link" aria-current="page">NOTICIAS</a></li>
+            <li class="main-header__nav-item"><a href="index.php" class="main-header__nav-link" aria-current="page">INICIO</li>
+            <li class="main-header__nav-item"><a href="noticias.php" class="main-header__nav-link" >NOTICIAS</a></li>
             <li class="main-header__nav-item"><a href="#0" class="main-header__nav-link">STREAMING</a></li>
-            <li class="main-header__nav-item"><a href="Slider.html" class="main-header__nav-link" >OFERTAS</a></li>
+            <li class="main-header__nav-item"><a href="ofertas.php" class="main-header__nav-link" >OFERTAS</a></li>
             <li class="main-header__nav-item main-header__nav-divider" aria-hidden="true"></li>     
             <li class="main-header__nav-item"><a href="#0" class="main-header__nav-link  dropdown-trigger" data-target='dropdown1'>PERFIL</a></li>
  			<li class="main-header__nav-item"><a href="#0" class="main-header__nav-link  dropdown-trigger" data-target='dropdown2'>IDIOMA</a></li>
 	      	<ul id='dropdown1' class='dropdown-content'>
-	         <li><a href="LogIn.php">Log in</a></li>
-	         <li><a href="#!">Sign up</a></li>
-	         <li class="divider" tabindex="-1"></li>
+
+          <?php 
+
+            if(isset($_SESSION["usuario"])){
+              
+              echo "<li><a href='assets/php/cerrar_sesion.php?paginaAnterior=index.php'>LogOut</a></li>";
+
+            }else{
+
+              echo "<li><a href='login.php?paginaAnterior=index.php'>LogIn</a></li>";
+              echo "<li><a href='#!''>Sign up</a></li>";
+
+            }
+
+          ?>
+         
+          <li class="divider" tabindex="-1"></li>
 	          <li class="main-header__nav-item" style="margin:0;padding-top: 9px;padding-left: 6px;"> 
 	              <div class="switch" >
 	                <input class="switch__input" type="checkbox" id="themeSwitch">
@@ -217,18 +240,7 @@ top: 20px;
           </div>  
       </div>
     </div>
-		<div class="center" >
-		    <div class="pagination2 " style="margin-top: 3em">
-		    <a href="index.html">&laquo;</a>
-		    <a href="index.html" class="active">1</a>
-		    <a href="Noticias.html" >2</a>
-		    <a href="#">3</a>
-		    <a href="#">4</a>
-		    <a href="#">5</a>
-		    <a href="#">6</a>
-		    <a href="Noticias.html">&raquo;</a>
-			</div>
-    	</div>
+
      </section>
 <script>document.getElementsByTagName("html")[0].className += " js";</script>
 <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>

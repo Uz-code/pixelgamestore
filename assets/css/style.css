@@ -27,6 +27,13 @@ blockquote, q {
 button, input, textarea, select {
   margin: 0;
 }
+input.valid:not([type]), input.valid:not([type]):focus, input.valid[type=text]:not(.browser-default), input.valid[type=text]:not(.browser-default):focus, input.valid[type=password]:not(.browser-default), input.valid[type=password]:not(.browser-default):focus, input.valid[type=email]:not(.browser-default), input.valid[type=email]:not(.browser-default):focus, input.valid[type=url]:not(.browser-default), input.valid[type=url]:not(.browser-default):focus, input.valid[type=time]:not(.browser-default), input.valid[type=time]:not(.browser-default):focus, input.valid[type=date]:not(.browser-default), input.valid[type=date]:not(.browser-default):focus, input.valid[type=datetime]:not(.browser-default), input.valid[type=datetime]:not(.browser-default):focus, input.valid[type=datetime-local]:not(.browser-default), input.valid[type=datetime-local]:not(.browser-default):focus, input.valid[type=tel]:not(.browser-default), input.valid[type=tel]:not(.browser-default):focus, input.valid[type=number]:not(.browser-default), input.valid[type=number]:not(.browser-default):focus, input.valid[type=search]:not(.browser-default), input.valid[type=search]:not(.browser-default):focus, textarea.materialize-textarea.valid, textarea.materialize-textarea.valid:focus, .select-wrapper.valid > input.select-dropdown {
+  border-bottom: 1px solid lightgrey !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none  !important ;
+
+}
+input{    outline: none;}
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
@@ -260,7 +267,7 @@ h2, h3, h4,p {
   font-family: var(--font-primary);
   font-weight: 300;
 }
-h1,{
+h1{
   color: hsl(240, 8%, 12%);
   color: var(--color-contrast-higher);
   line-height: 1.2;
@@ -974,7 +981,7 @@ outline: none;
     -o-animation: fadeInFromNone 0.5s ease-out forwards;
     animation: fadeInFromNone 0.5s ease-out forwards;
 }
-.StoreCard-card:{
+.StoreCard-card{
     -o-transition: opacity .3s ease-in-out;
     transition: opacity .3s ease-in-out;
     transition-property: opacity;
@@ -1029,7 +1036,6 @@ outline: none;
 /*DROPDOWN*/
 .dropdown-content {
     background-color:  var(--color-contrast-lowerest);
-    color: 
     border: 0 !important;
     margin: 0;
     border-radius: 0;
@@ -1042,7 +1048,7 @@ outline: none;
     left: 0/*rtl:ignore*/;
     position: absolute;
     top: -33px;
-    left:0px;
+    left: 0px;
     z-index: 3;
 }
   @media only screen and (max-width: 1200px){
@@ -1181,4 +1187,27 @@ outline: none;
 
   tr {
    border-bottom: none !important;
+}
+
+    .boton {
+ 
+    line-height: 0;
+
+}
+input.valid:not([type]), input.valid:not([type]):focus, input.valid[type=text]:not(.browser-default), input.valid[type=text]:not(.browser-default):focus, input.valid[type=password]:not(.browser-default), input.valid[type=password]:not(.browser-default):focus, input.valid[type=email]:not(.browser-default), input.valid[type=email]:not(.browser-default):focus, input.valid[type=url]:not(.browser-default), input.valid[type=url]:not(.browser-default):focus, input.valid[type=time]:not(.browser-default), input.valid[type=time]:not(.browser-default):focus, input.valid[type=date]:not(.browser-default), input.valid[type=date]:not(.browser-default):focus, input.valid[type=datetime]:not(.browser-default), input.valid[type=datetime]:not(.browser-default):focus, input.valid[type=datetime-local]:not(.browser-default), input.valid[type=datetime-local]:not(.browser-default):focus, input.valid[type=tel]:not(.browser-default), input.valid[type=tel]:not(.browser-default):focus, input.valid[type=number]:not(.browser-default), input.valid[type=number]:not(.browser-default):focus, input.valid[type=search]:not(.browser-default), input.valid[type=search]:not(.browser-default):focus, textarea.materialize-textarea.valid, textarea.materialize-textarea.valid:focus, .select-wrapper.valid > input.select-dropdown {
+  border-bottom: 1px solid transparent !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none  !important ;
+
+}
+.pass{
+  margin-top: 10px;
+}
+
+.error{
+  margin-bottom: 0px;
+}
+
+.submit-btn{
+  width: 100%;color:var(--color-contrast-high);    border: 1px solid var(--color-contrast-high);outline: none;
 }
