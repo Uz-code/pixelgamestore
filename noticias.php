@@ -153,7 +153,7 @@ session_start();
 
     }
 
-    $cantidad = 2;
+    $cantidad = 3;
 
     $consultaNoticias="SELECT * FROM noticias ORDER BY fecha DESC LIMIT $cantidad OFFSET ".($pagina*$cantidad-$cantidad)."";
 
