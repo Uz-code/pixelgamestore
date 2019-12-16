@@ -2,7 +2,12 @@
 
 session_start();
 
-if(!isset($_SESSION['id_usuario']) || strlen($_POST['titulo']) <= 0 || strlen($_POST['subtitulo']) <= 0 || strlen($_POST['etiquetas']) <= 0){
+$titulo = $_POST['titulo'];
+$subtitulo = $_POST['subtitulo'];
+$etiquetas = $_POST['etiquetas'];
+$cuerpo = nl2br($_POST['cuerpo']);
+
+if(!isset($_SESSION['id_usuario']) || strlen($titulo) <= 0 || strlen($subtitulo) <= 0 || strlen($etiquetas) <= 0 || strlen($cuerpo) <= 0){
 
   header("Location: ../../noticias.php");
 
@@ -10,13 +15,9 @@ if(!isset($_SESSION['id_usuario']) || strlen($_POST['titulo']) <= 0 || strlen($_
 
 }
 
-include 'conexion.php';
-
-$titulo = $_POST['titulo'];
-$subtitulo = $_POST['subtitulo'];
-$etiquetas = $_POST['etiquetas'];
-$cuerpo = nl2br($_POST['cuerpo']);
 $id_usuario = $_SESSION['id_usuario'];
+
+include 'conexion.php';
 
 $target_file = basename($_FILES["imagen"]["name"]);
 //$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
