@@ -204,7 +204,7 @@ session_start();
             echo '<div class="feature__media">';
               echo '<div class="" style="position: relative;">';
                 echo '<div class="StoreCard-image">';
-                  echo '<div><img alt="" class="Picture-image" src="data:image/jpg;base64,'.$noticia['imagen'].'"></div>';
+                  echo '<div><img alt="portada" class="Picture-image" src="data:image/jpg;base64,'.$noticia['imagen'].'"></div>';
                 echo '</div>';
               echo '</div>';
             echo '</div>';
@@ -230,15 +230,7 @@ session_start();
 
               for($i=$pagina-5; $i<$pagina+1; $i++){ 
 
-                if($i==$pagina){
-  
-                  echo '<a href="noticias.php?pagina='.$i.'" class="active">'.$i.'</a>';
-  
-                }else{
-  
-                  echo '<a href="noticias.php?pagina='.$i.'">'.$i.'</a>';
-  
-                } 
+                echo '<a href="noticias.php?pagina='.$i.'"'.( $i==$pagina ? ' class="active"': null).'>'.$i.'</a>';
   
               }
 
@@ -246,15 +238,7 @@ session_start();
 
               for($i=1; $i<7; $i++){ 
 
-                if($i==$pagina){
-  
-                  echo '<a href="noticias.php?pagina='.$i.'" class="active">'.$i.'</a>';
-  
-                }else{
-  
-                  echo '<a href="noticias.php?pagina='.$i.'">'.$i.'</a>';
-  
-                } 
+                echo '<a href="noticias.php?pagina='.$i.'"'.( $i==$pagina ? ' class="active"' : null).'>'.$i.'</a>';
   
               }
 
