@@ -20,6 +20,8 @@ try{
       
     }
 
+    //$image = new Imagick('./carpeta/subcarpeta/sub-subcarpeta/imagen.png');
+
     $target_file = basename($_FILES["imagen"]["name"]);
     //$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
     move_uploaded_file($_FILES["imagen"]["tmp_name"], $target_file);

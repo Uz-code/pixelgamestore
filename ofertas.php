@@ -65,20 +65,20 @@ session_start();
             <li class="main-header__nav-item"><a href="#0" class="main-header__nav-link  dropdown-trigger"
                 data-target='dropdown2'>IDIOMA</a></li>
             <ul id='dropdown1' class='dropdown-content'>
-              <?php 
+            <?php if(isset($_SESSION["usuario"])) { ?>
+                        
+              <li><a href='assets/php/cerrar_sesion.php'>LogOut</a></li>
+                      
+            <?php } else { ?>
+                      
+              <li><a href='login.php'>LogIn</a></li>
+              <li><a href='#!''>Sign up</a></li>
+                      
+            <?php }
+              //Se guarda la pagina para recuperarla al iniciar o cerrar sesion
+            $_SESSION["paginaAnterior"]='ofertas.php';
 
-              if(isset($_SESSION["usuario"])){
-                
-                echo "<li><a href='assets/php/cerrar_sesion.php?paginaAnterior=ofertas.php'>LogOut</a></li>";
-
-              }else{
-
-                echo "<li><a href='login.php?paginaAnterior=ofertas.php'>LogIn</a></li>";
-                echo "<li><a href='#!''>Sign up</a></li>";
-
-              }
-
-              ?>
+            ?>
               <li class="divider" tabindex="-1"></li>
               <li class="main-header__nav-item" style="margin:0;padding-top: 9px;padding-left: 6px;">
                 <div class="switch">

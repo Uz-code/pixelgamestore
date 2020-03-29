@@ -7,6 +7,8 @@ if(isset($_SESSION["usuario"])){
 
 	header("Location: index.php");
 
+  exit();
+
 }
 
 ?>
@@ -54,7 +56,6 @@ if(isset($_SESSION["usuario"])){
             <li class="main-header__nav-item"><a href="#0" class="main-header__nav-link  dropdown-trigger" data-target='dropdown1'  aria-current="page">PERFIL</a></li>
       <li class="main-header__nav-item"><a href="#0" class="main-header__nav-link  dropdown-trigger" data-target='dropdown2'>IDIOMA</a></li>
           <ul id='dropdown1' class='dropdown-content'>
-           <li><a href="LogIn.html">Log in</a></li>
            <li><a href="#!">Sign up</a></li>
            <li class="divider" tabindex="-1"></li>
             <li class="main-header__nav-item" style="margin:0;padding-top: 9px;padding-left: 6px;"> 

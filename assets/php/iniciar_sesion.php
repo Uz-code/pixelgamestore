@@ -2,7 +2,7 @@
 
 session_start();
 
-if(isset($_SESSION["usuario"])){
+if(isset($_SESSION["usuario"]) || !isset($_SESSION["paginaAnterior"])){
 
 	header("Location: ../../ index.php");
 
@@ -10,14 +10,13 @@ if(isset($_SESSION["usuario"])){
 
 }
 
-
 include 'conexion.php';
 
 $usuario = $_REQUEST['usuario'];
 $contrasena = md5($_REQUEST['contrasena']);
-$paginaAnterior = $_REQUEST['paginaAnterior'];
+$paginaAnterior = $_SESSION['paginaAnterior'];
 
-$consulta="SELECT * from usuarios where usuario = '$usuario' and contrasena = '$contrasena'";
+$consulta="SELECT * FROM usuarios WHERE usuario = '$usuario' AND contrasena = '$contrasena'";
 $resultado = $conexion -> query($consulta);
 
 //echo mysqli_fetch_array($resultado);
@@ -40,4 +39,4 @@ if ($resultado -> num_rows == 0) {
 
 }
 
- ?>
+?>

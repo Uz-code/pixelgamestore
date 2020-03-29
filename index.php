@@ -74,18 +74,18 @@ session_start();
  			<li class="main-header__nav-item"><a href="#0" class="main-header__nav-link  dropdown-trigger" data-target='dropdown2'>IDIOMA</a></li>
 	      	<ul id='dropdown1' class='dropdown-content'>
 
-          <?php 
+          <?php if(isset($_SESSION["usuario"])) { ?>
+                        
+            <li><a href='assets/php/cerrar_sesion.php'>LogOut</a></li>
+                      
+          <?php } else { ?>
+                      
+            <li><a href='login.php'>LogIn</a></li>
+            <li><a href='#!''>Sign up</a></li>
+                      
+          <?php } 
 
-            if(isset($_SESSION["usuario"])){
-              
-              echo "<li><a href='assets/php/cerrar_sesion.php?paginaAnterior=index.php'>LogOut</a></li>";
-
-            }else{
-
-              echo "<li><a href='login.php?paginaAnterior=index.php'>LogIn</a></li>";
-              echo "<li><a href='#!''>Sign up</a></li>";
-
-            }
+          $_SESSION["paginaAnterior"]='index.php';
 
           ?>
          

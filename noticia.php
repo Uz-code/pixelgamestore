@@ -2,6 +2,8 @@
 
 session_start();
 
+include 'assets/php/conexion.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -59,20 +61,16 @@ session_start();
  			<li class="main-header__nav-item"><a href="#0" class="main-header__nav-link  dropdown-trigger" data-target='dropdown2'>IDIOMA</a></li>
 	      	<ul id='dropdown1' class='dropdown-content'>
 
-          <?php 
-
-            if(isset($_SESSION["usuario"])){
-              
-              echo "<li><a href='assets/php/cerrar_sesion.php?paginaAnterior=index.php'>LogOut</a></li>";
-
-            }else{
-
-              echo "<li><a href='login.php?paginaAnterior=index.php'>LogIn</a></li>";
-              echo "<li><a href='#!''>Sign up</a></li>";
-
-            }
-
-          ?>
+          <?php if(isset($_SESSION["usuario"])) { ?>
+                        
+            <li><a href='assets/php/cerrar_sesion.php'>LogOut</a></li>
+          
+          <?php } else { ?>
+          
+            <li><a href='login.php'>LogIn</a></li>
+            <li><a href='#!''>Sign up</a></li>
+          
+          <?php } ?>
          
           <li class="divider" tabindex="-1"></li>
 	          <li class="main-header__nav-item" style="margin:0;padding-top: 9px;padding-left: 6px;"> 
@@ -135,17 +133,18 @@ session_start();
       <div class="col s12 m8 l9" style="background-color:var(--color-contrast-lowerest);margin-top: 4rem; padding:35px; padding-top:0px;">
       <?php
 
-        include 'assets/php/conexion.php';
-
         if(isset($_REQUEST['idNoticia'])){
 
           $idNoticia= $_REQUEST['idNoticia'];
+
           
         }else{
     
           $idNoticia=0;
     
         }  
+
+      $_SESSION["paginaAnterior"]='noticia.php?idNoticia='.$idNoticia;
 
       $consultaNoticia="SELECT N.*, U.usuario FROM noticias AS N INNER JOIN usuarios AS U ON N.id_usuario=U.id_usuario WHERE id_noticia='$idNoticia'";
    

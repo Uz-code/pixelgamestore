@@ -2,6 +2,8 @@
 
 session_start();
 
+include 'assets/php/conexion.php';
+
 ?>
 <!DOCTYPE html>
 <html class="js" lang="es">
@@ -66,20 +68,16 @@ session_start();
                 data-target='dropdown2'>IDIOMA</a></li>
             <ul id='dropdown1' class='dropdown-content'>
 
-            <?php 
-
-            if(isset($_SESSION["usuario"])){
+            <?php if(isset($_SESSION["usuario"])) { ?>
                         
-              echo "<li><a href='assets/php/cerrar_sesion.php?paginaAnterior=noticias.php'>LogOut</a></li>";
+              <li><a href='assets/php/cerrar_sesion.php'>LogOut</a></li>
 
-            }else{
+            <?php } else { ?>
 
-              echo "<li><a href='login.php?paginaAnterior=noticias.php'>LogIn</a></li>";
-              echo "<li><a href='#!''>Sign up</a></li>";
+              <li><a href='login.php'>LogIn</a></li>
+              <li><a href='#!''>Sign up</a></li>
 
-            }
-
-            ?>
+            <?php } ?>
 
               <li class="divider" tabindex="-1"></li>
               <li class="main-header__nav-item" style="margin:0;padding-top: 9px;padding-left: 6px;">
@@ -141,8 +139,6 @@ session_start();
     
     <?php
 
-    include 'assets/php/conexion.php';
-
     if(!isset($_REQUEST['pagina']) || $_REQUEST['pagina'] < 1 ){
 
       $pagina = 1;
@@ -150,8 +146,10 @@ session_start();
     }else{
 
       $pagina = $_REQUEST['pagina'];
-
+      
     }
+    //Se guarda la pagina para recuperarla al iniciar o cerrar sesion
+    $_SESSION["paginaAnterior"]='noticias.php?pagina='.$pagina;
 
     $cantidad = 3;
 
@@ -161,24 +159,24 @@ session_start();
     
     if ($noticias -> num_rows == 0) {
       
-      echo'<div class="container container--adaptive">';
-      echo'<h1 class="center-align"> No se encontraron noticias </h1>';
-      echo'</div>';
+      echo '<div class="container container--adaptive">
+              <h1 class="center-align"> No se encontraron noticias </h1>
+            </div>';
 
     }else{
 
       while ($noticia = $noticias -> fetch_array()){
 
-        echo'<div class="container container--adaptive">';
-          echo'<div style="text-align: left;color:var(--color-contrast-medium);" class="margin-bottom--xs">';
-            echo'<h6>'.(new DateTime($noticia['fecha']))->format('d/m/Y H:m:s').'</h6>';
-          echo'</div>';
-        echo'</div>';
-        echo '<section class="feature feature--invert margin-bottom--xl">';
-          echo '<div class="feature__inner container container--adaptive">';
-            echo '<div class="feature__text">';
-              echo '<div class="feature__text-inner">';
-                echo '<div class="text-component">';
+        echo  '<div class="container container--adaptive">
+                <div style="text-align: left;color:var(--color-contrast-medium);" class="margin-bottom--xs">
+                  <h6>'.(new DateTime($noticia['fecha']))->format('d/m/Y H:m:s').'</h6>
+                </div>
+              </div>
+              <section class="feature feature--invert margin-bottom--xl">
+                <div class="feature__inner container container--adaptive">
+                  <div class="feature__text">
+                    <div class="feature__text-inner">
+                      <div class="text-component">';
                   
                   if(strlen($noticia['titulo'])>50){
 
@@ -190,26 +188,26 @@ session_start();
 
                   }
 
-                  echo '<p>'.substr($noticia['cuerpo'],0,207).'...</p>';
-                  echo '<small class="feature__label margin-bottom--xs">Etiquetas: '.$noticia['etiquetas'].'</small>';
-                echo '</div>';
-                echo '<div class="margin-top--sm">';
-                  echo '<div class="">';
-                    echo '<a href="noticias.php" class="boton btn--primario">Noticias</a>';
-                    echo '<a href="noticia.php?idNoticia='.$noticia['id_noticia'].'" class="text--inherit">Ver mas</a>';
-                  echo '</div>';
-                echo '</div>';
-              echo '</div>';
-            echo '</div>';
-            echo '<div class="feature__media">';
-              echo '<div class="" style="position: relative;">';
-                echo '<div class="StoreCard-image">';
-                  echo '<div><img alt="portada" class="Picture-image" src="data:image/jpg;base64,'.$noticia['imagen'].'"></div>';
-                echo '</div>';
-              echo '</div>';
-            echo '</div>';
-          echo '</div>';
-        echo '</section>';
+                  echo '<p>'.substr($noticia['cuerpo'],0,207).'...</p>
+                        <small class="feature__label margin-bottom--xs">Etiquetas: '.$noticia['etiquetas'].'</small>
+                      </div>
+                      <div class="margin-top--sm">
+                        <div class="">
+                          <a href="noticias.php" class="boton btn--primario">Noticias</a>
+                          <a href="noticia.php?idNoticia='.$noticia['id_noticia'].'" class="text--inherit">Ver mas</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="feature__media">
+                    <div class="" style="position: relative;">
+                      <div class="StoreCard-image">
+                        <div><img alt="portada" class="Picture-image" src="data:image/jpg;base64,'.$noticia['imagen'].'"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>';
   
       }
 
@@ -226,22 +224,14 @@ session_start();
 
             echo'<a href="noticias.php?pagina='.($pagina-1).'">&laquo;</a>';
 
-            if($pagina>5){
+            //echo'<a href="noticias.php?pagina=1">1</a>';
 
-              for($i=$pagina-5; $i<$pagina+1; $i++){ 
+            $numero = ($pagina % 6 == 0 ? $pagina - (6- 1) : 1 + (6*intdiv($pagina, 6)));
 
-                echo '<a href="noticias.php?pagina='.$i.'"'.( $i==$pagina ? ' class="active"': null).'>'.$i.'</a>';
+            for($i=$numero; $i< ($numero+6); $i++){ 
+
+              echo'<a href="noticias.php?pagina='.$i.'"'.( $i==$pagina ? 'class="active"': null).'>'.$i.'</a>';
   
-              }
-
-            }else{
-
-              for($i=1; $i<7; $i++){ 
-
-                echo '<a href="noticias.php?pagina='.$i.'"'.( $i==$pagina ? ' class="active"' : null).'>'.$i.'</a>';
-  
-              }
-
             }
 
             echo'<a href="noticias.php?pagina='.($pagina+1).'">&raquo;</a>';
@@ -255,73 +245,72 @@ session_start();
 
   <?php 
 
-  if(isset($_SESSION["usuario"])){
+  if(isset($_SESSION["usuario"])) { ?>
               
-    echo "<div class='fixed-action-btn'>";
-    echo '<a class="btn-floating btn-large "><i class="large material-icons">mode_edit</i></a>';
-    echo '<ul><li><a class="btn-floating  modal-trigger" href="#modal1"><i class="material-icons">publish</i></a></li></ul>';
-    echo '</div>';
+    <div class="fixed-action-btn">
+            <a class="btn-floating btn-large "><i class="large material-icons">mode_edit</i></a>
+            <ul><li><a class="btn-floating  modal-trigger" href="#modal1"><i class="material-icons">publish</i></a></li></ul>
+          </div>
+          <div id="modal1" class="modal">
 
-  }
+          <div class="modal-header">
+            <h5 class="modal-title">Nueva noticia</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button>
+          </div>
+          <form action="assets/php/subir_noticia.php" method="post" enctype="multipart/form-data">
+            <div class="modal-content row">
+            
+              <div class="col s12 m6 l4">
+              
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">Titulo</label>
+                  <input id="inputTitulo" type="text" class="form-control" name="titulo" placeholder="Titulo"  maxlength="100" required>
+                </div>
 
-?>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Subtitulo</label>
+                  <input id="inputSubitulo" type="text" class="form-control" name="subtitulo" placeholder="Subtitulo" maxlength="100" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Portada</label>
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="imagen" id="imagen" lang="es" accept="image/*" required>
+                    <label class="custom-file-label" id="select_file">Seleccione una imagen</label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Etiquetas</label>
+                  <input type="text" class="form-control" name="etiquetas" placeholder="Ej:Gaming,Ps4,SmashBros" maxlength="50" required>
+                </div>
+
+              </div>
+
+              <div class="col s12 m6 l8">
+              
+                <div class="form-group">
+
+                  <label for="exampleFormControlTextarea1">Cuerpo de la noticia</label>
+                  <textarea class="form-control s1 expand" name="cuerpo" style="resize: vertical; height: 290px;" placeholder="Ingrese texto.. " required></textarea>
+
+                </div>
+              
+              </div>
+            </div>
+              <div class="modal-footer">
+                <input type="submit" class="btn btn-secondary"></input>
+              </div>
+            
+          </form> 
+
+        </div>
+
+    <?php } ?>
   <!-- Modal Trigger -->
 
   <!-- Modal Structure -->
-  <div id="modal1" class="modal">
-    <div class="modal-header">
-      <h5 class="modal-title">Nueva noticia</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button>
-    </div>
-    <form action="assets/php/subir_noticia.php" method="post" enctype="multipart/form-data">
-      <div class="modal-content row">
-      
-        <div class="col s12 m6 l4">
-        
-          <div class="form-group">
-            <label for="exampleFormControlInput1">Titulo</label>
-            <input id="inputTitulo" type="text" class="form-control" name="titulo" placeholder="Titulo"  maxlength="100" required>
-          </div>
-
-          <div class="form-group">
-            <label for="exampleFormControlSelect1">Subtitulo</label>
-            <input id="inputSubitulo" type="text" class="form-control" name="subtitulo" placeholder="Subtitulo" maxlength="100" required>
-          </div>
-
-          <div class="form-group">
-            <label for="exampleFormControlSelect1">Portada</label>
-            <div class="custom-file">
-              <input type="file" class="custom-file-input" name="imagen" id="imagen" lang="es" accept="image/*" required>
-              <label class="custom-file-label" id="select_file">Seleccione una imagen</label>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="exampleFormControlSelect1">Etiquetas</label>
-            <input type="text" class="form-control" name="etiquetas" placeholder="Ej:Gaming,Ps4,SmashBros" maxlength="50" required>
-          </div>
-
-        </div>
-
-        <div class="col s12 m6 l8">
-        
-          <div class="form-group">
-
-            <label for="exampleFormControlTextarea1">Cuerpo de la noticia</label>
-            <textarea class="form-control s1 expand" name="cuerpo" style="resize: vertical; height: 290px;" placeholder="Ingrese texto.. " required></textarea>
-
-          </div>
-        
-        </div>
-      </div>
-        <div class="modal-footer">
-          <input type="submit" class="btn btn-secondary"></input>
-        </div>
-      
-    </form> 
-
-  </div>
-
+  
   <script>
     //document.getElementsByTagName("html")[0].className += " js";
   </script>
