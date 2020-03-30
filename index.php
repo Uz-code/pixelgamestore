@@ -1,6 +1,9 @@
 <?php 
 
-session_start();
+//session_start();
+require_once "assets/php/validar_sesion.php";
+
+$_SESSION["paginaAnterior"]='index.php';
 
 ?>
 <!doctype html>
@@ -83,11 +86,7 @@ session_start();
             <li><a href='login.php'>LogIn</a></li>
             <li><a href='#!''>Sign up</a></li>
                       
-          <?php } 
-
-          $_SESSION["paginaAnterior"]='index.php';
-
-          ?>
+          <?php } ?>
          
           <li class="divider" tabindex="-1"></li>
 	          <li class="main-header__nav-item" style="margin:0;padding-top: 9px;padding-left: 6px;"> 

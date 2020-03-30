@@ -2,11 +2,11 @@
 
 try{
 
-  session_start();
+  require_once "validar_sesion.php";
 
   include 'conexion.php';
 
-  if(isset($_POST['titulo']) || isset($_POST['subtitulo']) || isset($_POST['etiquetas']) || isset($_POST['cuerpo']) || isset($_POST['id_usuario'])){
+  if(isset($_POST['titulo'],$_POST['subtitulo'],$_POST['etiquetas'],$_POST['cuerpo'],$_SESSION['id_usuario'])){
 
     $titulo = $_POST['titulo'];
     $subtitulo = $_POST['subtitulo'];

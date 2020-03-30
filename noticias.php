@@ -1,6 +1,10 @@
 <?php 
 
-session_start();
+//session_start();
+
+//echo $_COOKIE['cookie'];
+
+require_once "assets/php/validar_sesion.php";
 
 include 'assets/php/conexion.php';
 
@@ -246,70 +250,56 @@ include 'assets/php/conexion.php';
   <?php 
 
   if(isset($_SESSION["usuario"])) { ?>
-              
+
+    <!-- Modal Trigger -->          
     <div class="fixed-action-btn">
-            <a class="btn-floating btn-large "><i class="large material-icons">mode_edit</i></a>
-            <ul><li><a class="btn-floating  modal-trigger" href="#modal1"><i class="material-icons">publish</i></a></li></ul>
-          </div>
-          <div id="modal1" class="modal">
+      <a class="btn-floating btn-large "><i class="large material-icons">edit</i></a>
+      <ul><li><a class="btn-floating  modal-trigger" href="#modal1"><i class="material-icons">publish</i></a></li></ul>
+    </div>
 
-          <div class="modal-header">
-            <h5 class="modal-title">Nueva noticia</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button>
-          </div>
-          <form action="assets/php/subir_noticia.php" method="post" enctype="multipart/form-data">
-            <div class="modal-content row">
-            
-              <div class="col s12 m6 l4">
-              
-                <div class="form-group">
-                  <label for="exampleFormControlInput1">Titulo</label>
-                  <input id="inputTitulo" type="text" class="form-control" name="titulo" placeholder="Titulo"  maxlength="100" required>
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleFormControlSelect1">Subtitulo</label>
-                  <input id="inputSubitulo" type="text" class="form-control" name="subtitulo" placeholder="Subtitulo" maxlength="100" required>
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleFormControlSelect1">Portada</label>
-                  <div class="custom-file">
-                    <input type="file" class="custom-file-input" name="imagen" id="imagen" lang="es" accept="image/*" required>
-                    <label class="custom-file-label" id="select_file">Seleccione una imagen</label>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleFormControlSelect1">Etiquetas</label>
-                  <input type="text" class="form-control" name="etiquetas" placeholder="Ej:Gaming,Ps4,SmashBros" maxlength="50" required>
-                </div>
-
-              </div>
-
-              <div class="col s12 m6 l8">
-              
-                <div class="form-group">
-
-                  <label for="exampleFormControlTextarea1">Cuerpo de la noticia</label>
-                  <textarea class="form-control s1 expand" name="cuerpo" style="resize: vertical; height: 290px;" placeholder="Ingrese texto.. " required></textarea>
-
-                </div>
-              
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+      <div class="modal-header">
+        <h5 class="modal-title">Nueva noticia</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button>
+      </div>
+      <form action="assets/php/subir_noticia.php" method="post" enctype="multipart/form-data">
+        <div class="modal-content row">
+          <div class="col s12 m6 l4">
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Titulo</label>
+              <input id="inputTitulo" type="text" class="form-control" name="titulo" placeholder="Titulo"  maxlength="100" required>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Subtitulo</label>
+              <input id="inputSubitulo" type="text" class="form-control" name="subtitulo" placeholder="Subtitulo" maxlength="100" required>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Portada</label>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" name="imagen" id="imagen" lang="es" accept="image/*" required>
+                <label class="custom-file-label" id="select_file">Seleccione una imagen</label>
               </div>
             </div>
-              <div class="modal-footer">
-                <input type="submit" class="btn btn-secondary"></input>
-              </div>
-            
-          </form> 
-
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Etiquetas</label>
+              <input type="text" class="form-control" name="etiquetas" placeholder="Ej:Gaming,Ps4,SmashBros" maxlength="50" required>
+            </div>
+          </div>
+          <div class="col s12 m6 l8">
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Cuerpo de la noticia</label>
+              <textarea class="form-control s1 expand" name="cuerpo" style="resize: vertical; height: 290px;" placeholder="Ingrese texto.. " required></textarea>
+            </div>
+          </div>
         </div>
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-secondary"></input>
+        </div>
+      </form> 
+    </div>
 
-    <?php } ?>
-  <!-- Modal Trigger -->
-
-  <!-- Modal Structure -->
+  <?php } ?>
   
   <script>
     //document.getElementsByTagName("html")[0].className += " js";
@@ -337,6 +327,7 @@ include 'assets/php/conexion.php';
       $('[data-toggle="tooltip"]').tooltip();
       $('.fixed-action-btn').floatingActionButton();
       $('.modal').modal();
+      $('#select_file').html('Seleccione una imagen');
     })
 
   </script>

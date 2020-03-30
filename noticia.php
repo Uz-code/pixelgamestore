@@ -1,8 +1,10 @@
 <?php 
 
-session_start();
+//session_start();
 
 include 'assets/php/conexion.php';
+
+require_once "assets/php/validar_sesion.php";
 
 ?>
 <!DOCTYPE html>

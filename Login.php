@@ -3,7 +3,7 @@
 
 session_start();
 
-if(isset($_SESSION["usuario"])){
+if(isset($_SESSION["usuario"]) || !isset($_SESSION["paginaAnterior"])){
 
 	header("Location: index.php");
 
@@ -29,9 +29,6 @@ if(isset($_SESSION["usuario"])){
     <div class="container container--lg">
       <div class="main-header__layout">
         <div class="main-header__logo">
-          <a href="index.php">
-            <svg width="130" height="32" viewBox="0 0 130 32"><title>Inicio</title><circle  fill="var(--color-contrast-lower)" cx="16" cy="16" r="16"/></svg>
-          </a>
         </div>
         <button class="btn--subtle main-header__nav-trigger js-main-header__nav-trigger" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-header-nav">
           <i class="main-header__nav-trigger-icon" aria-hidden="true"></i>
@@ -121,37 +118,25 @@ if(isset($_SESSION["usuario"])){
       <div class="login-pic js-tilt" data-tilt>
         <img src="img/img-01.png" alt="IMG">
       </div>
-          <div class="margin-top--lg"> Usuario:<br></div>
-          <input class="input1 margin-bottom--xs margin-top--xs " type="text" name="usuario" value="" required/>
-          <br>
-          <div class="pass"> Contraseña:<br> </div>
-          <input class= " input1 margin-bottom--xs  margin-top--xs " type="password" name="contrasena" value="" required/>
-
-          <?php 
+        <div class="margin-top--lg">Usuario:<br></div>
+        <input class="input1 margin-bottom--xs margin-top--xs " type="text" name="usuario" value="" required/>
+        <br>
+        <div class="pass">Contraseña:<br></div>
+        <input class= " input1 margin-bottom--xs  margin-top--xs " type="password" name="contrasena" value="" required/>
           
-          if(isset($_SESSION['error'])){
+        <?php if(isset($_SESSION['error'])){
 
-            echo ($_SESSION['error']);
+          echo ($_SESSION['error']);
             
-            unset($_SESSION["error"]);
+          unset($_SESSION["error"]);
 
-          }
-
-          if(isset($_REQUEST['paginaAnterior'])){
-
-            $paginaAnterior = $_REQUEST['paginaAnterior'];
-            
-          }else{
-      
-            $paginaAnterior = 'index.php';
-      
-          }
-
-          echo "<input type='hidden' name='paginaAnterior' value='".$paginaAnterior."'/>";
-
-          ?>
-
-      <input type="submit" value="Ingresar" class="submit-btn margin-top--lg boton btn--primario" style="" />
+        } ?>
+      <!-- <input type="submit" value="Ingresar" class="submit-btn margin-top--lg boton btn--primario" style="" /> -->
+      <div class="center-align"><br>
+        <button class="btn waves-effect waves-light grey darken-3" type="submit" name="action">Ingresar
+          <i class="material-icons right">person</i>
+        </button>
+      </div>
 
     </form>
 
