@@ -7,7 +7,7 @@ if(isset($_SESSION["usuario"]) || !isset($_SESSION["paginaAnterior"])){
 
 	header("Location: index.php");
 
-  exit();
+  //exit();
 
 }
 
@@ -113,23 +113,20 @@ if(isset($_SESSION["usuario"]) || !isset($_SESSION["paginaAnterior"])){
   <section class="feature margin-bottom--xl margin-top--xxl ">
   <div class="card2 margin-top--xxl">
 
-    <form action="assets/php/iniciar_sesion.php" method="post" class="form">
+    <form id="loginForm" method="POST" class="form">
 
       <div class="login-pic js-tilt" data-tilt>
         <img src="img/img-01.png" alt="IMG">
       </div>
         <div class="margin-top--lg">Usuario:<br></div>
-        <input class="input1 margin-bottom--xs margin-top--xs " type="text" name="usuario" value="" required/>
+        <input class="input1 margin-bottom--xs margin-top--xs " type="text" name="usuario" id="usuario"/>
         <br>
         <div class="pass">Contraseña:<br></div>
-        <input class= " input1 margin-bottom--xs  margin-top--xs " type="password" name="contrasena" value="" required/>
+        <input class= " input1 margin-bottom--xs  margin-top--xs " type="password" name="contrasena" id="contrasena"/>
           
         <?php if(isset($_SESSION['error'])){
-
-          echo ($_SESSION['error']);
-            
-          unset($_SESSION["error"]);
-
+          // echo ($_SESSION['error']);         
+          // unset($_SESSION["error"]);
         } ?>
       <!-- <input type="submit" value="Ingresar" class="submit-btn margin-top--lg boton btn--primario" style="" /> -->
       <div class="center-align"><br>
@@ -143,38 +140,58 @@ if(isset($_SESSION["usuario"]) || !isset($_SESSION["paginaAnterior"])){
   </div>
 </section>
 <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
-<script>
-$(document).on('ready', function() {
-  $('.dropdown-trigger').dropdown();
-});
-</script>
-<script>document.getElementsByTagName("html")[0].className += " js";</script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="assets/js/header.js"></script>
 <script src="assets/js/tilt.jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
 <script>
-  $("form").validate();
-</script>
+$(document).on('ready', function() {
+  $('.dropdown-trigger').dropdown();
 
-<script>
-jQuery.extend(jQuery.validator.messages, {
-required: "Campo obligatorio.",
-email: "Por favor ingrese un e-mail valido",
+  $('#loginForm').submit(function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: 'assets/php/iniciar_sesion.php',
+            data: {
+              usuario: $("#usuario").val(),
+              contrasena : $("#contrasena").val()
+            },
+            success: function(response)
+            {
+                var jsonData = JSON.parse(response);
+
+                if (jsonData.success == "1")
+                {
+                    // location.href = 'my_profile.php';
+                    alert('LogIn OK');
+                    window.history.back();
+                }
+                else
+                {
+                    alert('Invalid Credentials!');
+                }
+           }
+       });
+  });
 });
 
-</script>
+$("form").validate();
 
- <script >
-    $('.js-tilt').tilt({
-      scale: 1.1
-    })
-  </script>
-  <script>
+  jQuery.extend(jQuery.validator.messages, {
+  required: "Campo obligatorio.",
+  email: "Por favor ingrese un e-mail valido",
+  });
+
+  $('.js-tilt').tilt({
+    scale: 1.1
+  })
    
-  </script>
-</body></html>
+document.getElementsByTagName("html")[0].className += " js";
+
+</script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/header.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

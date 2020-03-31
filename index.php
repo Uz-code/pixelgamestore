@@ -1,15 +1,16 @@
-<?php 
+<?php
 
-//session_start();
-require_once "assets/php/validar_sesion.php";
+session_start();
 
 $_SESSION["paginaAnterior"]='index.php';
+
+require_once "assets/php/validar_sesion.php";
 
 ?>
 <!doctype html>
 <html lang="es">
 <head>
-  <title>Noticias</title>
+  <title>Inicio</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -184,8 +185,8 @@ $_SESSION["paginaAnterior"]='index.php';
                 </div>
                 <div class="StoreCard-logo">
                   <div class="DynamicLogo-small ">
-                  <img class="DynamicLogo-logo" src="img/ETD-Logo.png" alt="ETG">
-               		 cv</div>
+                    <img class="DynamicLogo-logo" src="img/ETD-Logo.png" alt="ETG">
+               		</div>
                 </div>
               </div>           
           </div> 

@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-//session_start();
+session_start();
 
 //echo $_COOKIE['cookie'];
 

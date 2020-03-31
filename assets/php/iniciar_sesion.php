@@ -23,9 +23,10 @@ $resultado = $conexion -> query($consulta);
 
 if ($resultado -> num_rows == 0) {
 	
-	$_SESSION['error'] = "El nombre o contraseña son incorrectos";
+	// $_SESSION['error'] = "El nombre o contraseña son incorrectos";
 
-	header("Location: ../../login.php");
+	// header("Location: ../../login.php");
+	echo json_encode(array('success' => 0));
 
 }else{
 
@@ -41,7 +42,9 @@ if ($resultado -> num_rows == 0) {
 	
 	mysqli_query($conexion, $consulta) or die ("Problemas: ".mysqli_error($conexion));
 
-	header("Location: ../../".$paginaAnterior."");
+	// header("Location: ../../".$paginaAnterior."");
+
+	echo json_encode(array('success' => 1));
 
 }
 

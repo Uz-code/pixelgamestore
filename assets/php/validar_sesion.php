@@ -1,14 +1,16 @@
-<?php 
+<?php
 
-session_start();
+//session_start();
 
 include 'conexion.php';
 
 if(!isset($_COOKIE["cookie"])){
 
-	header("Location: ../../".$_SESSION["paginaAnterior"]);
+	//header("Location: ../../".$_SESSION["paginaAnterior"]);
 
-	return;
+  //exit(0);
+  
+  return;
 
 }else{
 
