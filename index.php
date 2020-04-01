@@ -2,9 +2,9 @@
 
 session_start();
 
-$_SESSION["paginaAnterior"]='index.php';
-
 require_once "assets/php/validar_sesion.php";
+
+$_SESSION["paginaAnterior"]='index.php';
 
 ?>
 <!doctype html>
@@ -45,7 +45,7 @@ require_once "assets/php/validar_sesion.php";
           
           if(isset($_SESSION["usuario"])){  
 
-            echo 'Hola '.$_SESSION["usuario"];
+            echo 'Hola&nbsp;'.$_SESSION["usuario"];
 
           }else{
 
@@ -84,8 +84,8 @@ require_once "assets/php/validar_sesion.php";
                       
           <?php } else { ?>
                       
-            <li><a href='login.php'>LogIn</a></li>
-            <li><a href='#!''>Sign up</a></li>
+            <li><a href='login2.php'>LogIn</a></li>
+            <li><a href='#!''>SignUp</a></li>
                       
           <?php } ?>
          

@@ -5,11 +5,8 @@
 include 'conexion.php';
 
 if(!isset($_COOKIE["cookie"])){
-
 	//header("Location: ../../".$_SESSION["paginaAnterior"]);
-
   //exit(0);
-  
   return;
 
 }else{
@@ -22,6 +19,8 @@ if(!isset($_COOKIE["cookie"])){
   if ($resultado -> num_rows == 0) {
   
     session_unset(); 
+
+    setcookie("cookie", null, time() - 3600, "/");
 
     return;
   

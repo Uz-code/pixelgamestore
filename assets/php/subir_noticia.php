@@ -2,16 +2,18 @@
 
 try{
 
-  require_once "validar_sesion.php";
+  session_start();
+
+  //require_once "validar_sesion.php";
 
   include 'conexion.php';
 
   if(isset($_POST['titulo'],$_POST['subtitulo'],$_POST['etiquetas'],$_POST['cuerpo'],$_SESSION['id_usuario'])){
 
     $titulo = $_POST['titulo'];
-    $subtitulo = $_POST['subtitulo'];
-    $etiquetas = $_POST['etiquetas'];
-    $cuerpo = nl2br($_POST['cuerpo']);
+    $subtitulo = str_replace(" ","&nbsp;",$_POST['subtitulo']);
+    $etiquetas = str_replace(" ","&nbsp;",$_POST['titulo']);
+    $cuerpo = str_replace(" ","&nbsp;",nl2br($_POST['etiquetas']));
     $id_usuario = $_SESSION['id_usuario'];
 
     if(strlen($titulo) <= 0 || strlen($subtitulo) <= 0 || strlen($etiquetas) <= 0 || strlen($cuerpo) <= 0){

@@ -6,9 +6,7 @@ include 'conexion.php';
 
 if(!isset($_SESSION["usuario"]) || !isset($_SESSION["paginaAnterior"])){
 
-	header("Location: index.php");
-
-  exit();
+	header("Location: ".$_SESSION["paginaAnterior"]);
 
 }else{
 
@@ -23,6 +21,8 @@ if(!isset($_SESSION["usuario"]) || !isset($_SESSION["paginaAnterior"])){
   session_unset(); 
 
   session_destroy();
+
+  setcookie("cookie", null, time() - 3600, "/");
 
   header("Location: ../../".$paginaAnterior."");
 

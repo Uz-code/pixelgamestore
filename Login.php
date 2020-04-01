@@ -3,9 +3,9 @@
 
 session_start();
 
-if(isset($_SESSION["usuario"]) || !isset($_SESSION["paginaAnterior"])){
+if(isset($_SESSION["usuario"])){
 
-	header("Location: index.php");
+	header("Location: ".$_SESSION["paginaAnterior"]);
 
   //exit();
 
@@ -22,9 +22,10 @@ if(isset($_SESSION["usuario"]) || !isset($_SESSION["paginaAnterior"])){
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Roboto:300,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/materialize.css">
   <link rel="stylesheet" href="assets/css/style.css">
-  <title>Log In</title>
+  <title>LogIn</title>
  
-</head><body>
+</head>
+<body>
   <header class="main-header js-main-header margin-bottom--lg">
     <div class="container container--lg">
       <div class="main-header__layout">
@@ -38,11 +39,11 @@ if(isset($_SESSION["usuario"]) || !isset($_SESSION["paginaAnterior"])){
           <div id="main-header-nav-label" class="main-header__nav-label">Main menu</div>
           <ul class="main-header__nav-list">
             <li>  
-              <div class="buscar-caja">
-          <input type="text" name="" class="buscar-txt" placeholder="Buscar..."/>
-           <a class="buscar-btn">
-            <i class="large material-icons">search</i>
-           </a>
+            <div class="buscar-caja">
+              <input type="text" name="" class="buscar-txt" placeholder="Buscar..."/>
+              <a class="buscar-btn">
+                <i class="large material-icons">search</i>
+              </a>
         </div>
       </li> 
             <li class="main-header__nav-item"><a href="index.php" class="main-header__nav-link">INICIO</li>
@@ -53,7 +54,7 @@ if(isset($_SESSION["usuario"]) || !isset($_SESSION["paginaAnterior"])){
             <li class="main-header__nav-item"><a href="#0" class="main-header__nav-link  dropdown-trigger" data-target='dropdown1'  aria-current="page">PERFIL</a></li>
       <li class="main-header__nav-item"><a href="#0" class="main-header__nav-link  dropdown-trigger" data-target='dropdown2'>IDIOMA</a></li>
           <ul id='dropdown1' class='dropdown-content'>
-           <li><a href="#!">Sign up</a></li>
+           <li><a href="#!">SignUp</a></li>
            <li class="divider" tabindex="-1"></li>
             <li class="main-header__nav-item" style="margin:0;padding-top: 9px;padding-left: 6px;"> 
                 <div class="switch" >
@@ -123,11 +124,6 @@ if(isset($_SESSION["usuario"]) || !isset($_SESSION["paginaAnterior"])){
         <br>
         <div class="pass">Contraseña:<br></div>
         <input class= " input1 margin-bottom--xs  margin-top--xs " type="password" name="contrasena" id="contrasena"/>
-          
-        <?php if(isset($_SESSION['error'])){
-          // echo ($_SESSION['error']);         
-          // unset($_SESSION["error"]);
-        } ?>
       <!-- <input type="submit" value="Ingresar" class="submit-btn margin-top--lg boton btn--primario" style="" /> -->
       <div class="center-align"><br>
         <button class="btn waves-effect waves-light grey darken-3" type="submit" name="action">Ingresar
@@ -148,30 +144,26 @@ $(document).on('ready', function() {
   $('.dropdown-trigger').dropdown();
 
   $('#loginForm').submit(function(e) {
-        e.preventDefault();
-        $.ajax({
-            type: "POST",
-            url: 'assets/php/iniciar_sesion.php',
-            data: {
-              usuario: $("#usuario").val(),
-              contrasena : $("#contrasena").val()
-            },
-            success: function(response)
-            {
-                var jsonData = JSON.parse(response);
+    e.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: 'assets/php/iniciar_sesion.php',
+      data: {
+        usuario: $("#usuario").val(),
+        contrasena : $("#contrasena").val()
+      },
+        success: function(response){
+          var jsonData = JSON.parse(response);
 
-                if (jsonData.success == "1")
-                {
-                    // location.href = 'my_profile.php';
-                    alert('LogIn OK');
-                    window.history.back();
-                }
-                else
-                {
-                    alert('Invalid Credentials!');
-                }
-           }
-       });
+          if (jsonData.success == "1"){
+            // location.href = 'my_profile.php';
+            alert('LogIn OK');
+            window.history.back();
+          }else{
+            alert('Invalid Credentials!');
+          }
+        }
+    });
   });
 });
 

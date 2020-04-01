@@ -1,6 +1,10 @@
 <?php
 
+session_start();
+
 require_once "assets/php/validar_sesion.php";
+
+$_SESSION["paginaAnterior"]='ofertas.php';
 
 ?>
 
@@ -24,11 +28,11 @@ require_once "assets/php/validar_sesion.php";
     <div class="container container--lg">
       <div class="main-header__layout">
         <div class="main-header__logo">
-          <?php
+        <?php
           
           if(isset($_SESSION["usuario"])){  
 
-          echo 'Hola '.$_SESSION["usuario"];
+          echo 'Hola&nbsp;'.$_SESSION["usuario"];
 
         }else{
 
@@ -71,13 +75,11 @@ require_once "assets/php/validar_sesion.php";
                       
             <?php } else { ?>
                       
-              <li><a href='login.php'>LogIn</a></li>
-              <li><a href='#!''>Sign up</a></li>
+              <li><a href='login2.php'>LogIn</a></li>
+              <li><a href='#!''>SignUp</a></li>
                       
             <?php }
               //Se guarda la pagina para recuperarla al iniciar o cerrar sesion
-            $_SESSION["paginaAnterior"]='ofertas.php';
-
             ?>
               <li class="divider" tabindex="-1"></li>
               <li class="main-header__nav-item" style="margin:0;padding-top: 9px;padding-left: 6px;">

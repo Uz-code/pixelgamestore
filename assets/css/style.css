@@ -1219,3 +1219,4 @@ input.valid:not([type]), input.valid:not([type]):focus, input.valid[type=text]:n
 .submit-btn{
   width: 100%;color:var(--color-contrast-high);    border: 1px solid var(--color-contrast-high);outline: none;
 }
+
