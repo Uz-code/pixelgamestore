@@ -33,6 +33,8 @@ if(!isset($_COOKIE["cookie"])){
     $_SESSION['id_usuario'] = $extraido['id_usuario'];
   
   }
+
+  mysqli_close($conexion); 
   
 }
 

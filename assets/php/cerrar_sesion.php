@@ -26,6 +26,8 @@ if(!isset($_SESSION["usuario"]) || !isset($_SESSION["paginaAnterior"])){
 
   header("Location: ../../".$paginaAnterior."");
 
+  mysqli_close($conexion); 
+
 }
 
 ?>

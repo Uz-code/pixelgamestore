@@ -117,18 +117,18 @@ if(isset($_SESSION["usuario"])){
 	<div class="containerLog" id="containerLog">
 		<div class="form-containerLog sign-up-containerLog">
 
-			<form method="post" id="form1">
+			<form id="formSignUp">
 				<h1>Crear Cuenta</h1>
 				<div class="social-containerLog">
 					<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
 					<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
 					<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 				</div>
-				<span class="dark">o use su email para registrarse</span>
+				<span class="dark">O use su email para registrarse</span>
 				<div class="margin-bottom--xs">
-					<input  type="text" placeholder="Usuario"  name="usuario" required/>
-					<input type="email" placeholder="Email" name="email" required/>
-					<input type="password" placeholder="Contraseña" name="contrasena" required/>
+					<input  type="text" placeholder="Usuario" name="usuario" id="usuario1" required/>
+					<input type="email" placeholder="Email" name="email" id="email1" required/>
+					<input type="password" placeholder="Contraseña" name="contrasena" id="contrasena1" required/>
 				</div>
 				<button type="submit" name="action">Sign Up</button>
       </form>
@@ -136,7 +136,7 @@ if(isset($_SESSION["usuario"])){
 		</div>
 		<div class="form-containerLog sign-in-containerLog" style>
 
-			<form method="post" id="formLogin">
+			<form id="formLogin">
 				<h1>Ingresar</h1>
 				<div class="social-containerLog">
 					<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -203,6 +203,7 @@ $(document).on('ready', function() {
         recordar: $("#recordar").prop('checked')
       },
         success: function(response){
+          console.log(response);
           var jsonData = JSON.parse(response);
           if (jsonData.success == "1"){
             // location.href = 'my_profile.php';
@@ -210,6 +211,30 @@ $(document).on('ready', function() {
             window.history.back();
           }else{
             alert('Invalid Credentials!');
+          }
+        }
+    });
+  });
+
+  $('#formSignUp').submit(function(e) {
+    e.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: 'assets/php/registrar_usuario.php',
+      data: {
+        usuario: $("#usuario1").val(),
+        contrasena : $("#contrasena1").val(),
+        email: $("#email1").val()
+      },
+        success: function(response){
+          console.log(response);
+          var jsonData = JSON.parse(response);
+          if (jsonData.success == "1"){
+            // location.href = 'my_profile.php';
+            alert('LogIn OK');
+            window.history.back();
+          }else{
+            alert('User Name or Email are already in use');
           }
         }
     });

@@ -2,8 +2,6 @@
 
 session_start();
 
-
-
 //include 'assets/php/conexion.php';
 
 require_once "assets/php/validar_sesion.php";
@@ -88,8 +86,8 @@ $_SESSION["paginaAnterior"]='noticia.php';
 	            </li>
 	         <li><a href="#!">FAQ</a></li>
 	       	</ul>
-  		   <ul id='dropdown2' class='dropdown-content'>
-           <li class="" data-lang="ar"><a href="" data-index="0" >
+  		    <ul id='dropdown2' class='dropdown-content'>
+            <li class="" data-lang="ar"><a href="" data-index="0" >
            	<span>العربية</span></a>
            </li>
            <li class="" data-lang="de"><a href="" data-index="1" >
@@ -136,7 +134,7 @@ $_SESSION["paginaAnterior"]='noticia.php';
   </header> <!-- termina header -->
   <div class="container" style="width: 90%; margin-top:3%">
     <div class="row">
-      <div class="col s12 m8 l9" style="background-color:var(--color-contrast-lowerest);margin-top: 4rem; padding:35px; padding-top:0px;">
+      <div class="col s12 m8 l9" style="background-color:var(--color-contrast-lowerest);margin-top: 4rem; padding:0%;">
         <div class="container container--adaptive">
         <?php
 
@@ -151,6 +149,8 @@ $_SESSION["paginaAnterior"]='noticia.php';
         }  
 
         $_SESSION["paginaAnterior"].='?idNoticia='.$idNoticia;
+
+        include 'assets/php/conexion.php';
 
         $consultaNoticia="SELECT N.*, U.usuario FROM noticias AS N INNER JOIN usuarios AS U ON N.id_usuario=U.id_usuario WHERE id_noticia='$idNoticia'";
       
@@ -168,7 +168,7 @@ $_SESSION["paginaAnterior"]='noticia.php';
 
           <h1><?= $noticia['titulo'] ?> </h1>
           <h4><?= $noticia['subtitulo'] ?></h4>
-          <h6>Por&nbsp;<?= $noticia['usuario']?>&nbsp;-&nbsp;<?=(new DateTime($noticia['fecha']))->format('d/m/Y H:m:s') ?></h6>
+          <h6>Por&nbsp;<?= $noticia['usuario']?>&nbsp;-&nbsp;<?=(new DateTime($noticia['fecha']))->format('d/m/Y H:m') ?></h6>
           <div><img src="data:image/jpg;base64,<?= $noticia['imagen']?>"></div>
           <p><?= $noticia['cuerpo'] ?></p>
           <small class="feature__label margin-bottom--xs">Etiquetas:&nbsp;<?= $noticia['etiquetas'] ?></small>

@@ -2,9 +2,7 @@
 
 session_start();
 
-include 'conexion.php';
-
-if(isset($_SESSION["usuario"])){
+if( isset($_SESSION["usuario"]) || !isset($_REQUEST['usuario'],$_REQUEST['contrasena'],$_REQUEST['recordar'])){
 
 	header("Location: ../../".$_SESSION["paginaAnterior"]);
 
@@ -17,18 +15,22 @@ if(isset($_SESSION["usuario"])){
 	$recordar = filter_var($_REQUEST['recordar'], FILTER_VALIDATE_BOOLEAN);
 	$paginaAnterior = $_SESSION['paginaAnterior'];
 	
+	echo iniciarSesion($usuario,$contrasena,$recordar);
+	
+}
 
-	$consulta="SELECT id_usuario, usuario FROM usuarios WHERE usuario = '$usuario' AND contrasena = '$contrasena'";
+function iniciarSesion($usuario,$contrasena,$recordar) {
+
+	include 'conexion.php';
+
+  $consulta="SELECT id_usuario, usuario FROM usuarios WHERE usuario = '$usuario' AND contrasena = '$contrasena'";
 	$resultado = $conexion -> query($consulta);
 
 	//echo mysqli_fetch_array($resultado);
 
 	if ($resultado -> num_rows == 0) {
-		
-		// $_SESSION['error'] = "El nombre o contraseña son incorrectos";
 
-		// header("Location: ../../login.php");
-		echo json_encode(array('success' => 0));
+		return json_encode(array('success' => 0));
 
 	}else{
 
@@ -56,10 +58,12 @@ if(isset($_SESSION["usuario"])){
 
 		}
 
-		// header("Location: ../../".$paginaAnterior."");
-
-		echo json_encode(array('success' => 1));
+		return json_encode(array('success' => 1));
 
 	}
+
+	mysqli_close($conexion); 
+
 }
+
 ?>

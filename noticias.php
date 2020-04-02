@@ -156,6 +156,8 @@ $_SESSION["paginaAnterior"]='noticias.php';
     $pagina = $_REQUEST['pagina'];
       
   }
+
+  include 'assets/php/conexion.php';
     //Se guarda la pagina para recuperarla al iniciar o cerrar sesion
   $_SESSION["paginaAnterior"].='?pagina='.$pagina;
 
