@@ -1,0 +1,15 @@
+.margin-top--sm a{
+  font-size: var(--text-xs);
+  }
+  .DynamicLogo-small {
+  width: 55%;
+  opacity: 0.95;
+  animation:none;
+  }
+  .StoreCard-logo {
+  top: 20px;
+  }  
+  .DynamicLogo-small:hover {
+      width: 55%;
+      opacity: 1;
+  }

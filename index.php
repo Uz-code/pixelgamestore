@@ -19,23 +19,7 @@ $_SESSION["paginaAnterior"]='index.php';
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Roboto:300,400&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="assets/css/materialize.css">
 	<link rel="stylesheet" href="assets/css/style.css">
-  <style>
-  .margin-top--sm a{
-  font-size: var(--text-xs);
-  }
-  .DynamicLogo-small {
-  width: 55%;
-  opacity: 0.95;
-  animation:none;
-  }
-  .StoreCard-logo {
-  top: 20px;
-  }  
-  .DynamicLogo-small:hover {
-      width: 55%;
-      opacity: 1;
-  }
-  </style>
+  <link rel="stylesheet" href="assets/css/index.css">
 </head>
 <body>
   <header class="main-header js-main-header margin-bottom--lg">
@@ -241,8 +225,7 @@ $_SESSION["paginaAnterior"]='index.php';
           </div>  
       </div>
     </div>
-
-     </section>
+  </section>
 <script>document.getElementsByTagName("html")[0].className += " js";</script>
 <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
 <script>
