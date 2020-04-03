@@ -10,15 +10,15 @@ try{
 
   if(isset($_POST['titulo'],$_POST['subtitulo'],$_POST['etiquetas'],$_POST['cuerpo'],$_SESSION['id_usuario'])){
 
-    $titulo = $_POST['titulo'];
-    $subtitulo = str_replace(" ","&nbsp;",$_POST['subtitulo']);
-    $etiquetas = str_replace(" ","&nbsp;",$_POST['titulo']);
-    $cuerpo = str_replace(" ","&nbsp;",nl2br($_POST['etiquetas']));
+    $titulo = tildesHtml($_POST['titulo']);
+    $subtitulo = tildesHtml($_POST['subtitulo']);
+    $etiquetas = tildesHtml($_POST['etiquetas']);
+    $cuerpo = tildesHtml(nl2br($_POST['cuerpo']));
     $id_usuario = $_SESSION['id_usuario'];
 
     if(strlen($titulo) <= 0 || strlen($subtitulo) <= 0 || strlen($etiquetas) <= 0 || strlen($cuerpo) <= 0){
 
-      throw new Exception();
+      throw new Exception("Noticia vacía");
       
     }
 
@@ -42,7 +42,7 @@ try{
     
   }else{
 
-    throw new Exception();
+    throw new Exception("Noticia vacía");
 
   }
 
@@ -55,5 +55,12 @@ try{
   mysqli_close($conexion); 
 
 }
+
+function tildesHtml($cadena) 
+  { 
+    return str_replace( array("á","é","í","ó","ú","ñ","Á","É","Í","Ó","Ú","Ñ"),
+                        array("&aacute;","&eacute;","&iacute;","&oacute;","&uacute;","&ntilde;","&Aacute;","&Eacute;","&Iacute;","&Oacute;","&Uacute;","&Ntilde;"), 
+                        $cadena);     
+  }
 
 ?>
