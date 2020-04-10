@@ -262,7 +262,7 @@ $_SESSION["paginaAnterior"]='noticias.php';
         <h5 class="modal-title">Nueva noticia</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button>
       </div>
-      <form action="assets/php/subir_noticia.php" method="post" enctype="multipart/form-data">
+      <form action="assets/php/subir_noticia.php" method="post" enctype="multipart/form-data" id="form">
         <div class="modal-content row">
           <div class="col s12 m6 l4">
             <div class="form-group">
@@ -312,7 +312,8 @@ $_SESSION["paginaAnterior"]='noticias.php';
 
     $('.close').on('click', function () {
       $('.modal').modal('close');
-      //$("form").clear();
+      $("#form")[0].reset();
+      $('#select_file').html('Seleccione una imagen');
     })
 
     $(document).on('ready', function () {
