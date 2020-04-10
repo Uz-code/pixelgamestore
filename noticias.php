@@ -4,8 +4,6 @@ session_start();
 
 //echo $_COOKIE['cookie'];
 
-
-
 require_once "assets/php/validar_sesion.php";
 
 $_SESSION["paginaAnterior"]='noticias.php';
@@ -19,14 +17,13 @@ $_SESSION["paginaAnterior"]='noticias.php';
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <link rel="icon" href="img/favicon.png">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Roboto:300,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/materialize.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" type="text/css" href="assets/css/modal.css">
   <title>Noticias</title>
-
 </head>
 
 <body>
@@ -168,15 +165,15 @@ $_SESSION["paginaAnterior"]='noticias.php';
 
   $noticias = $conexion -> query($consultaNoticias); 
     
-  if ($noticias -> num_rows == 0) { ?>
+  if ($noticias -> num_rows == 0) : ?>
       
     <div class="container container--adaptive">
       <h1 class="center-align">No&nbsp;se&nbsp;encontraron&nbsp;noticias</h1>
     </div>
 
-  <?php }else{ 
+  <?php else : 
 
-  while ($noticia = $noticias -> fetch_array()){ ?>
+    while ($noticia = $noticias -> fetch_array()) : ?>
 
     <div class="container container--adaptive">
       <div style="text-align: left;color:var(--color-contrast-medium);" class="margin-bottom--xs">
@@ -195,7 +192,7 @@ $_SESSION["paginaAnterior"]='noticias.php';
             <div class="margin-top--sm">
               <div class="">
                 <a href="noticias.php" class="boton btn--primario">Noticias</a>
-                <a href="noticia.php?idNoticia=<?= $noticia['id_noticia'] ?>" class="text--inherit">Ver&nbsp;mas</a>
+                <a href="noticia.php?idNoticia=<?= $noticia['id_noticia'] ?>" class="text--inherit">Ver&nbsp;m&aacute;s</a>
               </div>
             </div>
           </div>
@@ -212,35 +209,33 @@ $_SESSION["paginaAnterior"]='noticias.php';
       </div>
     </section> 
   
-    <?php }
+  <?php 
 
-    }
+    endwhile;
 
-    $noticias -> close();
+  endif;
+
+  $noticias -> close();
     
-    ?>
+  ?>
 
     <section class="feature feature--invert margin-bottom--xs">
       <div class="center">
         <div class="pagination2 ">
-          <?php    
+          <a href="noticias.php?pagina=<?= ($pagina-1) ?>">&laquo;</a>
+          <!-- <a href="noticias.php?pagina=1">1</a> -->
+  <?php    
 
-            echo'<a href="noticias.php?pagina='.($pagina-1).'">&laquo;</a>';
+    $numero = ($pagina % 6 == 0 ? $pagina - (6 - 1) : 1 + (6*intdiv($pagina, 6)));
 
-            //echo'<a href="noticias.php?pagina=1">1</a>';
+    for($i=$numero; $i< ($numero+6); $i++){ 
 
-            $numero = ($pagina % 6 == 0 ? $pagina - (6 - 1) : 1 + (6*intdiv($pagina, 6)));
-
-            for($i=$numero; $i< ($numero+6); $i++){ 
-
-              echo'<a href="noticias.php?pagina='.$i.'"'.( $i==$pagina ? 'class="active"': null).'>'.$i.'</a>';
+      echo'<a href="noticias.php?pagina='.$i.'"'.( $i==$pagina ? 'class="active"': null).'>'.$i.'</a>';
   
-            }
+    }
 
-            echo'<a href="noticias.php?pagina='.($pagina+1).'">&raquo;</a>';
-
-          ?>
-          
+  ?>
+          <a href="noticias.php?pagina=<?= ($pagina+1) ?>">&raquo;</a>
         </div>
       </div>
     </section>
@@ -248,7 +243,7 @@ $_SESSION["paginaAnterior"]='noticias.php';
 
   <?php 
 
-  if(isset($_SESSION["usuario"])) { ?>
+  if(isset($_SESSION["usuario"])) : ?>
 
     <!-- Modal Trigger -->          
     <div class="fixed-action-btn">
@@ -288,7 +283,7 @@ $_SESSION["paginaAnterior"]='noticias.php';
           <div class="col s12 m6 l8">
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Cuerpo de la noticia</label>
-              <textarea class="form-control s1 expand" name="cuerpo" style="resize: vertical; height: 290px;" placeholder="Ingrese texto.. " required></textarea>
+              <textarea class="form-control s1 expand" name="cuerpo" style="resize: vertical; height: 290px;" placeholder="Ingrese texto.. " maxlength="1000" required></textarea>
             </div>
           </div>
         </div>
@@ -298,17 +293,13 @@ $_SESSION["paginaAnterior"]='noticias.php';
       </form> 
     </div>
 
-  <?php } ?>
+  <?php endif; ?>
   
   <script>
     //document.getElementsByTagName("html")[0].className += " js";
   </script>
   <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
   <script>
-
-    // $(document).on('change', function () {
-    //   $('#select_file').html('Seleccione una imagen');
-    // })
 
     $('.close').on('click', function () {
       $('.modal').modal('close');

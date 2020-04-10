@@ -15,13 +15,12 @@ $_SESSION["paginaAnterior"]='noticia.php';
   <title>Noticia</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <link rel="icon" href="img/favicon.png">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Roboto:300,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/materialize.css">
   <link rel="stylesheet" href="assets/css/style.css">
-
 </head>
 <body>
   <header class="main-header js-main-header margin-bottom--lg">
@@ -157,11 +156,11 @@ $_SESSION["paginaAnterior"]='noticia.php';
       
         $resultado = $conexion -> query($consultaNoticia); 
 
-        if ($resultado -> num_rows == 0) { ?>
+        if ($resultado -> num_rows == 0) : ?>
       
           <h1 class="center-align">No&nbsp;se&nbsp;encontr&oacute;&nbsp;la&nbsp;noticia</h1>
           
-        <?php }else{ 
+        <?php else:
           
           $noticia = $resultado -> fetch_array();
         
@@ -174,7 +173,7 @@ $_SESSION["paginaAnterior"]='noticia.php';
           <p><?= $noticia['cuerpo'] ?></p>
           <small class="feature__label margin-bottom--xs">Etiquetas:&nbsp;<?= $noticia['etiquetas'] ?></small>
 
-        <?php }
+        <?php endif;
 
         $resultado -> close();
 
@@ -189,7 +188,7 @@ $_SESSION["paginaAnterior"]='noticia.php';
    
       $resultado = $conexion -> query($consultaNoticiasLaterales); 
 
-      if ($resultado-> num_rows == 0) { ?>
+      if ($resultado-> num_rows == 0) : ?>
   
         <div class="card blue-grey darken-2">
           <div class="card-content">
@@ -197,9 +196,9 @@ $_SESSION["paginaAnterior"]='noticia.php';
           </div>
         </div>
       
-      <?php }else{
+      <?php else:
 
-        while ($noticiaLateral = $resultado -> fetch_array()){ ?> 
+        while ($noticiaLateral = $resultado -> fetch_array()) : ?> 
 
           <a href="noticia.php?idNoticia=<?= $noticiaLateral['id_noticia'] ?>">
             <div class="card blue-grey darken-2">
@@ -212,8 +211,10 @@ $_SESSION["paginaAnterior"]='noticia.php';
             </div>
           </a>
         <?php
-        }
-      }
+        
+        endwhile;
+
+      endif;
 
       $resultado -> close();
 

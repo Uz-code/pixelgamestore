@@ -7,14 +7,12 @@ require_once "assets/php/validar_sesion.php";
 $_SESSION["paginaAnterior"]='ofertas.php';
 
 ?>
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <link rel="icon" href="img/favicon.png">
   <link rel="stylesheet" type="text/css" href="./slick/slick.css">
   <link rel="stylesheet" type="text/css" href="./slick/slick-theme.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

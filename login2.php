@@ -1,4 +1,3 @@
-
 <?php
 
 session_start();
@@ -11,13 +10,12 @@ if(isset($_SESSION["usuario"])){
 
 }
 ?>
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <link rel="icon" href="img/favicon.png">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/css/all.min.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Roboto:300,400&display=swap" rel="stylesheet">
@@ -25,7 +23,6 @@ if(isset($_SESSION["usuario"])){
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/login.css">
   <title>Log In</title>
-
 </head>
 <body>
   <header class="main-header js-main-header margin-bottom--lg">
