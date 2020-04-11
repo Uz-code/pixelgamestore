@@ -168,7 +168,7 @@ $_SESSION["paginaAnterior"]='noticia.php';
 
           <h1><?= $noticia['titulo'] ?> </h1>
           <h4><?= $noticia['subtitulo'] ?></h4>
-          <h6>Por&nbsp;<?= $noticia['usuario']?>&nbsp;-&nbsp;<?=(new DateTime($noticia['fecha']))->format('d/m/Y H:m') ?></h6>
+          <small class="feature__label margin-bottom--xs">Por&nbsp;<?= $noticia['usuario']?>&nbsp;-&nbsp;<?=(new DateTime($noticia['fecha']))->format('d/m/Y H:m') ?></small>
           <div><img src="data:image/jpg;base64,<?= $noticia['imagen']?>"></div>
           <p><?= $noticia['cuerpo'] ?></p>
           <small class="feature__label margin-bottom--xs">Etiquetas:&nbsp;<?= $noticia['etiquetas'] ?></small>

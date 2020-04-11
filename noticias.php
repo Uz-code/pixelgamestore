@@ -257,7 +257,7 @@ $_SESSION["paginaAnterior"]='noticias.php';
         <h5 class="modal-title">Nueva noticia</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button>
       </div>
-      <form action="assets/php/subir_noticia.php" method="post" enctype="multipart/form-data" id="form">
+      <form action="assets/php/subir_noticia.php" method="post" enctype="multipart/form-data" id="formSubirNoticia">
         <div class="modal-content row">
           <div class="col s12 m6 l4">
             <div class="form-group">
@@ -272,7 +272,7 @@ $_SESSION["paginaAnterior"]='noticias.php';
               <label for="exampleFormControlSelect1">Portada</label>
               <div class="custom-file">
                 <input type="file" class="custom-file-input" name="imagen" id="imagen" lang="es" accept="image/*" required>
-                <label class="custom-file-label" id="select_file">Seleccione una imagen</label>
+                <label class="custom-file-label" id="select_file" placeholder="Seleccione una imagen"></label>
               </div>
             </div>
             <div class="form-group">
@@ -283,7 +283,7 @@ $_SESSION["paginaAnterior"]='noticias.php';
           <div class="col s12 m6 l8">
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Cuerpo de la noticia</label>
-              <textarea class="form-control s1 expand" name="cuerpo" style="resize: vertical; height: 290px;" placeholder="Ingrese texto.. " maxlength="1000" required></textarea>
+              <textarea class="form-control s1 expand" name="cuerpo" style="resize: vertical; height: 290px;" placeholder="Ingrese texto.. " required></textarea>
             </div>
           </div>
         </div>
@@ -299,31 +299,54 @@ $_SESSION["paginaAnterior"]='noticias.php';
     //document.getElementsByTagName("html")[0].className += " js";
   </script>
   <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+
+  <?php 
+  
+  if(isset($_SESSION["usuario"])) : ?>
+
   <script>
 
     $('.close').on('click', function () {
       $('.modal').modal('close');
-      $("#form")[0].reset();
+      $("#formSubirNoticia")[0].reset();
       $('#select_file').html('Seleccione una imagen');
     })
 
     $(document).on('ready', function () {
-      $('.dropdown-trigger').dropdown();
-      $('[data-toggle="tooltip"]').tooltip();
-      $('.fixed-action-btn').floatingActionButton();
       $('.modal').modal();
-      $('#select_file').html('Seleccione una imagen');
+      //$('#select_file').html('Seleccione una imagen');
     })
 
     $('#imagen').on('change', function () {
-      var filename = ($('#imagen').val()).substr(12); 
-      $('#select_file').html(filename);
+
+      if(this.files[0].size > 500000){
+       alert("Imagen demasiado grande!");
+       this.value = "";
+      }else{
+        var filename = ($('#imagen').val()).substr(12); 
+        $('#select_file').html(filename);
+      }
+
     })
 
-    
+    //$("form").validate();
+
+    //  $('.btn-secondary').on('click', function () {
+    //   	 if($('form').valid()){
+    //      	$("textarea").animate({height: "260px"}); 
+    //   }else{
+    //   	$("textarea").animate({height: "389px"}); 
+    //   }
+    //   })
+
+    // jQuery.extend(jQuery.validator.messages, {
+    // required: "Campo obligatorio.",
+    // //email: "Por favor ingrese un e-mail valido",
+    // });
 
   </script>
 
+  <?php endif; ?>
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -335,20 +358,13 @@ $_SESSION["paginaAnterior"]='noticias.php';
 
   <script>
 
-  //$("form").validate();
-
-  //  $('.btn-secondary').on('click', function () {
-  //   	 if($('form').valid()){
-  //      	$("textarea").animate({height: "260px"}); 
-  //   }else{
-  //   	$("textarea").animate({height: "389px"}); 
-  //   }
-  //   })
-
-    // jQuery.extend(jQuery.validator.messages, {
-    // required: "Campo obligatorio.",
-    // //email: "Por favor ingrese un e-mail valido",
-    // });
+  $(document).on('ready', function () {
+    $('.dropdown-trigger').dropdown();
+    $('[data-toggle="tooltip"]').tooltip();
+    $('.fixed-action-btn').floatingActionButton();
+    $('.modal').modal();
+    $('#select_file').html('Seleccione una imagen');
+  })
 
   </script>
 

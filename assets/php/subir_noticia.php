@@ -13,7 +13,7 @@ try{
     $titulo = tildesHtml($_POST['titulo']);
     $subtitulo = tildesHtml($_POST['subtitulo']);
     $etiquetas = tildesHtml($_POST['etiquetas']);
-    $cuerpo = tildesHtml(nl2br($_POST['cuerpo']));
+    $cuerpo = tildesHtml(addslashes(nl2br($_POST['cuerpo'])));
     $id_usuario = $_SESSION['id_usuario'];
 
     if(strlen($titulo) <= 0 || strlen($subtitulo) <= 0 || strlen($etiquetas) <= 0 || strlen($cuerpo) <= 0){
