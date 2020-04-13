@@ -10,10 +10,10 @@ try{
 
   if(isset($_POST['titulo'],$_POST['subtitulo'],$_POST['etiquetas'],$_POST['cuerpo'],$_SESSION['id_usuario'])){
 
-    $titulo = tildesHtml($_POST['titulo']);
-    $subtitulo = tildesHtml($_POST['subtitulo']);
-    $etiquetas = tildesHtml($_POST['etiquetas']);
-    $cuerpo = tildesHtml(addslashes(nl2br($_POST['cuerpo'])));
+    $titulo = htmlentities($_POST['titulo'],ENT_QUOTES,'UTF-8');
+    $subtitulo = htmlentities($_POST['subtitulo'],ENT_QUOTES,'UTF-8');
+    $etiquetas = htmlentities($_POST['etiquetas'],ENT_QUOTES,'UTF-8');
+    $cuerpo = nl2br(htmlentities($_POST['cuerpo'],ENT_QUOTES,'UTF-8'));
     $id_usuario = $_SESSION['id_usuario'];
 
     if(strlen($titulo) <= 0 || strlen($subtitulo) <= 0 || strlen($etiquetas) <= 0 || strlen($cuerpo) <= 0){
@@ -48,19 +48,12 @@ try{
 
 }catch (Exception $e) {
 
-  header("Location: ../../noticias.php");
+  echo($e->getMessage());
 
 }finally{ 
 
   mysqli_close($conexion); 
 
 }
-
-function tildesHtml($cadena) 
-  { 
-    return str_replace( array("á","é","í","ó","ú","ñ","Á","É","Í","Ó","Ú","Ñ"),
-                        array("&aacute;","&eacute;","&iacute;","&oacute;","&uacute;","&ntilde;","&Aacute;","&Eacute;","&Iacute;","&Oacute;","&Uacute;","&Ntilde;"), 
-                        $cadena);     
-  }
 
 ?>

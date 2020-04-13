@@ -12,7 +12,7 @@ $_SESSION["paginaAnterior"]='noticia.php';
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <title>Noticia</title>
+  <title></title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="img/favicon.png">
@@ -163,12 +163,12 @@ $_SESSION["paginaAnterior"]='noticia.php';
         <?php else:
           
           $noticia = $resultado -> fetch_array();
-        
+
         ?> 
 
           <h1><?= $noticia['titulo'] ?> </h1>
           <h4><?= $noticia['subtitulo'] ?></h4>
-          <small class="feature__label margin-bottom--xs">Por&nbsp;<?= $noticia['usuario']?>&nbsp;-&nbsp;<?=(new DateTime($noticia['fecha']))->format('d/m/Y H:m') ?></small>
+          <small class="feature__label margin-bottom--xs">Por&nbsp;<?= $noticia['usuario']?>&nbsp;-&nbsp;<?=(new DateTime($noticia['fecha']))->format('d/m/Y H:i') ?></small>
           <div><img src="data:image/jpg;base64,<?= $noticia['imagen']?>"></div>
           <p><?= $noticia['cuerpo'] ?></p>
           <small class="feature__label margin-bottom--xs">Etiquetas:&nbsp;<?= $noticia['etiquetas'] ?></small>
@@ -206,7 +206,7 @@ $_SESSION["paginaAnterior"]='noticia.php';
                 <img src="data:image/jpg;base64,<?= $noticiaLateral['imagen'] ?>">
               </div>
               <div class="card-content">
-                <p><?= substr($noticiaLateral['cuerpo'],0,202)?>...</p>
+                <p><?= mb_substr($noticiaLateral['cuerpo'],0,200,'HTML-ENTITIES'); ?>...</p>
               </div>
             </div>
           </a>
@@ -227,9 +227,9 @@ $_SESSION["paginaAnterior"]='noticia.php';
   <script>
     $(document).on('ready', function() {
       $('.dropdown-trigger').dropdown();
+      this.title = "<?= $noticia['titulo'] ?>";
     });
   </script>
-  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="assets/js/util.js"></script>
   <script src="assets/js/main.js"></script>

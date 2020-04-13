@@ -156,7 +156,7 @@ $(document).on('ready', function() {
         success: function(response){
           var jsonData = JSON.parse(response);
 
-          if (jsonData.success == "1"){
+          if (jsonData.response == "1"){
             // location.href = 'my_profile.php';
             alert('LogIn OK');
             window.history.back();

@@ -22,7 +22,7 @@ if(!isset($_COOKIE["cookie"])){
 
     setcookie("cookie", null, time() - 3600, "/");
 
-    return;
+    //return;
   
   }else{
 

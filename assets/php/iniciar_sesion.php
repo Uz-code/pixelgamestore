@@ -30,7 +30,7 @@ function iniciarSesion($usuario,$contrasena,$recordar) {
 
 	if ($resultado -> num_rows == 0) {
 
-		return json_encode(array('success' => 0));
+		return json_encode(array('response' => 0));
 
 	}else{
 
@@ -58,7 +58,7 @@ function iniciarSesion($usuario,$contrasena,$recordar) {
 
 		}
 
-		return json_encode(array('success' => 1));
+		return json_encode(array('response' => 1));
 
 	}
 

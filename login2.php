@@ -110,143 +110,152 @@ if(isset($_SESSION["usuario"])){
     </div>
   </header> <!-- termina header -->
 	<section class="feature margin-bottom--xl margin-top--xxl ">
-	<section/>
-	<div class="containerLog" id="containerLog">
-		<div class="form-containerLog sign-up-containerLog">
+    <div class="containerLog" id="containerLog">
+      <div class="form-containerLog sign-up-containerLog">
 
-			<form id="formSignUp">
-				<h1>Crear Cuenta</h1>
-				<div class="social-containerLog">
-					<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-					<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-					<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-				</div>
-				<span class="dark">O use su email para registrarse</span>
-				<div class="margin-bottom--xs">
-					<input  type="text" placeholder="Usuario" name="usuario" id="usuario1" required/>
-					<input type="email" placeholder="Email" name="email" id="email1" required/>
-					<input type="password" placeholder="Contraseña" name="contrasena" id="contrasena1" required/>
-				</div>
-				<button type="submit" name="action">Sign Up</button>
-      </form>
-      
-		</div>
-		<div class="form-containerLog sign-in-containerLog" style>
+        <form id="formSignUp">
+          <h1>Crear Cuenta</h1>
+          <div class="social-containerLog">
+            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+          <span class="dark">O use su email para registrarse</span>
+          <div class="margin-bottom--xs">
+            <input  type="text" placeholder="Usuario" name="usuario" id="usuario1" required/>
+            <input type="email" placeholder="Email" name="email" id="email1" required/>
+            <input type="password" placeholder="Contraseña" name="contrasena" id="contrasena1" required/>
+          </div>
+          <button type="submit" name="action">Sign Up</button>
+        </form>
+        
+      </div>
+      <div class="form-containerLog sign-in-containerLog" style>
 
-			<form id="formLogin">
-				<h1>Ingresar</h1>
-				<div class="social-containerLog">
-					<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-					<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-					<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-				</div>
-				<span class="dark">o use su cuenta</span>
-				<input type="text" placeholder="Usuario"  name="usuario" id="usuario" required/>
-				<input type="password" placeholder="Contraseña" name="contrasena" id="contrasena" required/>
-        <label>
-          <input type="checkbox" checked="checked" id="recordar"/>
-          <span>Recordarme</span>
-        </label>
-				<a href="#">Olvidaste tu contraseña?</a>
-        <button type="submit">Log in</button>
+        <form id="formLogin">
+          <h1>Ingresar</h1>
+          <div class="social-containerLog">
+            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+          <span class="dark">o use su cuenta</span>
+          <input type="text" placeholder="Usuario"  name="usuario" id="usuario" required/>
+          <input type="password" placeholder="Contraseña" name="contrasena" id="contrasena" required/>
+          <label>
+            <input type="checkbox" checked="checked" id="recordar"/>
+            <span>Recordarme</span>
+          </label>
+          <a href="#">Olvidaste tu contraseña?</a>
+          <button type="submit">Log in</button>
 
-      </form>
-      
-		</div>
-    <div class="overlay-containerLog">
-      <div class="overlay">
-        <div class="overlay-panel overlay-left">
-          <h1 class="ghost">Bienvenido!</h1>
-          <p>Para mantenerse en contacto por favor ingrese con su informacion personal</p>
-          <button class="ghost" id="signIn">Log in</button>
-        </div>
-        <div class="overlay-panel overlay-right">
-          <h1 class="ghost">Registrate!</h1>
-          <p>Entra tus datos personales para comenzar con nosotros</p>
-          <button class="ghost" id="signUp" >Sign Up</button>
+        </form>
+        
+      </div>
+      <div class="overlay-containerLog">
+        <div class="overlay">
+          <div class="overlay-panel overlay-left">
+            <h1 class="ghost">Bienvenido!</h1>
+            <p>Para mantenerse en contacto por favor ingrese con su informacion personal</p>
+            <button class="ghost" id="signIn">Log in</button>
+          </div>
+          <div class="overlay-panel overlay-right">
+            <h1 class="ghost">Registrate!</h1>
+            <p>Entra tus datos personales para comenzar con nosotros</p>
+            <button class="ghost" id="signUp" >Sign Up</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-	<footer>
-	<p>
-	Contactese con
-	<a target="_blank" href="https://florin-pop.com">Emmanuel</a> y
-	<a target="_blank" href="https://florin-pop.com">Alejandro</a>
-	Por cualquier inconveniente
-	<a target="_blank" href="">Aquí</a>.
-	</p>
-	</footer>
-
+    <footer>
+    <p>
+    Contactese con
+    <a target="_blank" href="https://florin-pop.com">Emmanuel</a> y
+    <a target="_blank" href="https://florin-pop.com">Alejandro</a>
+    Por cualquier inconveniente
+    <a target="_blank" href="">Aquí</a>.
+    </p>
+    </footer>
+  </section>
 <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
 <script src="assets/js/tilt.jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
-
-<script>
-$(document).on('ready', function() {
-  $('.dropdown-trigger').dropdown();
-
-
-  $('#formLogin').submit(function(e) {
-    e.preventDefault();
-    $.ajax({
-      type: "POST",
-      url: 'assets/php/iniciar_sesion.php',
-      data: {
-        usuario: $("#usuario").val(),
-        contrasena : $("#contrasena").val(),
-        recordar: $("#recordar").prop('checked')
-      },
-        success: function(response){
-          console.log(response);
-          var jsonData = JSON.parse(response);
-          if (jsonData.success == "1"){
-            // location.href = 'my_profile.php';
-            alert('LogIn OK');
-            window.history.back();
-          }else{
-            alert('Invalid Credentials!');
-          }
-        }
-    });
-  });
-
-  $('#formSignUp').submit(function(e) {
-    e.preventDefault();
-    $.ajax({
-      type: "POST",
-      url: 'assets/php/registrar_usuario.php',
-      data: {
-        usuario: $("#usuario1").val(),
-        contrasena : $("#contrasena1").val(),
-        email: $("#email1").val()
-      },
-        success: function(response){
-          console.log(response);
-          var jsonData = JSON.parse(response);
-          if (jsonData.success == "1"){
-            // location.href = 'my_profile.php';
-            alert('LogIn OK');
-            window.history.back();
-          }else{
-            alert('User Name or Email are already in use');
-          }
-        }
-    });
-  });
-
-});
-</script>
-
-<script></script>
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/header.js"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script type="text/javascript">
+
+  $(document).on('ready', function() {
+    $('.dropdown-trigger').dropdown();
+
+    $('#formLogin').submit(function(e) {
+      e.preventDefault();
+      $.ajax({
+        type: "POST",
+        url: 'assets/php/iniciar_sesion.php',
+        data: {
+          usuario: $("#usuario").val(),
+          contrasena : $("#contrasena").val(),
+          recordar: $("#recordar").prop('checked')
+        },
+          success: function(response){
+            console.log(response);
+            var jsonData = JSON.parse(response);
+            if (jsonData.response == "1"){
+              
+              alert('LogIn OK');
+              location.href = "<?= $_SESSION["paginaAnterior"] ?>";
+              //window.history.back();
+            }else{
+              alert('usuario o contraeña incorrectos');
+            }
+          },
+          error: function() {
+            alert('Servidor no disponible');
+          }
+      });
+    });
+
+    $('#formSignUp').submit(function(e) {
+      e.preventDefault();
+      $.ajax({
+        type: "POST",
+        url: 'assets/php/registrar_usuario.php',
+        data: {
+          usuario: $("#usuario1").val(),
+          contrasena : $("#contrasena1").val(),
+          email: $("#email1").val()
+        },
+          success: function(response){
+            console.log(response);
+            var jsonData = JSON.parse(response);
+            if (jsonData.response == "1"){
+
+              alert('LogIn OK');
+              location.href = "<?= $_SESSION["paginaAnterior"] ?>";
+              //window.history.back();
+            }
+            if (jsonData.response == "2"){
+
+              alert('Nombre de usuario no valido');
+
+            }
+            if (jsonData.response == "3"){
+
+              alert('User Name or Email are already in use');
+
+            }
+          },
+          error: function() {
+            alert('Servidor no disponible');
+          }
+      });
+    });
+
+  });
 
 	const signUpButton = document.getElementById('signUp');
 	const signInButton = document.getElementById('signIn');
@@ -261,7 +270,7 @@ $(document).on('ready', function() {
 	});
 
   $("#formLogin").validate();
-	$("#form1").validate();
+	$("#formSignUp").validate();
 
   jQuery.extend(jQuery.validator.messages, {
   required: "Campo obligatorio.",

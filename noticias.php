@@ -177,7 +177,7 @@ $_SESSION["paginaAnterior"]='noticias.php';
 
     <div class="container container--adaptive">
       <div style="text-align: left;color:var(--color-contrast-medium);" class="margin-bottom--xs">
-        <h6><?= (new DateTime($noticia['fecha']))->format('d/m/Y H:m:s') ?></h6>
+        <h6><?= (new DateTime($noticia['fecha']))->format('d/m/Y H:i:s') ?></h6>
       </div>
     </div>
     <section class="feature feature--invert margin-bottom--xl">
@@ -185,8 +185,8 @@ $_SESSION["paginaAnterior"]='noticias.php';
         <div class="feature__text">
           <div class="feature__text-inner">
             <div class="text-component">         
-            <h1 <?=( strlen($noticia['titulo'])>50 ? 'style="font-size: 200% !important;">' : '>' ).$noticia['titulo'] ?></h1>
-              <p><?= substr($noticia['cuerpo'],0,207) ?>...</p>
+            <h1 <?= (strlen($noticia['titulo'])>50 ? 'style="font-size: 200% !important;"' : null )?> > <?=$noticia['titulo'] ?></h1>
+              <p><?= mb_substr($noticia['cuerpo'],0,200,'HTML-ENTITIES'); ?>...</p>
               <small class="feature__label margin-bottom--xs">Etiquetas:&nbsp;<?= $noticia['etiquetas'] ?></small>
             </div>
             <div class="margin-top--sm">
