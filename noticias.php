@@ -306,22 +306,22 @@ $_SESSION["paginaAnterior"]='noticias.php';
 
   <script>
 
+    $(document).on('ready', function () {
+      $('.modal').modal();
+      $('#select_file').html('Seleccione una imagen');
+    })
+
     $('.close').on('click', function () {
       $('.modal').modal('close');
       $("#formSubirNoticia")[0].reset();
       $('#select_file').html('Seleccione una imagen');
     })
 
-    $(document).on('ready', function () {
-      $('.modal').modal();
-      //$('#select_file').html('Seleccione una imagen');
-    })
-
     $('#imagen').on('change', function () {
 
       if(this.files[0].size > 500000){
-       alert("Imagen demasiado grande!");
-       this.value = "";
+       alert("Imagen demasiado pesada!");
+       this.value = null;
       }else{
         var filename = ($('#imagen').val()).substr(12); 
         $('#select_file').html(filename);
@@ -363,7 +363,6 @@ $_SESSION["paginaAnterior"]='noticias.php';
     $('[data-toggle="tooltip"]').tooltip();
     $('.fixed-action-btn').floatingActionButton();
     $('.modal').modal();
-    $('#select_file').html('Seleccione una imagen');
   })
 
   </script>

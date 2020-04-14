@@ -240,12 +240,12 @@ if(isset($_SESSION["usuario"])){
             }
             if (jsonData.response == "2"){
 
-              alert('Nombre de usuario no valido');
+              alert('Nombre de usuario o email no valido');
 
             }
             if (jsonData.response == "3"){
 
-              alert('User Name or Email are already in use');
+              alert('El nombre de usuario o el email ya existe');
 
             }
           },

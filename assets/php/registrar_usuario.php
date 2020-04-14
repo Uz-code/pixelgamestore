@@ -14,7 +14,7 @@ if( isset($_SESSION["usuario"]) || !isset($_REQUEST['usuario'],$_REQUEST['contra
   $paginaAnterior = $_SESSION['paginaAnterior'];
 	$recordar = true;
 	
-	if (preg_match("/^[a-zA-Z0-9\-_]{3,20}$/", $usuario)) {
+	if (preg_match("/^[a-zA-Z0-9\-_]{3,20}$/", $usuario) || preg_match("/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/", $email)) {
 
 		require 'conexion.php';
 
@@ -64,7 +64,7 @@ if( isset($_SESSION["usuario"]) || !isset($_REQUEST['usuario'],$_REQUEST['contra
 		mysqli_close($conexion); 
 		
  	} else {
-		//nombre de usuario no valido
+		//nombre de usuario o email no valido
 		echo json_encode(array('response' => 2));;
 
  	}
