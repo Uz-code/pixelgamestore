@@ -74,7 +74,7 @@ $_SESSION["paginaAnterior"]='ofertas.php';
                       
             <?php } else { ?>
                       
-              <li><a href='login2.php'>LogIn</a></li>
+              <li><a href='login.php'>LogIn</a></li>
               <li><a href='#!''>SignUp</a></li>
                       
             <?php }

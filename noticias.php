@@ -80,7 +80,7 @@ $_SESSION["paginaAnterior"]='noticias.php';
 
             <?php } else { ?>
 
-              <li><a href='login2.php'>LogIn</a></li>
+              <li><a href='login.php'>LogIn</a></li>
               <li><a href='#!''>SignUp</a></li>
 
             <?php } ?>
@@ -277,13 +277,13 @@ $_SESSION["paginaAnterior"]='noticias.php';
             </div>
             <div class="form-group">
               <label for="exampleFormControlSelect1">Etiquetas</label>
-              <input type="text" class="form-control" name="etiquetas" placeholder="Ej:Gaming,Ps4,SmashBros" maxlength="50" required>
+              <input d="inputEtiquetas" type="text" class="form-control" name="etiquetas" placeholder="Ej:Gaming,Ps4,SmashBros" maxlength="50" required>
             </div>
           </div>
           <div class="col s12 m6 l8">
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Cuerpo de la noticia</label>
-              <textarea class="form-control s1 expand" name="cuerpo" style="resize: vertical; height: 290px;" placeholder="Ingrese texto.. " required></textarea>
+              <textarea d="inputCerpo" class="form-control s1 expand" name="cuerpo" style="resize: vertical; height: 290px;" placeholder="Ingrese texto.. " required></textarea>
             </div>
           </div>
         </div>
@@ -309,6 +309,35 @@ $_SESSION["paginaAnterior"]='noticias.php';
     $(document).on('ready', function () {
       $('.modal').modal();
       $('#select_file').html('Seleccione una imagen');
+
+      $('#formSubirNoticia').submit(function(e) {
+      e.preventDefault();
+      $.ajax({
+        type: "POST",
+        url: 'assets/php/iniciar_sesion.php',
+        data: {
+          usuario: $("#usuario").val(),
+          contrasena : $("#contrasena").val(),
+          recordar: $("#recordar").prop('checked')
+        },
+          success: function(response){
+            //console.log(response);
+            var jsonData = JSON.parse(response);
+            if (jsonData.status.code == "1"){
+              
+              alert('LogIn OK');
+              location.href = "<?= $_SESSION["paginaAnterior"] ?>";
+              //window.history.back();
+            }else{
+              alert(jsonData.status.description);
+            }
+          },
+          error: function() {
+            alert('Servidor no disponible');
+          }
+      });
+    });
+
     })
 
     $('.close').on('click', function () {

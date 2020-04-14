@@ -14,7 +14,7 @@ if(!isset($_SESSION["usuario"]) || !isset($_SESSION["paginaAnterior"])){
 
   $id_usuario=$_SESSION['id_usuario'];
 
-  $consulta="UPDATE usuarios SET cookie=null WHERE id_usuario='$id_usuario'";
+  $consulta="UPDATE usuarios SET access_token=null WHERE id_usuario='$id_usuario'";
 
   mysqli_query($conexion, $consulta) or die ("Problemas: ".mysqli_error($conexion));
 
