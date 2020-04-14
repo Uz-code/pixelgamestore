@@ -10,7 +10,8 @@ try{
 
   if(!isset($_POST['titulo'],$_POST['subtitulo'],$_POST['etiquetas'],$_POST['cuerpo'],$_SESSION['id_usuario'])){
 
-    throw new Exception("No se recibieron datos");
+    header("Location: ../../noticias.php");
+    return;
 
   }
 
@@ -45,11 +46,11 @@ try{
 
   unlink($target_file);
 
-  header("Location: ../../noticias.php");
+  echo json_encode(array('status' => array('code' =>1 , 'description' => 'OK')));
 
 }catch (Exception $e) {
 
-  echo($e->getMessage());
+  echo json_encode(array('status' => array('code' =>0 , 'description' => $e->getMessage())));
 
 }finally{ 
 

@@ -257,7 +257,7 @@ $_SESSION["paginaAnterior"]='noticias.php';
         <h5 class="modal-title">Nueva noticia</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button>
       </div>
-      <form action="assets/php/subir_noticia.php" method="post" enctype="multipart/form-data" id="formSubirNoticia">
+      <form  enctype="multipart/form-data" id="formSubirNoticia">
         <div class="modal-content row">
           <div class="col s12 m6 l4">
             <div class="form-group">
@@ -266,7 +266,7 @@ $_SESSION["paginaAnterior"]='noticias.php';
             </div>
             <div class="form-group">
               <label for="exampleFormControlSelect1">Subtitulo</label>
-              <input id="inputSubitulo" type="text" class="form-control" name="subtitulo" placeholder="Subtitulo" maxlength="100" required>
+              <input id="inputSubtitulo" type="text" class="form-control" name="subtitulo" placeholder="Subtitulo" maxlength="100" required>
             </div>
             <div class="form-group">
               <label for="exampleFormControlSelect1">Portada</label>
@@ -277,13 +277,13 @@ $_SESSION["paginaAnterior"]='noticias.php';
             </div>
             <div class="form-group">
               <label for="exampleFormControlSelect1">Etiquetas</label>
-              <input d="inputEtiquetas" type="text" class="form-control" name="etiquetas" placeholder="Ej:Gaming,Ps4,SmashBros" maxlength="50" required>
+              <input id="inputEtiquetas" type="text" class="form-control" name="etiquetas" placeholder="Ej:Gaming,Ps4,SmashBros" maxlength="50" required>
             </div>
           </div>
           <div class="col s12 m6 l8">
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Cuerpo de la noticia</label>
-              <textarea d="inputCerpo" class="form-control s1 expand" name="cuerpo" style="resize: vertical; height: 290px;" placeholder="Ingrese texto.. " required></textarea>
+              <textarea id="inputCuerpo" class="form-control s1 expand" name="cuerpo" style="resize: vertical; height: 290px;" placeholder="Ingrese texto.. " required></textarea>
             </div>
           </div>
         </div>
@@ -299,33 +299,49 @@ $_SESSION["paginaAnterior"]='noticias.php';
     //document.getElementsByTagName("html")[0].className += " js";
   </script>
   <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/header.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
 
   <?php 
   
   if(isset($_SESSION["usuario"])) : ?>
 
-  <script>
+  <script type="text/javascript">
 
-    $(document).on('ready', function () {
-      $('.modal').modal();
-      $('#select_file').html('Seleccione una imagen');
+  $(document).on('ready', function () {
 
-      $('#formSubirNoticia').submit(function(e) {
+    $('.dropdown-trigger').dropdown();
+    $('[data-toggle="tooltip"]').tooltip();
+    $('.fixed-action-btn').floatingActionButton();
+    $('.modal').modal();
+    $('#select_file').html('Seleccione una imagen');
+
+    $('#formSubirNoticia').submit(function(e) {
       e.preventDefault();
+      var frmData = new FormData();
+      frmData.append("titulo",$("#inputTitulo").val());
+      frmData.append("subtitulo",$("#inputSubtitulo").val());
+      frmData.append("cuerpo",$("#inputCuerpo").val());
+      frmData.append("etiquetas",$("#inputEtiquetas").val());
+      frmData.append("imagen",$('#imagen')[0].files[0]);
+
       $.ajax({
         type: "POST",
-        url: 'assets/php/iniciar_sesion.php',
-        data: {
-          usuario: $("#usuario").val(),
-          contrasena : $("#contrasena").val(),
-          recordar: $("#recordar").prop('checked')
-        },
+        url: 'assets/php/subir_noticia.php',
+        data: frmData,
+        processData: false,
+        contentType: false,
           success: function(response){
             //console.log(response);
             var jsonData = JSON.parse(response);
             if (jsonData.status.code == "1"){
               
-              alert('LogIn OK');
+              alert('Noticia Subida');
               location.href = "<?= $_SESSION["paginaAnterior"] ?>";
               //window.history.back();
             }else{
@@ -377,14 +393,6 @@ $_SESSION["paginaAnterior"]='noticias.php';
 
   <?php endif; ?>
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="assets/js/util.js"></script>
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/header.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
-
   <script>
 
   $(document).on('ready', function () {

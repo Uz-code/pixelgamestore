@@ -9,6 +9,7 @@ try{
 	if( isset($_SESSION["usuario"]) || !isset($_REQUEST['usuario'],$_REQUEST['contrasena'],$_REQUEST['recordar'])){
 
 		header("Location: ../../".$_SESSION["paginaAnterior"]);
+		return;
 
 	}
 
