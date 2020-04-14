@@ -53,13 +53,21 @@ try{
 
 	echo json_encode(array('status' => array('code' =>1 , 'description' => 'OK')));
 
+}catch(mysqli_sql_exception $e){
+	
+	echo json_encode(array('status' => array('code' =>0 , 'description' => $e->getMessage())));
+
 }catch(Exception $e){
 
 	echo json_encode(array('status' => array('code' =>0 , 'description' => $e->getMessage())));
 
 }finally{
 
-	mysqli_close($conexion);
+	if(isset($conexion)){
+
+		$conexion->close();
+
+	}
 
 }
 

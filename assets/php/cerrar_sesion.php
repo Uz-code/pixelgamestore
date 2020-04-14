@@ -1,14 +1,17 @@
 <?php 
 
-session_start();
+try{
 
-include 'conexion.php';
+  session_start();
 
-if(!isset($_SESSION["usuario"]) || !isset($_SESSION["paginaAnterior"])){
+  include 'conexion.php';
 
-	header("Location: ".$_SESSION["paginaAnterior"]);
+  if(!isset($_SESSION["usuario"]) || !isset($_SESSION["paginaAnterior"])){
 
-}else{
+    header("Location: ".$_SESSION["paginaAnterior"]);
+    return;
+    
+  }
 
   $paginaAnterior= $_SESSION['paginaAnterior'];
 
@@ -16,17 +19,27 @@ if(!isset($_SESSION["usuario"]) || !isset($_SESSION["paginaAnterior"])){
 
   $consulta="UPDATE usuarios SET access_token=null WHERE id_usuario='$id_usuario'";
 
-  mysqli_query($conexion, $consulta) or die ("Problemas: ".mysqli_error($conexion));
+  $conexion -> query($consulta);
 
   session_unset(); 
 
   session_destroy();
 
-  setcookie("cookie", null, time() - 3600, "/");
+  setcookie("ACCESS_TOKEN", null, time() - 3600, "/");
 
   header("Location: ../../".$paginaAnterior."");
 
-  mysqli_close($conexion); 
+}catch(mysqli_sql_exception $e){
+	
+	echo json_encode(array('status' => array('code' =>0 , 'description' => $e->getMessage())));
+
+}finally{
+
+	if(isset($conexion)){
+
+		$conexion->close();
+
+	}
 
 }
 
