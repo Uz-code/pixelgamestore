@@ -13,6 +13,12 @@ try{
 
 	}
 
+	if( empty($_REQUEST['usuario']) || empty($_REQUEST['contrasena'])){
+
+		throw new Exception("Completa todos los campos");
+
+	}
+
 	$usuario = strtolower($_REQUEST['usuario']);
 	$contrasena = md5($_REQUEST['contrasena']);
 	$recordar = filter_var($_REQUEST['recordar'], FILTER_VALIDATE_BOOLEAN);
@@ -43,13 +49,13 @@ try{
 
 	}else{
 
-		$_SESSION['usuario'] = $extraido['usuario'];
-  
-		$_SESSION['id_usuario'] = $extraido['id_usuario'];
-
 		setcookie("ACCESS_TOKEN", null, time() - 3600, "/");
 
 	}
+
+	$_SESSION['usuario'] = $extraido['usuario'];
+  
+	$_SESSION['id_usuario'] = $extraido['id_usuario'];
 
 	echo json_encode(array('status' => array('code' =>1 , 'description' => 'OK')));
 

@@ -13,29 +13,35 @@ try{
 
 	}
 
-	$usuario = $_REQUEST['usuario'];
-  $email = $_REQUEST['email'];
-	$contrasena = md5($_REQUEST['contrasena']);
-	$recordar = true;
-	$paginaAnterior = $_SESSION['paginaAnterior'];
+	if( empty($_REQUEST['usuario']) || empty($_REQUEST['email']) || empty($_REQUEST['contrasena'])){
 
-	if( empty($usuario) || empty($contrasena) || empty($email)){
-
-		throw new Exception("Campos vacios");
+		throw new Exception("Completa todos los campos");
 
 	}
 
-	if (!preg_match("/^[a-zA-Z0-9\-_]{3,20}$/", $usuario)){
+	if (!preg_match("/^[a-zA-Z0-9\-_]{3,20}$/", $_REQUEST['usuario'])){
 
 		throw new Exception("Nombre de usuario no valido");
 
 	}
 
-	if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+	if (!preg_match("/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/", $_REQUEST['contrasena'])){
+
+		throw new Exception("La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.");
+
+	}
+
+	if (!filter_var($_REQUEST['email'], FILTER_VALIDATE_EMAIL)){
 
 		throw new Exception("Email no valido");
 
 	}
+
+	$usuario = strtolower($_REQUEST['usuario']);
+  $email = $_REQUEST['email'];
+	$contrasena = md5($_REQUEST['contrasena']);
+	$recordar = true;
+	$paginaAnterior = $_SESSION['paginaAnterior'];
 
 	$consulta="SELECT usuario FROM usuarios WHERE usuario = '$usuario'";
 	$resultado = $conexion -> query($consulta);
