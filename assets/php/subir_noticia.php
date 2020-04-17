@@ -15,15 +15,9 @@ try{
 
   }
 
-  $titulo = htmlentities($_POST['titulo'],ENT_QUOTES,'UTF-8');
-  $subtitulo = htmlentities($_POST['subtitulo'],ENT_QUOTES,'UTF-8');
-  $etiquetas = htmlentities($_POST['etiquetas'],ENT_QUOTES,'UTF-8');
-  $cuerpo = nl2br(htmlentities($_POST['cuerpo'],ENT_QUOTES,'UTF-8'));
-  $id_usuario = $_SESSION['id_usuario'];
+  if(empty($_POST['titulo'] || empty($_POST['subtitulo']) || empty($_POST['etiquetas']) || empty($_POST['cuerpo']) || empty($_FILES["imagen"]))){
 
-  if(empty($_POST['titulo'] || empty($_POST['subtitulo']) || empty($_POST['etiquetas']) || empty($_POST['cuerpo']))){
-
-    throw new Exception("Campos vacios");
+    throw new Exception("Completa todos los campos");
       
   }
 
@@ -32,6 +26,12 @@ try{
     throw new Exception("Imagen demasiado pesada");
 
   }
+
+  $titulo = htmlentities($_POST['titulo'],ENT_QUOTES,'UTF-8');
+  $subtitulo = htmlentities($_POST['subtitulo'],ENT_QUOTES,'UTF-8');
+  $etiquetas = htmlentities($_POST['etiquetas'],ENT_QUOTES,'UTF-8');
+  $cuerpo = nl2br(htmlentities($_POST['cuerpo'],ENT_QUOTES,'UTF-8'));
+  $id_usuario = $_SESSION['id_usuario'];
   //$image = new Imagick('./carpeta/subcarpeta/sub-subcarpeta/imagen.png');
   $target_file = basename($_FILES["imagen"]["name"]);
   //$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
