@@ -57,7 +57,7 @@ try{
 
 	$consulta="INSERT INTO usuarios (usuario,email,contrasena) VALUES ('$usuario','$email','$contrasena')";
 	
-	mysqli_query($conexion, $consulta) or die ("Problemas Creando Usuario: ".mysqli_error($conexion));
+	$conexion -> query($consulta);
 	
 	$consulta="SELECT id_usuario, usuario FROM usuarios WHERE usuario = '$usuario' AND contrasena = '$contrasena'";
 	
@@ -69,11 +69,11 @@ try{
 	
 		$accessToken= md5($extraido['usuario'].$id_usuario.date('d-m-Y H:i:s'));	
 	
-		setcookie("cookie", $accessToken, time()+(60*60*24*365), '/', NULL, 0);
+		setcookie("ACCESS_TOKEN", $accessToken, time()+(60*60*24*365), '/', NULL, 0);
 	
 		$consulta="UPDATE usuarios SET access_token='$accessToken' WHERE id_usuario='$id_usuario'";
 				
-		mysqli_query($conexion, $consulta) or die ("Problemas: ".mysqli_error($conexion));
+		$conexion->query($consulta);
 	
 	}else{
 	
@@ -81,7 +81,7 @@ try{
 		
 		$_SESSION['id_usuario'] = $extraido['id_usuario'];
 	
-		setcookie("cookie", null, time() - 3600, "/");
+		setcookie("ACCESS_TOKEN", null, time() - 3600, "/");
 	
 	}
 

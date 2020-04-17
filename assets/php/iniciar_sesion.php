@@ -13,7 +13,7 @@ try{
 
 	}
 
-	$usuario = $_REQUEST['usuario'];
+	$usuario = strtolower($_REQUEST['usuario']);
 	$contrasena = md5($_REQUEST['contrasena']);
 	$recordar = filter_var($_REQUEST['recordar'], FILTER_VALIDATE_BOOLEAN);
 	$paginaAnterior = $_SESSION['paginaAnterior'];
@@ -39,7 +39,7 @@ try{
 
 		$consulta="UPDATE usuarios SET access_token='$accessToken' WHERE id_usuario='$id_usuario'";
 			
-		mysqli_query($conexion, $consulta) or die ("Problemas: ".mysqli_error($conexion));
+		$conexion->query($consulta);
 
 	}else{
 

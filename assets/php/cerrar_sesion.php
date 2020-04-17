@@ -6,9 +6,9 @@ try{
 
   include 'conexion.php';
 
-  if(!isset($_SESSION["usuario"]) || !isset($_SESSION["paginaAnterior"])){
+  if(!isset($_SESSION["usuario"])){
 
-    header("Location: ".$_SESSION["paginaAnterior"]);
+    header("Location: ../../".$_SESSION["paginaAnterior"]);
     return;
     
   }

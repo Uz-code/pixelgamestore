@@ -227,7 +227,7 @@ $_SESSION["paginaAnterior"]='noticia.php';
   <script>
     $(document).on('ready', function() {
       $('.dropdown-trigger').dropdown();
-      this.title = "<?= $noticia['titulo'] ?>";
+      this.title = "<?= html_entity_decode($noticia['titulo']) ?>";
     });
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

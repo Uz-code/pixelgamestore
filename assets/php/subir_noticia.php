@@ -39,12 +39,15 @@ try{
   // codifico el archivo a 64 bits #
   $contenidoImagen = file_get_contents($target_file);
   $imagen_final = base64_encode($contenidoImagen);
-  //echo "<img width='450' border='0' src='data:image/jpg;base64,".$imagen_final."'>";
+  unlink($target_file);
+
   $consulta="INSERT INTO noticias(titulo,subtitulo,etiquetas,imagen,cuerpo,fecha,id_usuario) VALUES ('$titulo','$subtitulo','$etiquetas','$imagen_final','$cuerpo',CURRENT_TIMESTAMP,'$id_usuario')";
 
-  mysqli_query($conexion, $consulta) or die ("Problemas al subir noticia: ".mysqli_error($conexion));
+  if(!$conexion->query($consulta)){
 
-  unlink($target_file);
+    throw new mysqli_sql_exception($conexion->error);
+
+  }
 
   echo json_encode(array('status' => array('code' =>1 , 'description' => 'OK')));
 
