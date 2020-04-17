@@ -207,7 +207,7 @@ if(isset($_SESSION["usuario"])){
             if (jsonData.status.code == "1"){
               
               alert('LogIn OK');
-              location.href = "<?= $_SESSION["paginaAnterior"] ?>";
+              location.reload();
               //window.history.back();
             }else{
               alert(jsonData.status.description);
@@ -235,7 +235,7 @@ if(isset($_SESSION["usuario"])){
             if (jsonData.status.code == "1"){
 
               alert('LogIn OK');
-              location.href = "<?= $_SESSION["paginaAnterior"] ?>";
+              location.reload();
               //window.history.back();
             }else{
               
