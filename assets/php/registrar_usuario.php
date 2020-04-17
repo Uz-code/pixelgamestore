@@ -83,13 +83,13 @@ try{
 	
 	}else{
 	
-		$_SESSION['usuario'] = $extraido['usuario'];
-		
-		$_SESSION['id_usuario'] = $extraido['id_usuario'];
-	
 		setcookie("ACCESS_TOKEN", null, time() - 3600, "/");
 	
 	}
+
+	$_SESSION['usuario'] = $extraido['usuario'];
+		
+	$_SESSION['id_usuario'] = $extraido['id_usuario'];
 
 	echo json_encode(array('status' => array('code' =>1 , 'description' => 'OK')));
 

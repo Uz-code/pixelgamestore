@@ -39,6 +39,8 @@ try{
 
 	if($recordar == true){
 
+		date_default_timezone_set("America/Argentina/Buenos_Aires");
+
 		$accessToken= md5($extraido['usuario'].$id_usuario.date('d-m-Y H:i:s'));	
 
 		setcookie("ACCESS_TOKEN", $accessToken, time()+(60*60*24*365), '/', NULL, 0);
