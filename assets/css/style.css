@@ -791,7 +791,7 @@ h4, .text--md {
   }
 .center {
   text-align: center;
-  width: 50%;
+  width: auto;
   margin: auto;
 }
 @media only screen and (max-width: 600px) {
