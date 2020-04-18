@@ -174,20 +174,23 @@ $_SESSION["paginaAnterior"]='noticias.php';
   <?php else : 
 
     while ($noticia = $noticias -> fetch_array()) : ?>
-
+  
     <div class="container container--adaptive">
       <div style="text-align: left;color:var(--color-contrast-medium);" class="margin-bottom--xs">
         <h6><?= (new DateTime($noticia['fecha']))->format('d/m/Y H:i:s') ?></h6>
       </div>
     </div>
+    
     <section class="feature feature--invert margin-bottom--xl">
       <div class="feature__inner container container--adaptive">
         <div class="feature__text">
           <div class="feature__text-inner">
-            <div class="text-component">         
-            <h1 <?= (strlen($noticia['titulo'])>50 ? 'style="font-size: 200% !important;"' : null )?> > <?=$noticia['titulo'] ?></h1>
-              <p><?= mb_substr($noticia['cuerpo'],0,200,'HTML-ENTITIES'); ?>...</p>
-              <small class="feature__label margin-bottom--xs">Etiquetas:&nbsp;<?= $noticia['etiquetas'] ?></small>
+            <div class="text-component"> 
+              <a href="noticia.php?idNoticia=<?= $noticia['id_noticia'] ?>">        
+                <h1 <?= (strlen($noticia['titulo'])>50 ? 'style="font-size: 200% !important;"' : null )?> > <?=$noticia['titulo'] ?></h1>
+                <p><?= mb_substr($noticia['cuerpo'],0,200,'HTML-ENTITIES'); ?>...</p>
+                <small class="feature__label margin-bottom--xs">Etiquetas:&nbsp;<?= $noticia['etiquetas'] ?></small>
+              </a>
             </div>
             <div class="margin-top--sm">
               <div class="">
@@ -201,7 +204,9 @@ $_SESSION["paginaAnterior"]='noticias.php';
           <div class="" style="position: relative;">
             <div class="StoreCard-image">
               <div>
-                <img alt="portada" class="Picture-image" src="data:image/jpg;base64,<?= $noticia['imagen'] ?>">
+                <a href="noticia.php?idNoticia=<?= $noticia['id_noticia'] ?>">
+                  <img alt="portada" class="Picture-image" src="data:image/jpg;base64,<?= $noticia['imagen'] ?>">
+                </a>
               </div>
             </div>
           </div>
@@ -342,7 +347,7 @@ $_SESSION["paginaAnterior"]='noticias.php';
             if (jsonData.status.code == "1"){
               
               alert('Noticia Subida');
-              location.href = "<?= $_SESSION["paginaAnterior"] ?>";
+              location.reload();
               //window.history.back();
             }else{
               alert(jsonData.status.description);
