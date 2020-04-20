@@ -134,7 +134,7 @@ $_SESSION["paginaAnterior"]='noticia.php';
   </header> <!-- termina header -->
   <div class="container" style="width: 90%; margin-top:3%">
     <div class="row">
-      <div class="col s12 m8 l9" style="background-color:var(--color-contrast-lowerest);margin-top: 4rem; padding:0%;">
+      <div class="col s12 m12 l12 xl9" style="background-color:var(--color-contrast-lowerest);margin-top: 4rem; padding:0%;">
         <div class="container container--adaptive">
         <?php
 
@@ -180,8 +180,8 @@ $_SESSION["paginaAnterior"]='noticia.php';
         ?>
         </div>      
       </div>
-      <div class="col s12 m4 l3" style="margin-top: 3rem;">
-
+      <div class="col s12 m12 l12 xl3" style="margin-top: 3rem;">
+        <div class="row">
       <?php
 
       $consultaNoticiasLaterales="SELECT imagen, cuerpo, id_noticia FROM noticias WHERE id_noticia!='$idNoticia' ORDER BY Rand() LIMIT 2";
@@ -200,16 +200,19 @@ $_SESSION["paginaAnterior"]='noticia.php';
 
         while ($noticiaLateral = $resultado -> fetch_array()) : ?> 
 
-          <a href="noticia.php?idNoticia=<?= $noticiaLateral['id_noticia'] ?>">
-            <div class="card blue-grey darken-2">
-              <div class="card-image">
-                <img src="data:image/jpg;base64,<?= $noticiaLateral['imagen'] ?>">
+          <div class="col s12 m6 l16 xl12">
+            <a href="noticia.php?idNoticia=<?= $noticiaLateral['id_noticia'] ?>">
+              <div class="card blue-grey darken-2">
+                <div class="card-image">
+                  <img src="data:image/jpg;base64,<?= $noticiaLateral['imagen'] ?>">
+                </div>
+                <div class="card-content">
+                  <p><?= mb_substr($noticiaLateral['cuerpo'],0,200,'HTML-ENTITIES'); ?>...</p>
+                </div>
               </div>
-              <div class="card-content">
-                <p><?= mb_substr($noticiaLateral['cuerpo'],0,200,'HTML-ENTITIES'); ?>...</p>
-              </div>
-            </div>
-          </a>
+            </a>
+          </div>
+
         <?php
         
         endwhile;
@@ -219,6 +222,7 @@ $_SESSION["paginaAnterior"]='noticia.php';
       $resultado -> close();
 
       ?>
+        </div>
       </div>
     </div>
   </div>
