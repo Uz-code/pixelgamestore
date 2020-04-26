@@ -147,7 +147,7 @@ if(isset($_SESSION["usuario"])){
             <span>Recordarme</span>
           </label>
           <a href="#">Olvidaste tu contraseña?</a>
-          <button type="submit">Log in</button>
+          <button id="btnLogin" type="submit">Log in</button>
 
         </form>
         
@@ -193,6 +193,8 @@ if(isset($_SESSION["usuario"])){
 
     $('#formLogin').submit(function(e) {
       e.preventDefault();
+      $("#btnLogin").toggleClass('clickedButton');
+      $("#btnLogin").prop('disabled', true);
       $.ajax({
         type: "POST",
         url: 'assets/php/iniciar_sesion.php',
@@ -206,7 +208,7 @@ if(isset($_SESSION["usuario"])){
             var jsonData = JSON.parse(response);
             if (jsonData.status.code == "1"){
               
-              alert('LogIn OK');
+              //alert('LogIn OK');
               location.reload();
               //window.history.back();
             }else{
@@ -215,6 +217,10 @@ if(isset($_SESSION["usuario"])){
           },
           error: function() {
             alert('Servidor no disponible');
+          },
+          complete : function() {
+            $("#btnLogin").toggleClass('clickedButton');
+            $("#btnLogin").prop('disabled', false);
           }
       });
     });

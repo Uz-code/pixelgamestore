@@ -281,3 +281,7 @@
 	    color: #3c97bf;
 	    text-decoration: none;
 	}
+	.clickedButton {
+    border: 1px solid grey;
+    background-color: grey; 
+	}
