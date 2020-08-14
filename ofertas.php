@@ -27,18 +27,7 @@ $_SESSION["paginaAnterior"]='ofertas.php';
     <div class="container container--lg">
       <div class="main-header__layout">
         <div class="main-header__logo">
-        <?php
-          
-          if(isset($_SESSION["usuario"])){  
-
-          echo 'Hola&nbsp;'.$_SESSION["usuario"];
-
-        }else{
-
-          echo'Invitado';
-
-        } 
-        ?>
+          <?= isset($_SESSION["usuario"]) ? 'Hola '.$_SESSION["usuario"] : 'Invitado' ?>
         </div>
         <button class="btn--subtle main-header__nav-trigger js-main-header__nav-trigger" aria-label="Toggle menu"
           aria-expanded="false" aria-controls="main-header-nav">

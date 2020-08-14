@@ -27,23 +27,14 @@ $_SESSION["paginaAnterior"]='noticias.php';
 </head>
 
 <body>
+  <div id="loadingImg">
+    <img  src="img/cargando.gif" alt="Funny image">
+  </div>
   <header class="main-header js-main-header margin-bottom--lg">
     <div class="container container--lg">
       <div class="main-header__layout">
         <div class="main-header__logo">
-          <?php
-          
-          if(isset($_SESSION["usuario"])){  
-
-            echo 'Hola&nbsp;'.$_SESSION["usuario"];
-
-          }else{
-
-            echo'Invitado';
-
-          }  
-
-          ?>
+          <?= isset($_SESSION["usuario"]) ? 'Hola '.$_SESSION["usuario"] : 'Invitado' ?>
         </div>
         <button class="btn--subtle main-header__nav-trigger js-main-header__nav-trigger" aria-label="Toggle menu"
           aria-expanded="false" aria-controls="main-header-nav">
@@ -335,6 +326,8 @@ $_SESSION["paginaAnterior"]='noticias.php';
       frmData.append("etiquetas",$("#inputEtiquetas").val());
       frmData.append("imagen",$('#imagen')[0].files[0]);
 
+      $("#loadingImg").show()
+
       $.ajax({
         type: "POST",
         url: 'assets/php/subir_noticia.php',
@@ -351,11 +344,13 @@ $_SESSION["paginaAnterior"]='noticias.php';
               //window.history.back();
             }else{
               alert(jsonData.status.description);
+              $("#loadingImg").hide();
             }
           },
           error: function() {
             alert('Servidor no disponible');
-          }
+            $("#loadingImg").hide();
+          },
       });
     });
 

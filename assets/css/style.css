@@ -1220,3 +1220,26 @@ input.valid:not([type]), input.valid:not([type]):focus, input.valid[type=text]:n
   width: 100%;color:var(--color-contrast-high);    border: 1px solid var(--color-contrast-high);outline: none;
 }
 
+
+#loadingImg{
+  position: fixed;
+  background-color: #222;
+  top: 0; 
+  right: 0; 
+  bottom: 0; 
+  left: 0;
+  z-index: 1010000;
+  opacity: 0.6; 
+  display: none;
+}
+
+#loadingImg img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70px;
+  height: 70px;
+  min-height: 0px;
+  margin-top: -35px; /* Half the height */
+  margin-left: -35px; /* Half the width */
+}

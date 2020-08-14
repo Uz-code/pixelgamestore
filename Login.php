@@ -25,6 +25,9 @@ if(isset($_SESSION["usuario"])){
   <title>Log In</title>
 </head>
 <body>
+  <div id="loadingImg">
+    <img  src="img/cargando.gif" alt="Funny image">
+  </div>
   <header class="main-header js-main-header margin-bottom--lg">
     <div class="container container--lg">
       <div class="main-header__layout">
@@ -192,9 +195,11 @@ if(isset($_SESSION["usuario"])){
     $('.dropdown-trigger').dropdown();
 
     $('#formLogin').submit(function(e) {
+
+      $("#loadingImg").show()
+      $('body').css('overflow', 'hidden');
+      
       e.preventDefault();
-      $("#btnLogin").toggleClass('clickedButton');
-      $("#btnLogin").prop('disabled', true);
       $.ajax({
         type: "POST",
         url: 'assets/php/iniciar_sesion.php',
@@ -213,20 +218,24 @@ if(isset($_SESSION["usuario"])){
               //window.history.back();
             }else{
               alert(jsonData.status.description);
+              $("#loadingImg").hide();
+              $('body').css('overflow', 'auto');
             }
           },
           error: function() {
             alert('Servidor no disponible');
+            $("#loadingImg").hide();
+            $('body').css('overflow', 'auto');
           },
-          complete : function() {
-            $("#btnLogin").toggleClass('clickedButton');
-            $("#btnLogin").prop('disabled', false);
-          }
       });
     });
 
     $('#formSignUp').submit(function(e) {
       e.preventDefault();
+
+      $("#loadingImg").show()
+      $('body').css('overflow', 'hidden');
+
       $.ajax({
         type: "POST",
         url: 'assets/php/registrar_usuario.php',
@@ -246,12 +255,16 @@ if(isset($_SESSION["usuario"])){
             }else{
               
               alert(jsonData.status.description)
+              $("#loadingImg").hide();
+              $('body').css('overflow', 'auto');
 
             }
             
           },
           error: function() {
             alert('Servidor no disponible');
+            $("#loadingImg").hide();
+            $('body').css('overflow', 'auto');
           }
       });
     });
