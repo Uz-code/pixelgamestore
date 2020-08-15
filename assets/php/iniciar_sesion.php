@@ -53,6 +53,10 @@ try{
 
 		setcookie("ACCESS_TOKEN", null, time() - 3600, "/");
 
+		$consulta="UPDATE usuarios SET access_token=null WHERE id_usuario='$id_usuario'";
+			
+		$conexion->query($consulta);
+
 	}
 
 	$_SESSION['usuario'] = $extraido['usuario'];
