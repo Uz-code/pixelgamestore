@@ -15,7 +15,7 @@ try{
 
   }
 
-  if(empty($_POST['titulo'] || empty($_POST['subtitulo']) || empty($_POST['etiquetas']) || empty($_POST['cuerpo']) || empty($_FILES["imagen"]))){
+  if(empty($_POST['titulo'] || empty($_POST['subtitulo']) || empty($_POST['etiquetas']) || empty($_POST['cuerpo']) || empty($_FILES["imagen"]) || empty($_POST["fecha"]))){
 
     throw new Exception("Completa todos los campos");
       
@@ -27,6 +27,7 @@ try{
 
   }
 
+  $fecha = (new DateTime($_POST['fecha']))->format('Y-m-d H:i:s');
   $titulo = htmlentities($_POST['titulo'],ENT_QUOTES,'UTF-8');
   $subtitulo = htmlentities($_POST['subtitulo'],ENT_QUOTES,'UTF-8');
   $etiquetas = htmlentities($_POST['etiquetas'],ENT_QUOTES,'UTF-8');
@@ -41,7 +42,7 @@ try{
   $imagen_final = base64_encode($contenidoImagen);
   unlink($target_file);
 
-  $consulta="INSERT INTO noticias(titulo,subtitulo,etiquetas,imagen,cuerpo,fecha,id_usuario) VALUES ('$titulo','$subtitulo','$etiquetas','$imagen_final','$cuerpo',CURRENT_TIMESTAMP,'$id_usuario')";
+  $consulta="INSERT INTO noticias(titulo,subtitulo,etiquetas,imagen,cuerpo,fecha,id_usuario) VALUES ('$titulo','$subtitulo','$etiquetas','$imagen_final','$cuerpo','$fecha','$id_usuario')";
 
   if(!$conexion->query($consulta)){
 

@@ -1223,13 +1223,13 @@ input.valid:not([type]), input.valid:not([type]):focus, input.valid[type=text]:n
 
 #loadingImg{
   position: fixed;
-  background-color: #222;
+  background-color: #000;
   top: 0; 
   right: 0; 
   bottom: 0; 
   left: 0;
   z-index: 1010000;
-  opacity: 0.6; 
+  opacity: 0.7; 
   display: none;
 }
 

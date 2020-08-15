@@ -302,6 +302,13 @@ $_SESSION["paginaAnterior"]='noticias.php';
   <script src="assets/js/header.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
+  <script>
+
+  $(document).on('ready', function () {
+    $('.dropdown-trigger').dropdown();
+  })
+
+  </script>
 
   <?php 
   
@@ -311,7 +318,6 @@ $_SESSION["paginaAnterior"]='noticias.php';
 
   $(document).on('ready', function () {
 
-    $('.dropdown-trigger').dropdown();
     $('[data-toggle="tooltip"]').tooltip();
     $('.fixed-action-btn').floatingActionButton();
     $('.modal').modal();
@@ -319,14 +325,16 @@ $_SESSION["paginaAnterior"]='noticias.php';
 
     $('#formSubirNoticia').submit(function(e) {
       e.preventDefault();
+      $("#loadingImg").show()
+
       var frmData = new FormData();
       frmData.append("titulo",$("#inputTitulo").val());
       frmData.append("subtitulo",$("#inputSubtitulo").val());
       frmData.append("cuerpo",$("#inputCuerpo").val());
       frmData.append("etiquetas",$("#inputEtiquetas").val());
       frmData.append("imagen",$('#imagen')[0].files[0]);
-
-      $("#loadingImg").show()
+      let date = new Date();
+      frmData.append("fecha",date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()+" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds());   
 
       $.ajax({
         type: "POST",
@@ -393,16 +401,6 @@ $_SESSION["paginaAnterior"]='noticias.php';
 
   <?php endif; ?>
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-  <script>
-
-  $(document).on('ready', function () {
-    $('.dropdown-trigger').dropdown();
-    $('[data-toggle="tooltip"]').tooltip();
-    $('.fixed-action-btn').floatingActionButton();
-    $('.modal').modal();
-  })
-
-  </script>
 
 </body>
 

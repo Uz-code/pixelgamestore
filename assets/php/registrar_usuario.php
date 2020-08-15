@@ -38,7 +38,7 @@ try{
 	}
 
 	$usuario = strtolower($_REQUEST['usuario']);
-  $email = $_REQUEST['email'];
+  $email = strtolower($_REQUEST['email']);
 	$contrasena = md5($_REQUEST['contrasena']);
 	$recordar = true;
 	$paginaAnterior = $_SESSION['paginaAnterior'];
