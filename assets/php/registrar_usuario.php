@@ -40,7 +40,7 @@ try{
 	$usuario = strtolower($_REQUEST['usuario']);
   $email = strtolower($_REQUEST['email']);
 	$contrasena = md5($_REQUEST['contrasena']);
-	$recordar = true;
+	$recordar = filter_var($_REQUEST['recordar'], FILTER_VALIDATE_BOOLEAN);
 	$paginaAnterior = $_SESSION['paginaAnterior'];
 
 	$consulta="SELECT usuario FROM usuarios WHERE usuario = '$usuario'";

@@ -187,6 +187,9 @@
       background-color: #fff;
       border: 1px solid #ced4da;
       border-radius: .25rem;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
 
     .form-control {
@@ -336,32 +339,59 @@
 }
      
 
-    @media (min-width: 1500px) {
+@media (min-width: 1500px) {
 
-      .modal {
-        width: 60%;
-        max-width: 100%;
-      }
+  .modal {
+    width: 60%;
+    max-width: 100%;
+  }
  
-    }
-     @media (max-width: 1015px) {
-    	textarea{
-    	height: 260px !important;
-    	}
-    }
+}
+@media (max-width: 1015px) {
 
-   @media (max-width: 600px) {
+  textarea{
+    height: 260px !important;
+  }
+}
 
-      .modal {
-        top: 0% !important;
-        width: 100%;
-        max-width: 100%;
-      }
-     textarea{
-    	height: 100px !important;
-    	}
+@media (max-width: 600px), (max-height: 500px){
+
+  .modal {
+    top: 0% !important;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  textarea{
+    height: 100px !important;
+  }
+      
+  @media (min-height: 500px) {
+    textarea{
+      height: 60px !important;
     }
-   
+  }
+
+  @media (min-height: 600px) {
+    textarea{
+      height: 140px !important;
+    }
+  }
+
+  @media (min-height: 700px) {
+    textarea{
+      height: 200px !important;
+    }
+  }
+
+  @media (min-height: 800px) {
+    textarea{
+      height: 300px !important;
+    }
+  }
+
+} 
+
 .btn-floating{
 	background-color: var(--color-contrast-lowerest);
 }

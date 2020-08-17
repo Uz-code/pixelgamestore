@@ -340,9 +340,9 @@ h4, .text--md {
 }
 .btn--primario {
   background-color: hsl(228, 74%, 61%);
-  background-color: var(--color-primary-d);
+  background-color: var(--color-contrast-lowerest);
   color: hsl(0, 0%, 100%);
-  color: var(--color-white);
+  color: var(--color-contrast-higher);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -518,8 +518,7 @@ h4, .text--md {
     height: 2px;
     width: 1em;
     background-color: currentColor;
-    margin-right: 0.375em;
-    margin-right: var(--space-xxs);
+    margin-top: var(--space-sm);
     transition: 0.2s;
   }
   .main-header__nav-trigger-icon::before, .main-header__nav-trigger-icon::after {
@@ -868,7 +867,7 @@ h4, .text--md {
     padding-top: 1.25em;
   }
   ul:not(.browser-default) > li {
-    padding-left: 1.25em;
+    padding: 0 1.25em;
 }
 .dropdown-content li>a, .dropdown-content li>span {
     padding-left: 0px;

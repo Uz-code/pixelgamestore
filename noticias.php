@@ -43,7 +43,6 @@ $_SESSION["paginaAnterior"]='noticias.php';
         </button>
         <nav class="main-header__nav js-main-header__nav" id="main-header-nav" aria-labelledby="main-header-nav-label"
           role="navigation">
-          <div id="main-header-nav-label" class="main-header__nav-label">Main menu</div>
           <ul class="main-header__nav-list">
             <li>
               <div class="buscar-caja">
@@ -77,7 +76,7 @@ $_SESSION["paginaAnterior"]='noticias.php';
             <?php } ?>
 
               <li class="divider" tabindex="-1"></li>
-              <li class="main-header__nav-item" style="margin:0;padding-top: 9px;padding-left: 6px;">
+              <li class="main-header__nav-item" style="margin:0; padding: 14px 16px;">
                 <div class="switch">
                   <input class="switch__input" type="checkbox" id="themeSwitch">
                   <label aria-hidden="true" class="switch__label" for="themeSwitch">On</label>
@@ -88,43 +87,43 @@ $_SESSION["paginaAnterior"]='noticias.php';
             </ul>
             <ul id='dropdown2' class='dropdown-content'>
               <li class="" data-lang="ar"><a href="" data-index="0">
-                  <span>العربية</span></a>
+                <span>العربية</span></a>
               </li>
               <li class="" data-lang="de"><a href="" data-index="1">
-                  <span>Deutsch</span></a>
+                <span>Deutsch</span></a>
               </li>
               <li class="" data-lang="en-US"><a href="" data-index="2">
-                  <span>English</span></a>
+                <span>English</span></a>
               </li>
               <li class="" data-lang="es-MX"><a href="" data-index="4">
-                  <span>Español (LA)</span></a>
+                <span>Español (LA)</span></a>
               </li>
               <li class="" data-lang="fr"><a href="" data-index="5">
-                  <span>Français</span></a>
+                <span>Français</span></a>
               </li>
               <li class="" data-lang="it"><a href="" data-index="6">
-                  <span>Italiano</span></a>
+                <span>Italiano</span></a>
               </li>
               <li class="" data-lang="ja"><a href="" data-index="7">
-                  <span>日本語</span></a>
+                <span>日本語</span></a>
               </li>
               <li class="" data-lang="ko"><a href="" data-index="8">
-                  <span>한국어</span></a>
+                <span>한국어</span></a>
               </li>
               <li class="" data-lang="pl"><a href="" data-index="9">
-                  <span>Polski</span></a>
+                <span>Polski</span></a>
               </li>
               <li class="" data-lang="pt-BR"><a href="" data-index="10">
-                  <span>Português (Brasil)</span></a>
+                <span>Português (Brasil)</span></a>
               </li>
               <li class="" data-lang="ru"><a href="" data-index="11">
-                  <span>Русский</span></a>
+                <span>Русский</span></a>
               </li>
               <li class="" data-lang="tr"><a href="" data-index="12">
-                  <span>Türkçe</span></a>
+                <span>Türkçe</span></a>
               </li>
               <li class="" data-lang="zh-CN"><a href="" data-index="13">
-                  <span>简体中文</span></a>
+                <span>简体中文</span></a>
               </li>
             </ul>
           </ul>
@@ -178,7 +177,7 @@ $_SESSION["paginaAnterior"]='noticias.php';
           <div class="feature__text-inner">
             <div class="text-component"> 
               <a href="noticia.php?idNoticia=<?= $noticia['id_noticia'] ?>">        
-                <h1 <?= (strlen($noticia['titulo'])>50 ? 'style="font-size: 200% !important;"' : null )?> > <?=$noticia['titulo'] ?></h1>
+                <h1 class="text--xl"><?=$noticia['titulo'] ?></h1>
                 <p><?= mb_substr($noticia['cuerpo'],0,200,'HTML-ENTITIES'); ?>...</p>
                 <small class="feature__label margin-bottom--xs">Etiquetas:&nbsp;<?= $noticia['etiquetas'] ?></small>
               </a>
@@ -219,7 +218,6 @@ $_SESSION["paginaAnterior"]='noticias.php';
       <div class="center">
         <div class="pagination2 ">
           <a href="noticias.php?pagina=<?= ($pagina-1) ?>">&laquo;</a>
-          <!-- <a href="noticias.php?pagina=1">1</a> -->
   <?php    
 
     $numero = ($pagina % 6 == 0 ? $pagina - (6 - 1) : 1 + (6*intdiv($pagina, 6)));
@@ -284,7 +282,7 @@ $_SESSION["paginaAnterior"]='noticias.php';
           </div>
         </div>
         <div class="modal-footer">
-          <input type="submit" class="btn btn-secondary"></input>
+          <input type="submit" value="subir noticia" class="btn btn-secondary">
         </div>
       </form> 
     </div>

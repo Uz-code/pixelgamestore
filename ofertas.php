@@ -34,9 +34,7 @@ $_SESSION["paginaAnterior"]='ofertas.php';
           <i class="main-header__nav-trigger-icon" aria-hidden="true"></i>
           <span></span>
         </button>
-        <nav class="main-header__nav js-main-header__nav" id="main-header-nav" aria-labelledby="main-header-nav-label"
-          role="navigation">
-          <div id="main-header-nav-label" class="main-header__nav-label">Main menu</div>
+        <nav class="main-header__nav js-main-header__nav" id="main-header-nav" aria-labelledby="main-header-nav-label" role="navigation">
           <ul class="main-header__nav-list">
             <li>
               <div class="buscar-caja">
@@ -70,7 +68,7 @@ $_SESSION["paginaAnterior"]='ofertas.php';
               //Se guarda la pagina para recuperarla al iniciar o cerrar sesion
             ?>
               <li class="divider" tabindex="-1"></li>
-              <li class="main-header__nav-item" style="margin:0;padding-top: 9px;padding-left: 6px;">
+              <li class="main-header__nav-item" style="margin:0; padding: 14px 16px;">
                 <div class="switch">
                   <input class="switch__input" type="checkbox" id="themeSwitch">
                   <label aria-hidden="true" class="switch__label" for="themeSwitch">On</label>

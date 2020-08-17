@@ -38,7 +38,6 @@ if(isset($_SESSION["usuario"])){
           <span></span>
         </button>
         <nav class="main-header__nav js-main-header__nav" id="main-header-nav" aria-labelledby="main-header-nav-label" role="navigation">
-          <div id="main-header-nav-label" class="main-header__nav-label">Main menu</div>
           <ul class="main-header__nav-list">
             <li>
               <div class="buscar-caja">
@@ -58,8 +57,8 @@ if(isset($_SESSION["usuario"])){
             <ul id='dropdown1' class='dropdown-content'>
               <li><a href="#!">Sign up</a></li>
               <li class="divider" tabindex="-1"></li>
-              <li class="main-header__nav-item margin-bottom" style="margin:0;padding-top: 9px;padding-left: 6px;">
-                <div class="switch" >
+              <li class="main-header__nav-item" style="margin:0; padding: 14px 16px;">
+                <div class="switch">
                   <input class="switch__input" type="checkbox" id="themeSwitch">
                   <label aria-hidden="true" class="switch__label" for="themeSwitch">On</label>
                   <div aria-hidden="true" class="switch__marker"></div>
@@ -128,6 +127,10 @@ if(isset($_SESSION["usuario"])){
             <input  type="text" placeholder="Usuario" name="usuario" id="usuario1" required/>
             <input type="email" placeholder="Email" name="email" id="email1" required/>
             <input type="password" placeholder="Contraseña" name="contrasena" id="contrasena1" required/>
+            <label>
+              <input type="checkbox" checked="checked" id="recordar1"/>
+              <span>Recordarme</span>
+            </label>
           </div>
           <button type="submit" name="action">Sign Up</button>
         </form>
@@ -145,7 +148,7 @@ if(isset($_SESSION["usuario"])){
           <span class="dark">o use su cuenta</span>
           <input type="text" placeholder="Usuario"  name="usuario" id="usuario" required/>
           <input type="password" placeholder="Contraseña" name="contrasena" id="contrasena" required/>
-          <label>
+          <label style="padding: 1.25em 0;">
             <input type="checkbox" checked="checked" id="recordar"/>
             <span>Recordarme</span>
           </label>
@@ -172,13 +175,13 @@ if(isset($_SESSION["usuario"])){
     </div>
 
     <footer>
-    <p>
-    Contactese con
-    <a target="_blank" href="https://florin-pop.com">Emmanuel</a> y
-    <a target="_blank" href="https://florin-pop.com">Alejandro</a>
-    Por cualquier inconveniente
-    <a target="_blank" href="">Aquí</a>.
-    </p>
+      <p>
+        Contactese con
+        <a href="#">Emmanuel</a> y
+        <a href="#">Alejandro</a>
+        Por cualquier inconveniente
+        <a href="#">Aquí</a>.
+      </p>
     </footer>
   </section>
 <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
@@ -242,7 +245,8 @@ if(isset($_SESSION["usuario"])){
         data: {
           usuario: $("#usuario1").val(),
           contrasena : $("#contrasena1").val(),
-          email: $("#email1").val()
+          email: $("#email1").val(),
+          recordar: $("#recordar1").prop('checked')
         },
           success: function(response){
             //console.log(response);
