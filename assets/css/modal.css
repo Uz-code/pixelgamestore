@@ -256,7 +256,7 @@
 
     .btn-secondary {
       color: #fff !important;
-      background-color: var(--color-contrast-low) !important;
+      background-color: hsl(252, 4%, 25%) !important;
       border-color: #6c757d !important;
     }
      .btn-secondary:hover{
@@ -393,11 +393,11 @@
 } 
 
 .btn-floating{
-	background-color: var(--color-contrast-lowerest);
+	background-color: #2A2A2A;
 }
 .btn-floating:hover{
-	background-color: var(--color-contrast-lower);
+	background-color: hsl(240, 6%, 15%);
 }
 .btn-floating:hover{
-	background-color: var(--color-contrast-lower);
+	background-color: hsl(240, 6%, 15%);
 }
