@@ -8,6 +8,7 @@ html {
   box-sizing: border-box;
 }
 body {
+	margin : 1px !important;
   background-color: hsl(0, 0%, 100%);
   background-color: var(--color-bg);
   font-size: var(--text-base-size);
@@ -27,6 +28,7 @@ blockquote, q {
 button, input, textarea, select {
   margin: 0;
 }
+
 input.valid:not([type]), input.valid:not([type]):focus, input.valid[type=text]:not(.browser-default), input.valid[type=text]:not(.browser-default):focus, input.valid[type=password]:not(.browser-default), input.valid[type=password]:not(.browser-default):focus, input.valid[type=email]:not(.browser-default), input.valid[type=email]:not(.browser-default):focus, input.valid[type=url]:not(.browser-default), input.valid[type=url]:not(.browser-default):focus, input.valid[type=time]:not(.browser-default), input.valid[type=time]:not(.browser-default):focus, input.valid[type=date]:not(.browser-default), input.valid[type=date]:not(.browser-default):focus, input.valid[type=datetime]:not(.browser-default), input.valid[type=datetime]:not(.browser-default):focus, input.valid[type=datetime-local]:not(.browser-default), input.valid[type=datetime-local]:not(.browser-default):focus, input.valid[type=tel]:not(.browser-default), input.valid[type=tel]:not(.browser-default):focus, input.valid[type=number]:not(.browser-default), input.valid[type=number]:not(.browser-default):focus, input.valid[type=search]:not(.browser-default), input.valid[type=search]:not(.browser-default):focus, textarea.materialize-textarea.valid, textarea.materialize-textarea.valid:focus, .select-wrapper.valid > input.select-dropdown {
   border-bottom: 1px solid lightgrey !important;
   -webkit-box-shadow: none !important;
@@ -444,6 +446,8 @@ h4, .text--md {
   }
   .main-header {
     position: fixed;
+	box-shadow: 0 11px 12px rgba(0,0,0,0.10),
+				0 5px 4px rgba(0,0,0,0.05);
     background-color: hsl(0, 0%, 100%);
     background-color: var(--color-contrast-lowerest);
     border-bottom: 1px solid hsl(240, 1%, 83%);
@@ -1103,9 +1107,12 @@ outline: none;
     border-radius: 40px;
     padding: 5px;
 }
+.buscar-caja > .buscar-txt {
+visibility:hidden;
+}
 .buscar-caja:hover > .buscar-txt {
- width: 240px;
- padding: 0 6px;
+ width: 140px;
+ padding: 0 0px;
 }
 .buscar-caja:hover > .buscar-btn {
  color: var(--color-contrast-higher);

@@ -12,6 +12,7 @@
 		font-family: 'Montserrat', sans-serif !important;
 		height: 100vh;
 		margin: -20px 0 50px;
+		overflow-y:scroll;
 	}
 
 	h1 {
@@ -69,18 +70,28 @@
 	}
 	button {
 		border-radius: 20px;
-		border: 1px solid #FF4B2B;
-		background-color: #FF4B2B;
+		border: 1px solid var(--color-contrast-lower);
+		background-color: var(--color-contrast-lower);
 		color: #FFFFFF;
 		font-size: 12px;
 		font-weight: bold;
-		padding: 12px 45px;
+		padding: 3px 45px;
 		letter-spacing: 1px;
 		text-transform: uppercase;
 		transition: transform 80ms ease-in;
 		cursor: pointer;
 	}
-
+	
+	button.btnLogin
+	{
+	color:	 var(--color-contrast-higher);
+	
+	}
+	
+	button.btnSubmit
+	{
+	color:	 var(--color-contrast-higher);
+	}
 	button:active {
 		transform: scale(0.95);
 	}
@@ -193,7 +204,7 @@
 	.overlay {
 		background: var(--color-contrast-low);
 		background: -webkit-linear-gradient(to right, var(--color-overlay), var(--color-overlay-two));
-		background: linear-gradient(to right, var(--color-overlay), var(--color-overlay-two));
+		background: var(--color-overlay);
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position: 0 0;
@@ -224,6 +235,7 @@
 		transform: translateX(0);
 		transition: transform 0.6s ease-in-out;
 	}
+	
 
 	.overlay-left {
 		transform: translateX(-20%);
@@ -277,3 +289,78 @@
 	    color: #2648DF;
 	    text-decoration: none;
 	}
+	
+		@media only screen and (max-width: 600px) 
+	{
+		
+
+		.containerLog
+		{
+			box-shadow: 0 0px 0px rgb(0 0 0 / 0%), 0 0px 0px rgb(0 0 0 / 0%) !important;
+			background-color:var(--color-background-overlay);
+
+		}
+		.overlay-panel 
+		{
+			background-color:transparent;
+		}
+		.overlay
+		{
+			
+			 background-color:transparent !important;
+		}
+		
+		h1.ghost {
+
+		color: transparent;
+		}
+		p{
+
+		color: transparent;
+		}
+		.sign-in-containerLog {
+			left: 0;
+			width:100%;
+			z-index: 2;
+		}
+		
+		
+		button.ghost
+		{
+		color:	 var(--color-contrast-high);
+		padding: 0;
+		width:65px;
+		position: absolute;
+
+		top: 40px;
+		}
+		.containerLog.right-panel-active .sign-up-containerLog {
+		
+			transform: translateX(0%);
+		}
+			.containerLog.right-panel-active .overlay-containerLog {
+			transform: translateX(0%);
+		}
+		.sign-up-containerLog 
+		{
+			width: 100%;
+		}
+		.feature margin-bottom--xl margin-top--xxl 
+		{
+			margin : 0 !important;
+		}
+		.error {
+			 margin-bottom: 10px; 
+		}
+		input {
+			width: 50%;
+			margin-left: 25%;
+			margin-right: 25%;
+		}
+		.overlay-containerLog {
+			position: absolute;
+			top: 0;
+			left: 65%;
+			width: 17%;
+		}
+		

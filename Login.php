@@ -115,7 +115,7 @@ if(isset($_SESSION["usuario"])){
     <div class="containerLog" id="containerLog">
       <div class="form-containerLog sign-up-containerLog">
 
-        <form id="formSignUp">
+        <form id="formSignUp" >
           <h1>Crear Cuenta</h1>
           <div class="social-containerLog">
             <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -127,12 +127,9 @@ if(isset($_SESSION["usuario"])){
             <input  type="text" placeholder="Usuario" name="usuario" id="usuario1" required/>
             <input type="email" placeholder="Email" name="email" id="email1" required/>
             <input type="password" placeholder="Contraseña" name="contrasena" id="contrasena1" required/>
-            <label>
-              <input type="checkbox" checked="checked" id="recordar1"/>
-              <span>Recordarme</span>
-            </label>
+          
           </div>
-          <button type="submit" name="action">Sign Up</button>
+          <button type="submit" class="btnSubmit" name="action">Sign Up</button>
         </form>
         
       </div>
@@ -153,7 +150,7 @@ if(isset($_SESSION["usuario"])){
             <span>Recordarme</span>
           </label>
           <a href="#">Olvidaste tu contraseña?</a>
-          <button id="btnLogin" type="submit">Log in</button>
+          <button id="btnLogin" class="btnLogin" type="submit">Log in</button>
 
         </form>
         
@@ -194,15 +191,19 @@ if(isset($_SESSION["usuario"])){
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script type="text/javascript">
 
+
   $(document).on('ready', function() {
+  
     $('.dropdown-trigger').dropdown();
-
-    $('#formLogin').submit(function(e) {
-
+	
+	
+  $("#formLogin").validate({
+  
+    submitHandler: function (form) {
+         
       $("#loadingImg").show()
       $('body').css('overflow', 'hidden');
-      
-      e.preventDefault();
+
       $.ajax({
         type: "POST",
         url: 'assets/php/iniciar_sesion.php',
@@ -215,27 +216,42 @@ if(isset($_SESSION["usuario"])){
             //console.log(response);
             var jsonData = JSON.parse(response);
             if (jsonData.status.code == "1"){
-              
-              //alert('LogIn OK');
+
+              alert('LogIn OK');
               location.reload();
               //window.history.back();
             }else{
-              alert(jsonData.status.description);
+              
+              alert(jsonData.status.description)
               $("#loadingImg").hide();
               $('body').css('overflow', 'auto');
+
             }
+            
           },
           error: function() {
             alert('Servidor no disponible');
             $("#loadingImg").hide();
             $('body').css('overflow', 'auto');
-          },
+          }
       });
-    });
+	  
+    }
+  
+  });
+  
+  
+jQuery.extend(jQuery.validator.messages, {
+required: "Campo obligatorio.",
+email: "Por favor ingrese un email valido.",
+});
 
-    $('#formSignUp').submit(function(e) {
-      e.preventDefault();
 
+ 
+  $("#formSignUp").validate({
+  
+    submitHandler: function (form) {
+         
       $("#loadingImg").show()
       $('body').css('overflow', 'hidden');
 
@@ -271,7 +287,12 @@ if(isset($_SESSION["usuario"])){
             $('body').css('overflow', 'auto');
           }
       });
-    });
+	  
+    }
+  
+  });
+
+  
 
   });
 
@@ -287,14 +308,8 @@ if(isset($_SESSION["usuario"])){
 		containerLog.classList.remove("right-panel-active");
 	});
 
-  $("#formLogin").validate();
-	$("#formSignUp").validate();
 
-  jQuery.extend(jQuery.validator.messages, {
-  required: "Campo obligatorio.",
-  email: "Por favor ingrese un email valido.",
-  });
-
+  
   $('.js-tilt').tilt({
     scale: 1.1
   })
