@@ -293,12 +293,14 @@
 		@media only screen and (max-width: 600px) 
 	{
 		
-
+		form {
+			padding: 0px 0px;
+		}
 		.containerLog
 		{
 			box-shadow: 0 0px 0px rgb(0 0 0 / 0%), 0 0px 0px rgb(0 0 0 / 0%) !important;
 			background-color:var(--color-background-overlay);
-			max-width:450px;
+			max-width:350px;
 		}
 		.overlay-panel 
 		{
@@ -327,13 +329,24 @@
 		
 		button.ghost
 		{
-		color:	 var(--color-contrast-high);
+		 border: 0px ;
+		color:var(--color-contrast-lower);
 		padding: 0;
 		width:65px;
 		position: absolute;
-
-		top: 40px;
+		    top: 19%;
 		}
+		.overlay-containerLog {
+		position: absolute;
+		top: 88%;
+		left: 40%;
+		width:  80px;
+		height: 40px;
+		}
+		#formLogin > a {
+		display:none;
+		}
+		
 		.containerLog.right-panel-active .sign-up-containerLog {
 		
 			transform: translateX(0%);
@@ -357,10 +370,5 @@
 			margin-left: 10%;
 			margin-right: 10%;
 		}
-		.overlay-containerLog {
-			position: absolute;
-			top: 0;
-			left: 65%;
-			width: 17%;
-		}
+	
 		
