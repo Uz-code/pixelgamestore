@@ -61,8 +61,8 @@ $_SESSION["paginaAnterior"]='ofertas.php';
                       
             <?php } else { ?>
                       
-              <li><a href='login.php'>LogIn</a></li>
-              <li><a href='#!''>SignUp</a></li>
+              <li><a href='Ingresar.php'>LogIn</a></li>
+              <li><a href='Ingresar.php?Registrar=true'>SignUp</a></li>
                       
             <?php }
               //Se guarda la pagina para recuperarla al iniciar o cerrar sesion

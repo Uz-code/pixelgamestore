@@ -55,7 +55,7 @@ if(isset($_SESSION["usuario"])){
             <li class="main-header__nav-item"><a href="#0" class="main-header__nav-link  dropdown-trigger" data-target='dropdown1'  aria-current="page">PERFIL</a></li>
             <li class="main-header__nav-item"><a href="#0" class="main-header__nav-link  dropdown-trigger" data-target='dropdown2'>IDIOMA</a></li>
             <ul id='dropdown1' class='dropdown-content'>
-              <li><a href="#!">Sign up</a></li>
+              <li><a href="Ingresar.php?Registrar=true">Sign up</a></li>
               <li class="divider" tabindex="-1"></li>
               <li class="main-header__nav-item" style="margin:0; padding: 14px 16px;">
                 <div class="switch">
@@ -112,7 +112,7 @@ if(isset($_SESSION["usuario"])){
     </div>
   </header> <!-- termina header -->
 	<section class="feature margin-bottom--xl margin-top--xxl ">
-    <div class="containerLog" id="containerLog">
+     <div class="containerLog <?php if($_GET['Registrar']==true){?> right-panel-active <?php }?>" id="containerLog">
       <div class="form-containerLog sign-up-containerLog">
 
         <form id="formSignUp" >

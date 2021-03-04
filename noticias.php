@@ -70,8 +70,8 @@ $_SESSION["paginaAnterior"]='noticias.php';
 
             <?php } else { ?>
 
-              <li><a href='login.php'>LogIn</a></li>
-              <li><a href='#!''>SignUp</a></li>
+              <li><a href='Ingresar.php'>LogIn</a></li>
+              <li><a href='Ingresar.php?Registrar=true'>SignUp</a></li>
 
             <?php } ?>
 
