@@ -149,8 +149,10 @@ if(!isset($_SESSION["usuario"])){
   }
 
   include 'assets/php/conexion.php';
-    //Se guarda la pagina para recuperarla al iniciar o cerrar sesion
-  $_SESSION["paginaAnterior"].='?pagina='.$pagina;
+  //Se guarda la pagina para recuperarla al iniciar o cerrar sesion
+  if(!str_contains($_SESSION["paginaAnterior"],'pagina')){
+    $_SESSION["paginaAnterior"].='?pagina='.$pagina;
+  }
 
   $cantidad = 3;
 
@@ -179,7 +181,7 @@ if(!isset($_SESSION["usuario"])){
         <div class="feature__text">
           <div class="feature__text-inner">
             <div class="text-component"> 
-              <a href="noticia.php?idNoticia=<?= $noticia['id_noticia'] ?>">        
+              <a href="#">        
                 <h1 class="text--xl"><?=$noticia['titulo'] ?></h1>
                 <p><?= mb_substr($noticia['cuerpo'],0,200,'HTML-ENTITIES'); ?>...</p>
                 <small class="feature__label margin-bottom--xs">Etiquetas:&nbsp;<?= $noticia['etiquetas'] ?></small>
@@ -194,7 +196,7 @@ if(!isset($_SESSION["usuario"])){
           <div class="" style="position: relative;">
             <div class="StoreCard-image">
               <div>
-                <a href="noticia.php?idNoticia=<?= $noticia['id_noticia'] ?>">
+                <a href="#">
                   <img alt="portada" class="Picture-image" src="data:image/jpg;base64,<?= $noticia['imagen'] ?>">
                 </a>
               </div>

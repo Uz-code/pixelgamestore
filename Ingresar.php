@@ -217,7 +217,7 @@ if(isset($_SESSION["usuario"])){
               var jsonData = JSON.parse(response);
               if (jsonData.status.code == "1"){
 
-                alert('LogIn OK');
+                //alert('LogIn OK');
                 location.reload();
                 //window.history.back();
               }else{
