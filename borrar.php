@@ -188,7 +188,7 @@ if(!isset($_SESSION["usuario"])){
               </a>
             </div>
             <div class="">
-              <a href="noticias.php" class="boton btn--delete">Eliminar</a>
+              <a href="#" onclick="deleteFunction(<?=$noticia['id_noticia']?>)" class="boton btn--delete">Eliminar</a>
             </div>
           </div>
         </div>
@@ -254,6 +254,36 @@ if(!isset($_SESSION["usuario"])){
     $('.dropdown-trigger').dropdown();
   })
 
+  function deleteFunction(idNoticia) {
+
+    $("#loadingImg").show()
+
+    $.ajax({
+      type: "POST",
+      url: 'assets/php/eliminar_noticia.php',
+      data: {
+        idNoticia: idNoticia
+      },
+      success: function(response){
+      //console.log(response);
+        var jsonData = JSON.parse(response);
+          if (jsonData.status.code == "1"){
+            alert('Noticia Eliminada correctamente');
+            location.reload();
+            //window.history.back();
+          }else{
+            alert(jsonData.status.description)
+            $("#loadingImg").hide();
+            $('body').css('overflow', 'auto');
+          }   
+        },
+      error: function() {
+        alert('Servidor no disponible');
+        $("#loadingImg").hide();
+        $('body').css('overflow', 'auto');
+      }
+    });
+  }
   </script>
 
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
