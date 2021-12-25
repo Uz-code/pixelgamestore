@@ -341,8 +341,14 @@ h4, .text--md {
   align-items: center;
 }
 .btn--primario {
-  background-color: hsl(228, 74%, 61%);
   background-color: var(--color-contrast-lowerest);
+  color: hsl(0, 0%, 100%);
+  color: var(--color-contrast-higher);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.btn--delete {
+  background-color:  red;
   color: hsl(0, 0%, 100%);
   color: var(--color-contrast-higher);
   -webkit-font-smoothing: antialiased;
