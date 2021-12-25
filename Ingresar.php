@@ -112,7 +112,7 @@ if(isset($_SESSION["usuario"])){
     </div>
   </header> <!-- termina header -->
 	<section class="feature margin-bottom--xl margin-top--xxl ">
-     <div class="containerLog <?php if($_GET['Registrar']==true){?> right-panel-active <?php }?>" id="containerLog">
+     <div class="containerLog <?php if(isset($_GET['Registrar'])){ ?> right-panel-active <?php }?>" id="containerLog">
       <div class="form-containerLog sign-up-containerLog">
 
         <form id="formSignUp" >
@@ -197,118 +197,112 @@ if(isset($_SESSION["usuario"])){
     $('.dropdown-trigger').dropdown();
 	
 	
-  $("#formLogin").validate({
-  
-    submitHandler: function (form) {
-         
-      $("#loadingImg").show()
-      $('body').css('overflow', 'hidden');
+    $("#formLogin").validate({
+    
+      submitHandler: function (form) {
+          
+        $("#loadingImg").show()
+        $('body').css('overflow', 'hidden');
 
-      $.ajax({
-        type: "POST",
-        url: 'assets/php/iniciar_sesion.php',
-        data: {
-          usuario: $("#usuario").val(),
-          contrasena : $("#contrasena").val(),
-          recordar: $("#recordar").prop('checked')
-        },
-          success: function(response){
-            //console.log(response);
-            var jsonData = JSON.parse(response);
-            if (jsonData.status.code == "1"){
+        $.ajax({
+          type: "POST",
+          url: 'assets/php/iniciar_sesion.php',
+          data: {
+            usuario: $("#usuario").val(),
+            contrasena : $("#contrasena").val(),
+            recordar: $("#recordar").prop('checked')
+          },
+            success: function(response){
+              //console.log(response);
+              var jsonData = JSON.parse(response);
+              if (jsonData.status.code == "1"){
 
-              alert('LogIn OK');
-              location.reload();
-              //window.history.back();
-            }else{
+                alert('LogIn OK');
+                location.reload();
+                //window.history.back();
+              }else{
+                
+                alert(jsonData.status.description)
+                $("#loadingImg").hide();
+                $('body').css('overflow', 'auto');
+
+              }
               
-              alert(jsonData.status.description)
+            },
+            error: function() {
+              alert('Servidor no disponible');
               $("#loadingImg").hide();
               $('body').css('overflow', 'auto');
-
             }
-            
-          },
-          error: function() {
-            alert('Servidor no disponible');
-            $("#loadingImg").hide();
-            $('body').css('overflow', 'auto');
-          }
-      });
-	  
-    }
-  
-  });
+        });
+      
+      }
+    
+    });
   
   
-jQuery.extend(jQuery.validator.messages, {
-required: "Campo obligatorio.",
-email: "Por favor ingrese un email valido.",
-});
-
-
+    jQuery.extend(jQuery.validator.messages, {
+    required: "Campo obligatorio.",
+    email: "Por favor ingrese un email valido.",
+    });
  
-  $("#formSignUp").validate({
-  
-    submitHandler: function (form) {
-         
-      $("#loadingImg").show()
-      $('body').css('overflow', 'hidden');
+    $("#formSignUp").validate({
+    
+      submitHandler: function (form) {
+          
+        $("#loadingImg").show()
+        $('body').css('overflow', 'hidden');
 
-      $.ajax({
-        type: "POST",
-        url: 'assets/php/registrar_usuario.php',
-        data: {
-          usuario: $("#usuario1").val(),
-          contrasena : $("#contrasena1").val(),
-          email: $("#email1").val(),
-          recordar: $("#recordar1").prop('checked')
-        },
-          success: function(response){
-            //console.log(response);
-            var jsonData = JSON.parse(response);
-            if (jsonData.status.code == "1"){
+        $.ajax({
+          type: "POST",
+          url: 'assets/php/registrar_usuario.php',
+          data: {
+            usuario: $("#usuario1").val(),
+            contrasena : $("#contrasena1").val(),
+            email: $("#email1").val(),
+            recordar: $("#recordar1").prop('checked')
+          },
+            success: function(response){
+              //console.log(response);
+              var jsonData = JSON.parse(response);
+              if (jsonData.status.code == "1"){
 
-              alert('LogIn OK');
-              location.reload();
-              //window.history.back();
-            }else{
+                alert('LogIn OK');
+                location.reload();
+                //window.history.back();
+              }else{
+                
+                alert(jsonData.status.description)
+                $("#loadingImg").hide();
+                $('body').css('overflow', 'auto');
+
+              }
               
-              alert(jsonData.status.description)
+            },
+            error: function() {
+              alert('Servidor no disponible');
               $("#loadingImg").hide();
               $('body').css('overflow', 'auto');
-
             }
-            
-          },
-          error: function() {
-            alert('Servidor no disponible');
-            $("#loadingImg").hide();
-            $('body').css('overflow', 'auto');
-          }
-      });
-	  
-    }
-  
+        });
+      
+      }
+    
+    });
+
+    const signUpButton = document.getElementById('signUp');
+    const signInButton = document.getElementById('signIn');
+    const containerLog = document.getElementById('containerLog');
+
+    signUpButton.addEventListener('click', () => {
+      containerLog.classList.add("right-panel-active");
+    });
+
+    signInButton.addEventListener('click', () => {
+      containerLog.classList.remove("right-panel-active");
+    });
+
   });
-
-  
-
-  });
-
-	const signUpButton = document.getElementById('signUp');
-	const signInButton = document.getElementById('signIn');
-	const containerLog = document.getElementById('containerLog');
-
-	signUpButton.addEventListener('click', () => {
-		containerLog.classList.add("right-panel-active");
-	});
-
-	signInButton.addEventListener('click', () => {
-		containerLog.classList.remove("right-panel-active");
-	});
-
-
   
   $('.js-tilt').tilt({
     scale: 1.1
