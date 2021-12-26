@@ -8,7 +8,7 @@ $_SESSION["paginaAnterior"]='index.php';
 
 ?>
 <!doctype html>
-<html lang="es">
+<html class="js" lang="es">
 <head>
   <title>Inicio</title>
   <meta charset="UTF-8">
@@ -214,7 +214,6 @@ $_SESSION["paginaAnterior"]='index.php';
       </div>
     </div>
   </section>
-<script>document.getElementsByTagName("html")[0].className += " js";</script>
 <script src="assets/js/jquery-2.2.0.min.js" type="text/javascript"></script>
 <script>
 $(document).on('ready', function() {

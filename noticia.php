@@ -10,7 +10,7 @@ $_SESSION["paginaAnterior"]='noticia.php';
 
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html class="js" lang="es">
 <head>
   <title></title>
   <meta charset="UTF-8">
@@ -213,17 +213,17 @@ $_SESSION["paginaAnterior"]='noticia.php';
       </div>
     </div>
   </div>
-  <script>document.getElementsByTagName("html")[0].className += "js";</script>
   <script src="assets/js/jquery-2.2.0.min.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/header.js"></script>
   <script>
     $(document).on('ready', function() {
       $('.dropdown-trigger').dropdown();
       this.title = "<?= html_entity_decode($noticia['titulo']) ?>";
     });
   </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="assets/js/util.js"></script>
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/header.js"></script>
+  
 </body>
 </html>

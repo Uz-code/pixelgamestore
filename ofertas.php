@@ -8,7 +8,7 @@ $_SESSION["paginaAnterior"]='ofertas.php';
 
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html class="js" lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -402,9 +402,6 @@ $_SESSION["paginaAnterior"]='ofertas.php';
         focusOnSelect: true
       });
     });
-  </script>
-  <script>
-    document.getElementsByTagName("html")[0].className += " js";
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="assets/js/util.js"></script>
