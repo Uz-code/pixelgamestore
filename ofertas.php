@@ -20,6 +20,16 @@ $_SESSION["paginaAnterior"]='ofertas.php';
   <link rel="stylesheet" href="assets/css/materialize.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <title>Ofertas</title>
+  <!-- Remueve el banner en 000wehost -->
+  <script type="text/javascript">
+    window.onload = () => {
+      let el = document.querySelector('[alt="www.000webhost.com"]');
+      if (el){
+        el = el.parentNode.parentNode
+        el.parentNode.removeChild(el);
+      }
+    }
+  </script>
 </head>
 
 <body>

@@ -21,6 +21,16 @@ $_SESSION["paginaAnterior"]='noticia.php';
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Roboto:300,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/materialize.css">
   <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Remueve el banner en 000wehost -->
+  <script type="text/javascript">
+    window.onload = () => {
+      let el = document.querySelector('[alt="www.000webhost.com"]');
+      if (el){
+        el = el.parentNode.parentNode
+        el.parentNode.removeChild(el);
+      }
+    }
+  </script>
 </head>
 <body>
   <header class="main-header js-main-header margin-bottom--lg">

@@ -22,7 +22,17 @@ if(isset($_SESSION["usuario"])){
   <link rel="stylesheet" href="assets/css/materialize.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/login.css">
-  <title>Log In</title>
+  <title>Perfil</title>
+  <!-- Remueve el banner en 000wehost -->
+  <script type="text/javascript">
+    window.onload = () => {
+      let el = document.querySelector('[alt="www.000webhost.com"]');
+      if (el){
+        el = el.parentNode.parentNode
+        el.parentNode.removeChild(el);
+      }
+    }
+  </script>
 </head>
 <body>
   <div id="loadingImg">
