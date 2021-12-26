@@ -215,7 +215,7 @@ $_SESSION["paginaAnterior"]='index.php';
     </div>
   </section>
 <script>document.getElementsByTagName("html")[0].className += " js";</script>
-<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+<script src="assets/js/jquery-2.2.0.min.js" type="text/javascript"></script>
 <script>
 $(document).on('ready', function() {
   $('.dropdown-trigger').dropdown();

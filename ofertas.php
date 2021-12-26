@@ -375,7 +375,7 @@ $_SESSION["paginaAnterior"]='ofertas.php';
       </div>
     </div>
   </section>
-  <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+  <script src="assets/js/jquery-2.2.0.min.js" type="text/javascript"></script>
   <script>
     $(document).on('ready', function () {
       $('.dropdown-trigger').dropdown();
