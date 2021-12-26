@@ -305,8 +305,6 @@ if(isset($_SESSION["usuario"])){
     scale: 1.1
   })
 
-  document.getElementsByTagName("html")[0].className += " js";
-
 </script>
 
 </body>
