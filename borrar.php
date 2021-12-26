@@ -67,16 +67,16 @@ if(!isset($_SESSION["usuario"])){
                 data-target='dropdown2'>IDIOMA</a></li>
             <ul id='dropdown1' class='dropdown-content'>
 
-            <?php if(isset($_SESSION["usuario"])) { ?>
+            <?php if(isset($_SESSION["usuario"])) : ?>
                         
               <li><a href='assets/php/cerrar_sesion.php'>LogOut</a></li>
-
-            <?php } else { ?>
-
+                      
+            <?php else :?>
+                      
               <li><a href='Ingresar.php'>LogIn</a></li>
               <li><a href='Ingresar.php?Registrar=true'>SignUp</a></li>
-
-            <?php } ?>
+                      
+            <?php endif;?>
 
               <li class="divider" tabindex="-1"></li>
               <li class="main-header__nav-item" style="margin:0; padding: 14px 16px;">
