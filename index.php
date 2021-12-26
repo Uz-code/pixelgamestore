@@ -53,12 +53,12 @@ $_SESSION["paginaAnterior"]='index.php';
 
             <?php if(isset($_SESSION["usuario"])) : ?>
                           
-              <li><a href='assets/php/cerrar_sesion.php'>LogOut</a></li>
+              <li><a href='assets/php/cerrar_sesion.php'>Cerrar Sesion</a></li>
                         
             <?php else : ?>
                         
-              <li><a href='Ingresar.php'>LogIn</a></li>
-              <li><a href='Ingresar.php?Registrar=true'>SignUp</a></li>
+              <li><a href='Ingresar.php'>Iniciar Sesion</a></li>
+              <li><a href='Ingresar.php?Registrar=true'>Registrarme</a></li>
                         
             <?php endif;?>
           

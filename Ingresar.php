@@ -31,8 +31,7 @@ if(isset($_SESSION["usuario"])){
   <header class="main-header js-main-header margin-bottom--lg">
     <div class="container container--lg">
       <div class="main-header__layout">
-        <div class="main-header__logo">
-        </div>
+        <div class="main-header__logo"></div>
         <button class="btn--subtle main-header__nav-trigger js-main-header__nav-trigger" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-header-nav">
           <i class="main-header__nav-trigger-icon" aria-hidden="true"></i>
           <span></span>
@@ -55,7 +54,7 @@ if(isset($_SESSION["usuario"])){
             <li class="main-header__nav-item"><a href="#0" class="main-header__nav-link  dropdown-trigger" data-target='dropdown1'  aria-current="page">PERFIL</a></li>
             <li class="main-header__nav-item"><a href="#0" class="main-header__nav-link  dropdown-trigger" data-target='dropdown2'>IDIOMA</a></li>
             <ul id='dropdown1' class='dropdown-content'>
-              <li><a href="Ingresar.php?Registrar=true">Sign up</a></li>
+              <li><a href="Ingresar.php?Registrar=true">Registrarme</a></li>
               <li class="divider" tabindex="-1"></li>
               <li class="main-header__nav-item" style="margin:0; padding: 14px 16px;">
                 <div class="switch">
@@ -111,7 +110,7 @@ if(isset($_SESSION["usuario"])){
       </div>
     </div>
   </header> <!-- termina header -->
-	<section class="feature margin-bottom--xl margin-top--xxl ">
+	<section class="feature">
      <div class="containerLog <?php if(isset($_GET['Registrar'])){ ?> right-panel-active <?php }?>" id="containerLog">
       <div class="form-containerLog sign-up-containerLog">
 
