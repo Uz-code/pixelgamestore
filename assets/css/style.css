@@ -364,8 +364,11 @@ h4, .text--md {
   -moz-osx-font-smoothing: grayscale;
 }
 
-i.btn--cancel{
+.btn--cancel{
   transform: rotate(-45deg);
+}
+
+.large.btn--cancel{
   font-size: 2.1rem;
 }
 /* --------gridfeature------- */

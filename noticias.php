@@ -262,7 +262,7 @@ $_SESSION["paginaAnterior"]='noticias.php';
     <div id="modal1" class="modal">
       <div class="modal-header">
         <h5 class="modal-title">Nueva noticia</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="small material-icons btn--cancel">add</i></button>
       </div>
       <form  enctype="multipart/form-data" id="formSubirNoticia">
         <div class="modal-content row">
