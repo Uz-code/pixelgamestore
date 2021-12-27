@@ -74,7 +74,7 @@ $_SESSION["paginaAnterior"]='noticia.php';
             <?php endif;?>
          
             <li class="divider" tabindex="-1"></li>
-            <li class="main-header__nav-item" style="margin:0; padding: 14px 16px;">
+            <li class="main-header__nav-item" id="switch">
 	            <div class="switch" >
 	              <input class="switch__input" type="checkbox" id="themeSwitch">
 	              <label aria-hidden="true" class="switch__label" for="themeSwitch">On</label>

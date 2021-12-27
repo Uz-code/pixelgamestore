@@ -64,7 +64,7 @@ if(isset($_SESSION["usuario"])){
             <li class="main-header__nav-item"><a href="#0" class="main-header__nav-link  dropdown-trigger" data-target='dropdown1'  aria-current="page">PERFIL</a></li>
             <li class="main-header__nav-item"><a href="#0" class="main-header__nav-link  dropdown-trigger" data-target='dropdown2'>IDIOMA</a></li>
             <ul id='dropdown1' class='dropdown-content'>
-              <li class="main-header__nav-item" style="margin:0; padding: 14px 16px;">
+              <li class="main-header__nav-item" id="switch">
                 <div class="switch">
                   <input class="switch__input" type="checkbox" id="themeSwitch">
                   <label aria-hidden="true" class="switch__label" for="themeSwitch">On</label>
