@@ -9,12 +9,12 @@ html {
 }
 body {
 	margin : 1px !important;
-  background-color: hsl(0, 0%, 100%);
-  background-color: var(--color-bg);
-  font-size: var(--text-base-size);
-  color: hsl(240, 4%, 20%);
-  color: var(--color-contrast-high);
-  font-family: var(--font-primary);
+	background-color: hsl(0, 0%, 100%);
+	background-color: var(--color-bg);
+	font-size: var(--text-base-size);
+	color: hsl(240, 4%, 20%);
+	color: var(--color-contrast-high);
+	font-family: var(--font-primary);
 }
 ::selection {
   background-color: hsla(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l), 0.2)
@@ -369,6 +369,11 @@ h4, .text--md {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+i.btn--cancel{
+  transform: rotate(-45deg);
+  font-size: 2.1rem;
+}
 /* --------gridfeature------- */
 @media (min-width: 64rem) {
   @supports (display: grid) {
@@ -542,7 +547,7 @@ h4, .text--md {
   }
   .main-header__nav-trigger-icon::before {
     -webkit-transform: translateY(-5px);
-            transform: translateY(-5px);
+    transform: translateY(-5px);
   }
   .main-header__nav-trigger-icon::after {
     -webkit-transform: translateY(5px);
@@ -553,7 +558,7 @@ h4, .text--md {
   }
   .main-header__nav-trigger[aria-expanded="true"] .main-header__nav-trigger-icon::before {
     -webkit-transform: rotate(45deg);
-            transform: rotate(45deg);
+    transform: rotate(45deg);
   }
   .main-header__nav-trigger[aria-expanded="true"] .main-header__nav-trigger-icon::after {
     -webkit-transform: rotate(-45deg);
@@ -1210,8 +1215,7 @@ visibility:hidden;
 
     .boton {
 
-    line-height: 0;
-
+line-height: 0;
 }
 input.valid:not([type]), input.valid:not([type]):focus, input.valid[type=text]:not(.browser-default), input.valid[type=text]:not(.browser-default):focus, input.valid[type=password]:not(.browser-default), input.valid[type=password]:not(.browser-default):focus, input.valid[type=email]:not(.browser-default), input.valid[type=email]:not(.browser-default):focus, input.valid[type=url]:not(.browser-default), input.valid[type=url]:not(.browser-default):focus, input.valid[type=time]:not(.browser-default), input.valid[type=time]:not(.browser-default):focus, input.valid[type=date]:not(.browser-default), input.valid[type=date]:not(.browser-default):focus, input.valid[type=datetime]:not(.browser-default), input.valid[type=datetime]:not(.browser-default):focus, input.valid[type=datetime-local]:not(.browser-default), input.valid[type=datetime-local]:not(.browser-default):focus, input.valid[type=tel]:not(.browser-default), input.valid[type=tel]:not(.browser-default):focus, input.valid[type=number]:not(.browser-default), input.valid[type=number]:not(.browser-default):focus, input.valid[type=search]:not(.browser-default), input.valid[type=search]:not(.browser-default):focus, textarea.materialize-textarea.valid, textarea.materialize-textarea.valid:focus, .select-wrapper.valid > input.select-dropdown {
   border-bottom: 1px solid transparent !important;

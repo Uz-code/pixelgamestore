@@ -68,7 +68,7 @@ $_SESSION["paginaAnterior"]='index.php';
             <?php else : ?>
                         
               <li><a href='Ingresar.php'>Iniciar Sesion</a></li>
-              <li><a href='Ingresar.php?Registrar=true'>Registrarme</a></li>
+              <li><a href='Ingresar.php?Registrar=true'>Registrate</a></li>
                         
             <?php endif;?>
           

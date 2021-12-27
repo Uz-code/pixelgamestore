@@ -81,7 +81,7 @@ $_SESSION["paginaAnterior"]='noticias.php';
             <?php else: ?>
 
               <li><a href='Ingresar.php'>Iniciar Sesion</a></li>
-              <li><a href='Ingresar.php?Registrar=true'>Registrarme</a></li>
+              <li><a href='Ingresar.php?Registrar=true'>Registrate</a></li>
 
             <?php endif;?>
 
@@ -193,7 +193,7 @@ $_SESSION["paginaAnterior"]='noticias.php';
               </a>
             </div>
             <div class="margin-top--sm">
-              <div class="">
+              <div>
                 <a href="noticias.php" class="boton btn--primario">Noticias</a>
                 <a href="noticia.php?idNoticia=<?= $noticia['id_noticia'] ?>" class="text--inherit">Ver&nbsp;m&aacute;s</a>
               </div>
@@ -326,7 +326,7 @@ $_SESSION["paginaAnterior"]='noticias.php';
   $(document).on('ready', function () {
 
     $('[data-toggle="tooltip"]').tooltip();
-    $('.fixed-action-btn').floatingActionButton();
+    $('.fixed-action-btn').floatingActionButton({hoverEnabled: false});
     $('.modal').modal();
     $('#select_file').html('Seleccione una imagen');
 

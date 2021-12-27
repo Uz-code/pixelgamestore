@@ -71,10 +71,8 @@ if(!isset($_SESSION["usuario"])){
             <li class="main-header__nav-item"><a href="#0" class="main-header__nav-link">STREAMING</a></li>
             <li class="main-header__nav-item"><a href="ofertas.php" class="main-header__nav-link">OFERTAS</a></li>
             <li class="main-header__nav-item main-header__nav-divider" aria-hidden="true"></li>
-            <li class="main-header__nav-item"><a href="#0" class="main-header__nav-link  dropdown-trigger"
-                data-target='dropdown1'>PERFIL</a></li>
-            <li class="main-header__nav-item"><a href="#0" class="main-header__nav-link  dropdown-trigger"
-                data-target='dropdown2'>IDIOMA</a></li>
+            <li class="main-header__nav-item"><a href="#0" class="main-header__nav-link  dropdown-trigger" data-target='dropdown1'>PERFIL</a></li>
+            <li class="main-header__nav-item"><a href="#0" class="main-header__nav-link  dropdown-trigger" data-target='dropdown2'>IDIOMA</a></li>
             <ul id='dropdown1' class='dropdown-content'>
 
             <?php if(isset($_SESSION["usuario"])) : ?>
@@ -84,7 +82,7 @@ if(!isset($_SESSION["usuario"])){
             <?php else :?>
                       
               <li><a href='Ingresar.php'>Iniciar Sesion</a></li>
-              <li><a href='Ingresar.php?Registrar=true'>Registrarme</a></li>
+              <li><a href='Ingresar.php?Registrar=true'>Registrate</a></li>
                       
             <?php endif;?>
 
@@ -191,14 +189,14 @@ if(!isset($_SESSION["usuario"])){
         <div class="feature__text">
           <div class="feature__text-inner">
             <div class="text-component"> 
-              <a href="#">        
+              <a href="noticia.php?idNoticia=<?= $noticia['id_noticia'] ?>">        
                 <h1 class="text--xl"><?=$noticia['titulo'] ?></h1>
                 <p><?= mb_substr($noticia['cuerpo'],0,200,'HTML-ENTITIES'); ?>...</p>
                 <small class="feature__label margin-bottom--xs">Etiquetas:&nbsp;<?= $noticia['etiquetas'] ?></small>
               </a>
             </div>
-            <div class="">
-              <a href="#" onclick="deleteFunction(<?=$noticia['id_noticia']?>)" class="boton btn--delete">Eliminar</a>
+            <div>
+              <a href="" onclick="deleteFunction(<?=$noticia['id_noticia']?>)" class="boton btn--delete">Eliminar</a>
             </div>
           </div>
         </div>
@@ -206,7 +204,7 @@ if(!isset($_SESSION["usuario"])){
           <div class="" style="position: relative;">
             <div class="StoreCard-image">
               <div>
-                <a href="#">
+                <a href="noticia.php?idNoticia=<?= $noticia['id_noticia'] ?>">
                   <img alt="portada" class="Picture-image" src="data:image/jpg;base64,<?= $noticia['imagen'] ?>">
                 </a>
               </div>
@@ -245,6 +243,10 @@ if(!isset($_SESSION["usuario"])){
         </div>
       </div>
     </section>
+  </div>
+
+  <div class="fixed-action-btn">
+    <a class="btn-floating btn-large" href="noticias.php"><i class="large material-icons btn--cancel">add</i></a>
   </div>
   
   <script src="assets/js/jquery-2.2.0.min.js" type="text/javascript"></script>
