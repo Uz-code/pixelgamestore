@@ -67,7 +67,7 @@ if(isset($_SESSION["usuario"])){
               <li class="main-header__nav-item" id="switch">
                 <div class="switch">
                   <input class="switch__input" type="checkbox" id="themeSwitch">
-                  <label aria-hidden="true" class="switch__label" for="themeSwitch">On</label>
+                  <label aria-hidden="true" class="switch__label" for="themeSwitch">Tema Claro</label>
                   <div aria-hidden="true" class="switch__marker"></div>
                 </div>
               </li>
@@ -134,11 +134,14 @@ if(isset($_SESSION["usuario"])){
             <input  type="text" placeholder="Usuario" name="usuario" id="usuario1" required/>
             <input type="email" placeholder="Email" name="email" id="email1" required/>
             <input type="password" placeholder="Contraseña" name="contrasena" id="contrasena1" required/>
-          
           </div>
+          <label style="padding: 1em 0 2em 0;">
+            <input type="checkbox" checked="checked" id="recordar"/>
+            <span>Recordarme</span>
+          </label>
           <button type="submit" class="btnSubmit" name="action">Sign Up</button>
         </form>
-        
+
       </div>
       <div class="form-containerLog sign-in-containerLog" style>
 
@@ -152,13 +155,12 @@ if(isset($_SESSION["usuario"])){
           <span class="dark">o use su cuenta</span>
           <input type="text" placeholder="Usuario"  name="usuario" id="usuario" required/>
           <input type="password" placeholder="Contraseña" name="contrasena" id="contrasena" required/>
-          <label style="padding: 1.25em 0;">
-            <input type="checkbox" checked="checked" id="recordar"/>
+          <label style="padding: 1em 0;">
+            <input type="checkbox" checked="checked" id="recordar1"/>
             <span>Recordarme</span>
           </label>
           <a href="#">Olvidaste tu contraseña?</a>
           <button id="btnLogin" class="btnLogin" type="submit">Log in</button>
-
         </form>
         
       </div>

@@ -157,10 +157,6 @@ if(!isset($_SESSION["usuario"])){
   }
 
   include 'assets/php/conexion.php';
-  //Se guarda la pagina para recuperarla al iniciar o cerrar sesion
-  if(!str_contains($_SESSION["paginaAnterior"],'pagina')){
-    $_SESSION["paginaAnterior"].='?pagina='.$pagina;
-  }
 
   $cantidad = 3;
 
