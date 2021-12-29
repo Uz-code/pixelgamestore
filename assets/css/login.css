@@ -47,7 +47,7 @@ p {
     color: #333;
 }
 
-a {
+.forgot-password, .social-containerLog a {
     color: #333;
     font-size: 14px;
     text-decoration: none;
@@ -56,11 +56,6 @@ a {
 
 .main-header__nav-link {
     font-size: 11px;
-}
-
-.buscar-caja {
-    background: var(--color-contrast-lower);
-    margin-top: 10px;
 }
 
 form button {
@@ -123,7 +118,7 @@ form {
     text-align: center;
 }
 
-input {
+.containerLog input {
     color: #333;
     background-color: #dbdbdb!important;
     border: none;
@@ -133,7 +128,7 @@ input {
     font-size: 15px;
 }
 
-::placeholder {
+.containerLog input::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #333;
     opacity: 1;

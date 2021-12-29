@@ -17,7 +17,7 @@ body {
 	font-family: var(--font-primary);
 }
 ::selection {
-  background-color: hsla(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l), 0.2)
+  background-color: hsla(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l), 0.2);
 }
 ol, ul {
   list-style: none;
@@ -58,11 +58,11 @@ input{    outline: none;}
     --color-primary: hsl(360, 83%, 63%);
     --color-primary-d:#2A2A2A;
     --color-bg: hsl(240, 8%, 12%);
-     --color-white: hsl(0, 0%, 100%);
-      --color-primary: hsl(228, 74%, 61%);
-  --color-primary-h: 228;
-  --color-primary-s: 74%;
-  --color-primary-l: 61%;
+    --color-white: hsl(0, 0%, 100%);
+    --color-primary: hsl(228, 74%, 61%);
+    --color-primary-h: 228;
+    --color-primary-s: 74%;
+    --color-primary-l: 61%;
     --color-contrast-lower: hsl(240, 6%, 15%);
     --color-contrast-lowerest:#2A2A2A;
     --color-contrast-lower-h: 240;
@@ -85,9 +85,7 @@ input{    outline: none;}
     --color-contrast-higher-s: 0%;
     --color-contrast-higher-l: 100%;
     --color-overlay:var(--color-contrast-lowerest);
-
     --color-overlay-two:var(--color-contrast-lowerest);
-
     --color-background-overlay: #e3e3e3;
 }
 [data-theme] {
@@ -1108,14 +1106,18 @@ outline: none;
     border-radius: 40px;
     padding: 5px;
 }
-.buscar-caja > .buscar-txt {
-visibility:hidden;
+
+.buscar-caja:hover > .buscar-txt{
+  width: 250px;
+  padding: 10px;
 }
-.buscar-caja:hover > .buscar-txt {
- width: 140px;
- padding: 0 0px;
+
+.buscar-txt:focus{
+  width: 250px;
+  padding: 10px;
 }
-.buscar-caja:hover > .buscar-btn {
+
+.buscar-caja:hover > .buscar-btn :focus{
  color: var(--color-contrast-higher);
 }
 .buscar-btn {

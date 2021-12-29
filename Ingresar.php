@@ -56,7 +56,7 @@ if(isset($_SESSION["usuario"])){
                 </a>
               </div>
             </li>
-            <li class="main-header__nav-item"><a href="index.php" class="main-header__nav-link">INICIO</li>
+            <li class="main-header__nav-item"><a href="index.php" class="main-header__nav-link">INICIO</a></li>
             <li class="main-header__nav-item"><a href="noticias.php" class="main-header__nav-link" >NOTICIAS</a></li>
             <li class="main-header__nav-item"><a href="#0" class="main-header__nav-link">STREAMING</a></li>
             <li class="main-header__nav-item"><a href="ofertas.php" class="main-header__nav-link" >OFERTAS</a></li>
@@ -71,6 +71,7 @@ if(isset($_SESSION["usuario"])){
                   <div aria-hidden="true" class="switch__marker"></div>
                 </div>
               </li>
+              <li><a href="#!">FAQ</a></li>
             </ul>
             <ul id='dropdown2' class='dropdown-content'>
               <li class="" data-lang="ar"><a href="" data-index="0" >
@@ -159,7 +160,7 @@ if(isset($_SESSION["usuario"])){
             <input type="checkbox" checked="checked" id="recordar1"/>
             <span>Recordarme</span>
           </label>
-          <a href="#">Olvidaste tu contraseña?</a>
+          <a class="forgot-password" href="#">Olvidaste tu contraseña?</a>
           <button id="btnLogin" class="btnLogin" type="submit">Log in</button>
         </form>
         
