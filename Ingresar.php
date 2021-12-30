@@ -50,6 +50,7 @@ if(isset($_SESSION["usuario"])){
           <ul class="main-header__nav-list">
             <li>
               <div class="buscar-caja">
+                <input type="text" autofocus="autofocus" placeholder="" style="display:none" />
                 <input type="text" name="" class="buscar-txt" placeholder="Buscar..."/>
                 <a class="buscar-btn">
                   <i class="large material-icons">search</i>

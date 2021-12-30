@@ -48,6 +48,7 @@ $_SESSION["paginaAnterior"]='ofertas.php';
           <ul class="main-header__nav-list">
             <li>
               <div class="buscar-caja">
+                <input type="text" autofocus="autofocus" placeholder="" style="display:none" />
                 <input type="text" name="" class="buscar-txt" placeholder="Buscar..." />
                 <a class="buscar-btn">
                   <i class="large material-icons">search</i>
@@ -57,13 +58,10 @@ $_SESSION["paginaAnterior"]='ofertas.php';
             <li class="main-header__nav-item"><a href="index.php" class="main-header__nav-link">INICIO</li>
             <li class="main-header__nav-item"><a href="noticias.php" class="main-header__nav-link">NOTICIAS</a></li>
             <li class="main-header__nav-item"><a href="#0" class="main-header__nav-link">STREAMING</a></li>
-            <li class="main-header__nav-item"><a href="ofertas.php" class="main-header__nav-link"
-                aria-current="page">OFERTAS</a></li>
+            <li class="main-header__nav-item"><a href="ofertas.php" class="main-header__nav-link" aria-current="page">OFERTAS</a></li>
             <li class="main-header__nav-item main-header__nav-divider" aria-hidden="true"></li>
-            <li class="main-header__nav-item"><a href="#0" class="main-header__nav-link  dropdown-trigger"
-                data-target='dropdown1'>PERFIL</a></li>
-            <li class="main-header__nav-item"><a href="#0" class="main-header__nav-link  dropdown-trigger"
-                data-target='dropdown2'>IDIOMA</a></li>
+            <li class="main-header__nav-item"><a href="#0" class="main-header__nav-link  dropdown-trigger" data-target='dropdown1'>PERFIL</a></li>
+            <li class="main-header__nav-item"><a href="#0" class="main-header__nav-link  dropdown-trigger" data-target='dropdown2'>IDIOMA</a></li>
             <ul id='dropdown1' class='dropdown-content'>
             <?php if(isset($_SESSION["usuario"])) : ?>
                         

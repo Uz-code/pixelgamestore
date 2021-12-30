@@ -906,9 +906,6 @@ li#switch{
     width: 250px !important;
     padding: 10px !important;
   }
-  .buscar-btn{
-    color: var(--color-contrast-higher) !important;
-  }
 }
 @media only screen and (max-width: 500px){
   figure{

@@ -7,14 +7,13 @@ require_once "assets/php/validar_sesion.php";
 $_SESSION["paginaAnterior"]='index.php';
 
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html class="js" lang="es">
 <head>
   <title>Inicio</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="img/favicon.png">
-	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Roboto:300,400&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="assets/css/materialize.css">
@@ -46,6 +45,7 @@ $_SESSION["paginaAnterior"]='index.php';
           <ul class="main-header__nav-list">
           	<li>  
           		<div class="buscar-caja">
+                <input type="text" autofocus="autofocus" placeholder="" style="display:none" />
                 <input type="text" name="" class="buscar-txt" placeholder="Buscar..."/>
                 <a class="buscar-btn">
                   <i class="large material-icons">search</i>
