@@ -118,17 +118,17 @@ form {
     text-align: center;
 }
 
-.containerLog input {
+input:not(.buscar-txt) {
     color: #333;
     background-color: #dbdbdb!important;
     border: none;
     padding: 12px 15px;
     margin: 8px 0;
-    width: 100%;
+    /* width: 100%; */
     font-size: 15px;
 }
 
-.containerLog input::placeholder {
+input:not(.buscar-txt)::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #333;
     opacity: 1;
@@ -368,7 +368,7 @@ footer a {
     .error {
         margin-bottom: 10px;
     }
-    input {
+    input:not(.buscar-txt) {
         width: 80%;
         margin-left: 10%;
         margin-right: 10%;
