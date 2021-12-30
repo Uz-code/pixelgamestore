@@ -1112,14 +1112,19 @@ outline: none;
   padding: 10px;
 }
 
-.buscar-txt:focus{
+.buscar-caja:focus-within > .buscar-txt{
   width: 250px;
   padding: 10px;
 }
 
-.buscar-caja:hover > .buscar-btn :focus{
- color: var(--color-contrast-higher);
+.buscar-caja:hover > .buscar-btn{
+  color: var(--color-contrast-higher);
 }
+
+.buscar-caja:focus-within > .buscar-btn{
+  color: var(--color-contrast-higher);
+}
+
 .buscar-btn {
     color: var(--color-contrast-low);
     float: right;
