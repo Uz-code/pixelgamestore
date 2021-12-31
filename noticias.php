@@ -276,7 +276,7 @@ $_SESSION["paginaAnterior"]='noticias.php';
               <label for="exampleFormControlSelect1">Portada</label>
               <div class="custom-file">
                 <input type="file" class="custom-file-input" name="imagen" id="imagen" lang="es" accept="image/*" required>
-                <label class="custom-file-label" id="select_file" placeholder="Seleccione una imagen"></label>
+                <label class="custom-file-label" id="select_file" for="imagen">Seleccione una imagen</label>
               </div>
             </div>
             <div class="form-group">
@@ -325,7 +325,6 @@ $_SESSION["paginaAnterior"]='noticias.php';
     $('[data-toggle="tooltip"]').tooltip();
     $('.fixed-action-btn').floatingActionButton({hoverEnabled: false});
     $('.modal').modal();
-    $('#select_file').html('Seleccione una imagen');
 
     $('#formSubirNoticia').submit(function(e) {
       e.preventDefault();
@@ -371,19 +370,21 @@ $_SESSION["paginaAnterior"]='noticias.php';
     $('.close').on('click', function () {
       $('.modal').modal('close');
       $("#formSubirNoticia")[0].reset();
-      $('#select_file').html('Seleccione una imagen');
+      $('#select_file').html("Seleccione una imagen");
     })
 
     $('#imagen').on('change', function () {
-
-      if(this.files[0].size > 500000){
-       alert("Imagen demasiado pesada!");
-       this.value = null;
+      if(this.files[0]){
+        if(this.files[0].size > 500000){
+          alert("Imagen demasiado pesada!");
+          this.value = null;
+        }else{
+          var filename = ($('#imagen').val()).substr(12); 
+          $('#select_file').html(filename);
+        }
       }else{
-        var filename = ($('#imagen').val()).substr(12); 
-        $('#select_file').html(filename);
+        $('#select_file').html("Seleccione una imagen");
       }
-
     })
 
     //$("form").validate();

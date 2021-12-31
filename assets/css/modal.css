@@ -106,7 +106,6 @@
       position: fixed;
       top: 0;
       left: 0;
-      z-index: $zindex-modal;
       display: none;
       width: 100%;
       max-width: 90%;
@@ -190,6 +189,10 @@
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
+    }
+
+    input[type=file]:valid + label {
+      color: #495057;
     }
 
     .form-control {
