@@ -246,10 +246,10 @@ $_SESSION["paginaAnterior"]='noticias.php';
 
     <!-- Modal Trigger -->          
     <div class="fixed-action-btn">
-      <a class="btn-floating btn-large "><i class="large material-icons">edit</i></a>
+      <a class="btn-floating btn-large tooltiped" data-position="left" data-tooltip="Mis noticias"><i class="large material-icons">edit</i></a>
       <ul>
-        <li><a class="btn-floating  modal-trigger" href="#modal1"><i class="material-icons">publish</i></a></li>
-        <li><a class="btn-floating  modal-trigger" href="borrar.php"><i class="material-icons">delete</i></a></li>
+        <li><a class="btn-floating  modal-trigger tooltiped" href="#modal1" data-position="left" data-tooltip="Subir noticia"><i class="material-icons">publish</i></a></li>
+        <li><a class="btn-floating  modal-trigger tooltiped" href="borrar.php" data-position="left" data-tooltip="Eliminar noticia"><i class="material-icons">delete</i></a></li>
       </ul>
     </div>
 
@@ -320,7 +320,7 @@ $_SESSION["paginaAnterior"]='noticias.php';
 
   $(document).on('ready', function () {
 
-    $('[data-toggle="tooltip"]').tooltip();
+    $('.tooltiped').tooltip();
     $('.fixed-action-btn').floatingActionButton({hoverEnabled: false});
     $('.modal').modal();
 

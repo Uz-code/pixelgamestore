@@ -4,6 +4,8 @@ session_start();
 
 //echo $_COOKIE['cookie'];
 
+require_once "assets/php/validar_sesion.php";
+
 if(!isset($_SESSION["usuario"])){
 
 	header("Location: ".$_SESSION["paginaAnterior"]);
@@ -239,7 +241,7 @@ if(!isset($_SESSION["usuario"])){
   </div>
 
   <div class="fixed-action-btn">
-    <a class="btn-floating btn-large" href="noticias.php"><i class="large material-icons btn--cancel">add</i></a>
+    <a class="btn-floating btn-large tooltiped" href="noticias.php" data-position="left" data-tooltip="Cancelar"><i class="large material-icons btn--cancel">add</i></a>
   </div>
   
   <script src="assets/js/jquery-2.2.0.min.js" type="text/javascript"></script>
@@ -254,6 +256,7 @@ if(!isset($_SESSION["usuario"])){
 
   $(document).on('ready', function () {
     $('.dropdown-trigger').dropdown();
+    $('.tooltiped').tooltip();
   })
 
   function deleteFunction(idNoticia) {

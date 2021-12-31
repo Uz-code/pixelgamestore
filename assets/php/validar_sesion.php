@@ -18,7 +18,9 @@ if(!isset($_COOKIE["ACCESS_TOKEN"])){
 
   if ($resultado -> num_rows == 0) {
   
-    session_unset(); 
+    unset($_SESSION['usuario']);
+    
+    unset($_SESSION['id_usuario']); 
 
     setcookie("ACCESS_TOKEN", null, time() - 3600, "/");
 
