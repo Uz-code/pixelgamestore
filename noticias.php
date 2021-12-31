@@ -142,7 +142,7 @@ $_SESSION["paginaAnterior"]='noticias.php';
     
   <?php
 
-  if(!isset($_REQUEST['pagina']) || $_REQUEST['pagina'] < 1 ){
+  if(!isset($_REQUEST['pagina']) || !is_numeric($_REQUEST['pagina']) || $_REQUEST['pagina'] < 1 ){
 
     $pagina = 1;
       
@@ -173,12 +173,10 @@ $_SESSION["paginaAnterior"]='noticias.php';
     while ($noticia = $noticias -> fetch_array()) : ?>
   
     <div class="container container--adaptive">
-      <div style="text-align: left;color:var(--color-contrast-medium);" class="margin-bottom--xs">
-        <h6><?= (new DateTime($noticia['fecha']))->format('d/m/Y H:i:s') ?></h6>
-      </div>
+      <small class="feature__label">subido&nbsp;<?= (new DateTime($noticia['fecha']))->format('d/m/Y H:i') ?></small>
     </div>
     
-    <section class="feature feature--invert margin-bottom--xl">
+    <section class="feature feature--invert margin-bottom--lg">
       <div class="feature__inner container container--adaptive">
         <div class="feature__text">
           <div class="feature__text-inner">

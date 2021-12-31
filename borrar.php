@@ -176,12 +176,10 @@ if(!isset($_SESSION["usuario"])){
     while ($noticia = $noticias -> fetch_array()) : ?>
   
     <div class="container container--adaptive">
-      <div style="text-align: left;color:var(--color-contrast-medium);" class="margin-bottom--xs">
-        <h6><?= (new DateTime($noticia['fecha']))->format('d/m/Y H:i:s') ?></h6>
-      </div>
+      <small class="feature__label">subido&nbsp;<?= (new DateTime($noticia['fecha']))->format('d/m/Y H:i') ?></small>
     </div>
     
-    <section class="feature feature--invert margin-bottom--xl">
+    <section class="feature feature--invert margin-bottom--lg">
       <div class="feature__inner container container--adaptive">
         <div class="feature__text">
           <div class="feature__text-inner">
@@ -192,7 +190,7 @@ if(!isset($_SESSION["usuario"])){
                 <small class="feature__label margin-bottom--xs">Etiquetas:&nbsp;<?= $noticia['etiquetas'] ?></small>
               </a>
             </div>
-            <div>
+            <div class="right-align">
               <a href="" onclick="deleteFunction(<?=$noticia['id_noticia']?>)" class="boton btn--delete">Eliminar</a>
             </div>
           </div>
@@ -200,11 +198,9 @@ if(!isset($_SESSION["usuario"])){
         <div class="feature__media">
           <div class="" style="position: relative;">
             <div class="StoreCard-image">
-              <div>
-                <a href="noticia.php?idNoticia=<?= $noticia['id_noticia'] ?>">
-                  <img alt="portada" class="Picture-image" src="data:image/jpg;base64,<?= $noticia['imagen'] ?>">
-                </a>
-              </div>
+              <a href="noticia.php?idNoticia=<?= $noticia['id_noticia'] ?>">
+                <img alt="portada" class="Picture-image" src="data:image/jpg;base64,<?= $noticia['imagen'] ?>">
+              </a>
             </div>
           </div>
         </div>
