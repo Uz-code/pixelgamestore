@@ -772,15 +772,14 @@ li#switch{
     -moz-column-count: 1;
     column-count: 1;
   }
-.center {
-  text-align: center;
-  margin: 0 auto;
-}
-.pagination2 a{
-  font-size: 10px;
-  padding: 8px 8px !important;
-  height: 35px;
-}
+  .center {
+    text-align: center;
+    margin: 0 auto;
+  }
+  .pagination2 a{
+    font-size: 12px;
+    height: 35px;
+  }
 }
 @media only screen and (min-width: 993px) {
   .cards-container {
@@ -1010,12 +1009,12 @@ outline: none;
     left: 0px;
     z-index: 3;
 }
-  @media only screen and (max-width: 1200px){
-.dropdown-content {
-  background-color: var(--color-bg);
-  width: 100% !important;
-  left: 0 !important;
-}
+@media only screen and (max-width: 1023px){
+  .dropdown-content {
+    background-color: var(--color-bg);
+    width: 100% !important;
+    left: 0 !important;
+  }
 }
 .main-header__nav {
     float: right;
