@@ -157,7 +157,7 @@ if(isset($_SESSION["usuario"])){
           <span class="dark">o use su cuenta</span>
           <input type="text" placeholder="Usuario"  name="usuario" id="usuario" required/>
           <input type="password" placeholder="Contraseña" name="contrasena" id="contrasena" required/>
-          <label style="padding: 1em 0;">
+          <label style="padding: 1em 0 2em;">
             <input type="checkbox" checked="checked" id="recordar1"/>
             <span>Recordarme</span>
           </label>
