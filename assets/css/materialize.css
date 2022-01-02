@@ -4910,7 +4910,7 @@ small {
 .material-tooltip {
   padding: 10px 8px;
   font-size: 1rem;
-  z-index: 2000;
+  z-index: 500;
   background-color: transparent;
   border-radius: 2px;
   color: #fff;
