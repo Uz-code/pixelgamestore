@@ -8,7 +8,6 @@ html {
   box-sizing: border-box;
 }
 body {
-	margin : 1px !important;
 	background-color: hsl(0, 0%, 100%);
 	background-color: var(--color-bg);
 	font-size: var(--text-base-size);
@@ -96,6 +95,7 @@ input{    outline: none;}
 }
 @supports (--css: variables) {
   [data-theme="dark"] {
+  --color-primary-d:#b1b1b1;
   --color-primary-darker: hsl(228, 74%, 41%);
   --color-primary-darker-h: 228;
   --color-primary-darker-s: 74%;
@@ -105,10 +105,9 @@ input{    outline: none;}
   --color-primary-dark-s: 74%;
   --color-primary-dark-l: 51%;
   --color-primary: hsl(228, 74%, 61%);
---color-overlay:#FF4B2B;
---color-overlay-two:#FF416C;
---color-background-overlay:white;
-
+  --color-overlay:var(--color-contrast-lowerest);
+  --color-overlay-two:var(--color-contrast-lowerest);
+  --color-background-overlay:white;
   --color-bg-a: hsla(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l), 0.2);
   --color-bg-b:hsla(255, var(--color-primary-s), var(--color-primary-l), 0.2);
   --color-white: hsl(0, 0%, 100%);
@@ -583,7 +582,6 @@ h4, .text--md {
       width: 1px;
     }
     .js .main-header, .js .main-header__layout {
-      height: 55px;
       height: var(--main-header-height);
     }
     .js .main-header__nav {

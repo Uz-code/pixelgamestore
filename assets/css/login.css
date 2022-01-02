@@ -10,8 +10,6 @@ body {
     flex-direction: column;
     font-family: 'Montserrat', sans-serif !important;
     height: 100vh;
-    margin: -20px 0 50px;
-    overflow-y: scroll;
 }
 
 h1 {
@@ -65,7 +63,7 @@ form button {
     color: #FFFFFF;
     font-size: 12px;
     font-weight: bold;
-    padding: 3px 45px;
+    padding: 3px 15px;
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: transform 80ms ease-in;
@@ -79,7 +77,7 @@ form button {
     color: #FFFFFF;
     font-size: 12px;
     font-weight: bold;
-    padding: 3px 45px;
+    padding: 3px 15px;
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: transform 80ms ease-in;
@@ -143,7 +141,7 @@ input:not(.buscar-txt)::placeholder {
     overflow: hidden;
     width: 768px;
     max-width: 100%;
-    min-height: 480px;
+    min-height: 500px;
 }
 
 .form-containerLog {
@@ -206,13 +204,11 @@ input:not(.buscar-txt)::placeholder {
 }
 
 .overlay {
-    background: var(--color-contrast-low);
-    background: -webkit-linear-gradient(to right, var(--color-overlay), var(--color-overlay-two));
-    background: var(--color-overlay);
+    background: var(--color-primary-d);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0 0;
-    color: #FFFFFF;
+    /* color: #FFFFFF; */
     position: relative;
     left: -100%;
     height: 100%;
@@ -286,6 +282,7 @@ footer {
 footer p {
     margin: 10px 0;
     color: var(--color-contrast-higher);
+    padding: 0 5px;
 }
 
 footer a {
@@ -321,17 +318,19 @@ footer a {
     }
     button.ghost {
         border: 0px;
-        color: var(--color-contrast-lower);
+        color: hsl(240, 6%, 15%);
         padding: 0;
-        width: 65px;
+        width: 100px;
         position: absolute;
         top: 19%;
     }
     .overlay-containerLog {
-        position: absolute;
-        top: 88%;
-        left: 40%;
-        width: 80px;
+        top: 90%;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100px;
         height: 40px;
     }
     #formLogin>a {

@@ -141,7 +141,7 @@ if(isset($_SESSION["usuario"])){
             <input type="checkbox" checked="checked" id="recordar"/>
             <span>Recordarme</span>
           </label>
-          <button type="submit" class="btnSubmit" name="action">Sign Up</button>
+          <button type="submit" class="btnSubmit" name="action">Registrate</button>
         </form>
 
       </div>
@@ -162,7 +162,7 @@ if(isset($_SESSION["usuario"])){
             <span>Recordarme</span>
           </label>
           <a class="forgot-password" href="#">Olvidaste tu contraseña?</a>
-          <button id="btnLogin" class="btnLogin" type="submit">Log in</button>
+          <button id="btnLogin" class="btnLogin" type="submit">Ingresar</button>
         </form>
         
       </div>
@@ -171,12 +171,12 @@ if(isset($_SESSION["usuario"])){
           <div class="overlay-panel overlay-left">
             <h1 class="ghost">Bienvenido!</h1>
             <p>Para mantenerse en contacto por favor ingrese con su informacion personal</p>
-            <button class="ghost" id="signIn">Log in</button>
+            <button class="ghost" id="signIn">Ingresar</button>
           </div>
           <div class="overlay-panel overlay-right">
             <h1 class="ghost">Registrate!</h1>
             <p>Entra tus datos personales para comenzar con nosotros</p>
-            <button class="ghost" id="signUp" >Sign Up</button>
+            <button class="ghost" id="signUp" >Registrate</button>
           </div>
         </div>
       </div>
@@ -208,97 +208,74 @@ if(isset($_SESSION["usuario"])){
     $('.dropdown-trigger').dropdown();
 	
 	
-    $("#formLogin").validate({
-    
-      submitHandler: function (form) {
-          
-        $("#loadingImg").show()
-        $('body').css('overflow', 'hidden');
+    $('#formLogin').submit(function(e) {
+      e.preventDefault(); 
+      $("#loadingImg").show()
+       $('body').css('overflow', 'hidden');
 
-        $.ajax({
-          type: "POST",
-          url: 'assets/php/iniciar_sesion.php',
-          data: {
-            usuario: $("#usuario").val(),
-            contrasena : $("#contrasena").val(),
-            recordar: $("#recordar").prop('checked')
-          },
-            success: function(response){
-              //console.log(response);
-              var jsonData = JSON.parse(response);
-              if (jsonData.status.code == "1"){
-
-                //alert('LogIn OK');
-                location.reload();
-                //window.history.back();
-              }else{
-                
-                alert(jsonData.status.description)
-                $("#loadingImg").hide();
-                $('body').css('overflow', 'auto');
-
-              }
-              
-            },
-            error: function() {
-              alert('Servidor no disponible');
-              $("#loadingImg").hide();
-              $('body').css('overflow', 'auto');
-            }
-        });
-      
-      }
-    
+      $.ajax({
+        type: "POST",
+        url: 'assets/php/iniciar_sesion.php',
+        data: {
+          usuario: $("#usuario").val(),
+          contrasena : $("#contrasena").val(),
+          recordar: $("#recordar").prop('checked')
+        },
+        success: function(response){
+           //console.log(response);
+          var jsonData = JSON.parse(response);
+          if (jsonData.status.code == "1"){
+            //alert('LogIn OK');
+            location.reload();
+            //window.history.back();
+          }else{
+            alert(jsonData.status.description)
+            $("#loadingImg").hide();
+            $('body').css('overflow', 'auto');
+          }  
+        },
+        error: function() {
+          alert('Servidor no disponible');
+          $("#loadingImg").hide();
+          $('body').css('overflow', 'auto');
+        }
+      });
     });
   
-  
-    jQuery.extend(jQuery.validator.messages, {
-    required: "Campo obligatorio.",
-    email: "Por favor ingrese un email valido.",
-    });
  
-    $("#formSignUp").validate({
-    
-      submitHandler: function (form) {
-          
-        $("#loadingImg").show()
-        $('body').css('overflow', 'hidden');
+    $('#formSignUp').submit(function(e) {
+      e.preventDefault();    
+      $("#loadingImg").show()
+      $('body').css('overflow', 'hidden');
 
-        $.ajax({
-          type: "POST",
-          url: 'assets/php/registrar_usuario.php',
-          data: {
-            usuario: $("#usuario1").val(),
-            contrasena : $("#contrasena1").val(),
-            email: $("#email1").val(),
-            recordar: $("#recordar1").prop('checked')
-          },
-            success: function(response){
-              //console.log(response);
-              var jsonData = JSON.parse(response);
-              if (jsonData.status.code == "1"){
-
-                alert('LogIn OK');
-                location.reload();
-                //window.history.back();
-              }else{
-                
-                alert(jsonData.status.description)
-                $("#loadingImg").hide();
-                $('body').css('overflow', 'auto');
-
-              }
-              
-            },
-            error: function() {
-              alert('Servidor no disponible');
-              $("#loadingImg").hide();
-              $('body').css('overflow', 'auto');
-            }
-        });
-      
-      }
-    
+      $.ajax({
+        type: "POST",
+        url: 'assets/php/registrar_usuario.php',
+        data: {
+          usuario: $("#usuario1").val(),
+          contrasena : $("#contrasena1").val(),
+          email: $("#email1").val(),
+          recordar: $("#recordar1").prop('checked')
+        },
+        success: function(response){
+          //console.log(response);
+          var jsonData = JSON.parse(response);
+          if (jsonData.status.code == "1"){
+            //alert('Registro OK');
+            location.reload();
+            //window.history.back();
+          }else{ 
+            alert(jsonData.status.description)
+            $("#loadingImg").hide();
+            $('body').css('overflow', 'auto');
+          }   
+        },
+        error: function() {
+          alert('Servidor no disponible');
+          $("#loadingImg").hide();
+          $('body').css('overflow', 'auto');
+        }
+      });
     });
 
     const signUpButton = document.getElementById('signUp');
