@@ -22,7 +22,7 @@ $_SESSION["paginaAnterior"]='noticias.php';
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Roboto:300,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/materialize.css">
   <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" type="text/css" href="assets/css/modal.css">
+  <link rel="stylesheet" href="assets/css/modal.css">
   <title>Noticias</title>
   <!-- Remueve el banner en 000wehost -->
   <script type="text/javascript">
@@ -285,7 +285,7 @@ $_SESSION["paginaAnterior"]='noticias.php';
           <div class="col s12 m6 l8">
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Cuerpo de la noticia</label>
-              <textarea id="inputCuerpo" class="form-control s1 expand" name="cuerpo" style="resize: vertical; height: 290px;" placeholder="Ingrese texto.. " required></textarea>
+              <textarea id="inputCuerpo" class="form-control s1 expand" name="cuerpo" placeholder="Ingrese texto.. " required></textarea>
             </div>
           </div>
         </div>
