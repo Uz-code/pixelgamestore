@@ -384,26 +384,9 @@ $_SESSION["paginaAnterior"]='noticias.php';
         $('#select_file').html("Seleccione una imagen");
       }
     })
-
-    //$("form").validate();
-
-    //  $('.btn-secondary').on('click', function () {
-    //   	 if($('form').valid()){
-    //      	$("textarea").animate({height: "260px"}); 
-    //   }else{
-    //   	$("textarea").animate({height: "389px"}); 
-    //   }
-    //   })
-
-    // jQuery.extend(jQuery.validator.messages, {
-    // required: "Campo obligatorio.",
-    // //email: "Por favor ingrese un e-mail valido",
-    // });
-
   </script>
 
   <?php endif; ?>
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 
 </body>
 
